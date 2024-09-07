@@ -14,47 +14,91 @@ const monitor = document.querySelectorAll('.data-topic');
 let client = new Paho.MQTT.Client("broker.hivemq.com", 8000, "userName-" + parseInt(Math.random() * 100, 10));
 client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
+
+
 const printAnalogInput = document.querySelector('.popap-info__analog-input');
 const parentListEeprom = document.querySelectorAll('.address-eeprom__data');
 const tableEepromNumber = document.querySelectorAll('.address-eeprom__number');
 const tableEepromAddress = document.querySelectorAll('.address-eeprom__address');
 const tableEepromNameSensor = document.querySelectorAll('.address-eeprom-name');
 
-//input and label class
-const inputDey = document.querySelectorAll('.day');
-const labelDey = document.querySelectorAll('.label-day');
+let inputDey;
+let labelDey;
+let releTempChangeRadio;
+let releTempChangeLabel;
+let releSetingSensorSelectLabel;
+let releSetingSensorSelect;
+let releTempVklStartLabel;
+let releTempVkl;
+let releSetingSwitcIhnput;
+let releSetingSwitchLabel;
+let tableEepromTemp;
+let tableDeviceNumber;
+let tableDeviceAddress;
+let tableDeviceTemp;
+let releItem;
+let releNameInput;
+let releTempChangeSingle;
+let delayWhenTurned;
+let releControlTimer;
+let popapTemp;
+let popapInfoTempItem;
+let parentListDevice;
+let btnClear;
+let btnSave;
+let btnDefineDevice;
+let timeBtn;
+let timeBtnClear;
+let releItemTitlePin;
+let btnChange;
+let inputControlError;
+let releNameBtn;
 
-const inputControlError = document.querySelectorAll('.input-control-error');
-const inputControlErrorLabel = document.querySelectorAll('.input-control-error__label');
 
-const releTempChangeRadio = document.querySelectorAll('.rele-temp-change-radio');
-const releTempChangeLabel = document.querySelectorAll('.rele-temp-change__label');
+//const inputControlErrorLabel = document.querySelectorAll('.input-control-error__label');
 
-const releSetingSensorSelectLabel = document.querySelectorAll('.rele__seting-sensor__select-label');
-const releSetingSensorSelect = document.querySelectorAll('.rele__seting-sensor__select');
 
-const releTempVklStartLabel = document.querySelectorAll(' .rele-temp-vkl-start-label');
-const releTempVkl = document.querySelectorAll('.rele-temp-vkl');
+const startSelector = () => {
+    //input and label class
+    return promise = new Promise(resolve => {
+        inputDey = document.querySelectorAll('.day');
+        labelDey = document.querySelectorAll('.label-day');
+        releTempChangeRadio = document.querySelectorAll('.rele-temp-change-radio');
+        releTempChangeLabel = document.querySelectorAll('.rele-temp-change__label');
+        releSetingSensorSelectLabel = document.querySelectorAll('.rele__seting-sensor__select-label');
+        releSetingSensorSelect = document.querySelectorAll('.rele__seting-sensor__select');
+        releTempVklStartLabel = document.querySelectorAll(' .rele-temp-vkl-start-label');
+        releTempVkl = document.querySelectorAll('.rele-temp-vkl');
+        releSetingSwitcIhnput = document.querySelectorAll('.rele__seting-switch__input');
+        releSetingSwitchLabel = document.querySelectorAll('.rele__seting-switch__label');
+        tableEepromTemp = document.querySelectorAll('.address-eeprom__temp');
+        tableDeviceNumber = document.querySelectorAll('.address-device__number');
+        tableDeviceAddress = document.querySelectorAll('.address-device__address');
+        tableDeviceTemp = document.querySelectorAll('.address-device__temp');
+        releItem = document.querySelectorAll('.rele__item');
+        releNameInput = document.querySelectorAll('.rele__name-input');
+        releTempChangeSingle = document.querySelectorAll('.rele-temp-change-single');
+        delayWhenTurned = document.querySelectorAll('.delay-when-turned');
+        releControlTimer = document.querySelectorAll('.delay-when-turned');
+        popapTemp = document.querySelectorAll('.popap-info__temp-item');
+        popapInfoTempItem = document.querySelectorAll('.popap-info__lamp-link');
+        parentListDevice = document.querySelectorAll('.address-device__data');
+        btnClear = document.querySelectorAll('.address-eeprom__btn.clear');
+        btnSave = document.querySelector('.address-eeprom__save');
+        btnDefineDevice = document.querySelector('.popap-menu__btn-define-device');
+        timeBtn = document.querySelectorAll('.time__btn ');
+        timeBtnClear = document.querySelectorAll('.time__btn-clear');
+        releItemTitlePin = document.querySelectorAll('.rele__item-title-pin');
+        btnChange = document.querySelectorAll('.address-eeprom__btn.change');
+        inputControlError = document.querySelectorAll('.input-control-error');
+        releNameBtn = document.querySelectorAll('.rele__name-btn');
+        console.log('start function startSelector()');
+        resolve();
+    });
 
-const releSetingSwitcIhnput = document.querySelectorAll('.rele__seting-switch__input');
-const releSetingSwitchLabel = document.querySelectorAll('.rele__seting-switch__label');
+}
 
-const tableEepromTemp = document.querySelectorAll('.address-eeprom__temp');
-const btnClear = document.querySelectorAll('.address-eeprom__btn.clear');
-const btnChange = document.querySelectorAll('.address-eeprom__btn.change');
-const btnDefineDevice = document.querySelector('.popap-menu__btn-define-device');
-const parentListDevice = document.querySelectorAll('.address-device__data');
-const tableDeviceNumber = document.querySelectorAll('.address-device__number');
-const tableDeviceAddress = document.querySelectorAll('.address-device__address');
-const tableDeviceTemp = document.querySelectorAll('.address-device__temp');
-const releItem = document.querySelectorAll('.rele__item');
-const btnSave = document.querySelector('.address-eeprom__save');
-const releNameInput = document.querySelectorAll('.rele__name-input');
-const releTempChangeSingle = document.querySelectorAll('.rele-temp-change-single');
-const delayWhenTurned = document.querySelectorAll('.delay-when-turned');
-const releControlTimer = document.querySelectorAll('.delay-when-turned');
-const popapTemp = document.querySelectorAll('.popap-info__temp-item');
-const popapInfoTempItem = document.querySelectorAll('.popap-info__lamp-link');
+
 
 //**************************************************************************************** */
 

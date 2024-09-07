@@ -19,6 +19,11 @@
         margin-bottom: 10px;
     }
 
+    &__top-list {
+        overflow-y: auto;
+        height: 30vh;
+    }
+
     &__bottom,
     &__top {
         width: 100%;
