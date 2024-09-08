@@ -34,7 +34,7 @@ for (let i = 0; i < 8; i++) {
   dateTimeArray.push({
     dateTimeList: [],
     dateTimeRealList: [],
-    time: [],
+    timeList: [],
     timeRealList: []
   });
 }
