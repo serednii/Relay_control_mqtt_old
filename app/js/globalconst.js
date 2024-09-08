@@ -44,7 +44,6 @@ let releControlTimer;
 let popapTemp;
 let popapInfoTempItem;
 let parentListDevice;
-let btnClear;
 let btnSave;
 let btnDefineDevice;
 let timeBtn;
@@ -83,7 +82,6 @@ const startSelector = () => {
         popapTemp = document.querySelectorAll('.popap-info__temp-item');
         popapInfoTempItem = document.querySelectorAll('.popap-info__lamp-link');
         parentListDevice = document.querySelectorAll('.address-device__data');
-        btnClear = document.querySelectorAll('.address-eeprom__btn.clear');
         btnSave = document.querySelector('.address-eeprom__save');
         btnDefineDevice = document.querySelector('.popap-menu__btn-define-device');
         timeBtn = document.querySelectorAll('.time__btn ');

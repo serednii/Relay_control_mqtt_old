@@ -69,6 +69,8 @@ function scripts() {
       'app/js/handlers/handleInputControlError.js',
       'app/js/handlers/handleRelayTempChangeRadio.js',
       'app/js/handlers/handleChangeRange.js',
+      'app/js/handlers/handleChangeDataSensor.js',
+      'app/js/handlers/handleClearDataSensor.js',
 
 
 

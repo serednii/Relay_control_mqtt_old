@@ -92,37 +92,9 @@ const startAllFunctions = () => {
   handleInputControlError();
   handleRelayTempChangeRadio();
   handleChangeRange();
+  handleChangeDataSensor();
+  handleClearDataSensor();
 
-
-
-
-
-
-
-  // *************************************************************************
-
-  if (document.querySelector('.address-eeprom__btn.change')) {
-    console.log('YES CLASSES address-eeprom__btn.change  ' + btnChange.length);
-    btnChange.forEach(function (e) {
-      e.addEventListener('click', function (k) {
-        parentListEeprom.forEach(function (m) {
-          //Видаляємо клас activ  на вісх елементах окрім тих наякі ми зробили клік і вони вже мають activ
-          if (!k.currentTarget.closest('.address-eeprom__data').classList.contains('active')) {
-            //Якщо ми клікаємо по елементу де вже є клас Activ то ми його не видаляємо
-            m.classList.remove('active');
-          }
-        });
-        e.closest('.address-eeprom__data').classList.toggle('active'); //інверсія класу
-        updateClickableDevices();
-        if (e.closest('.address-eeprom__data').classList.contains('active')) {
-          domElement = e.closest('.address-eeprom__data');
-        }
-      });
-    });
-  } else {
-    console.log('NOT CLASSES address-eeprom__btn.change');
-  }
-  //=====================================
 
 
   if (document.querySelector('.address-device__data')) {
@@ -143,21 +115,7 @@ const startAllFunctions = () => {
   }
   // ------------------------------
 
-  if (document.querySelector('.address-eeprom__btn.clear')) {
-    console.log('YES CLASSES address-eeprom__btn.clear ' + btnClear.length);
-    btnClear.forEach(function (e) {
-      e.addEventListener('click', function () {
-        const parent = e.closest('.address-eeprom__data');
-        console.log(parent);
-        parent.querySelector('.address-eeprom__address').innerText = '0000000000000000';
-        parent.querySelector('.address-eeprom__temp').innerText = '';
-        highlightMismatchedSensorAddresses();
-        //updateClickableDevices();
-      });
-    });
-  } else {
-    console.log('NOT CLASSES address-eeprom__btn.clear');
-  }
+
   // -------------------------------
 
   // -------------------------------
