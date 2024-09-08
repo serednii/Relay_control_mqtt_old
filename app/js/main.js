@@ -52,31 +52,6 @@ async function go() {
 go();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// window.addEventListener('resize', showWidth);
-// function showWidth() {
-//   document.querySelector('.widthtablet').innerText = document.documentElement.clientWidth;
-// }
-// showWidth();
-
-
 const popapInfoWrapper = document.querySelector('.popap-info__wrapper');
 $(document).ready(function () {
   $("#menu").on("click", "a", function (event) {

@@ -219,9 +219,9 @@ c78.399,0,143.399-68.899,143.399-143.399v-72.7V334.7L508.024,334.7z M197.724,97.
 const liDataTime =
   `
 <li class="timer-date__item">
-<div class="timer-date__datetime-inner">
-<input class="datetime datetime-start" type="datetime-local">
-<input class="datetime datetime-end" type="datetime-local">
+<div class="timer-date__DateTime-inner">
+<input class="DateTime DateTime-start" type="DateTime-local">
+<input class="DateTime DateTime-end" type="DateTime-local">
 </div>
 
 <!-- <h3 class="timer-date__time-control">По годинах</h3> -->
@@ -390,7 +390,7 @@ function innerHtmlText() {
             </div>
 
             <ul class="timer-date__items">
-              <!-- <h3 class="timer-date__datetime-control">По даті і годинах</h3> -->
+              <!-- <h3 class="timer-date__DateTime-control">По даті і годинах</h3> -->
              ${liDataTime}
              ${liDataTime}
              ${liDataTime}
