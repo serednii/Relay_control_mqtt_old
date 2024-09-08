@@ -86,8 +86,8 @@ function fun1() {
                         createOption.value = eepromData.obj[numEepromSensor].number;
                         createOption.className = "rele-control-option";
 
-                        if (objNameSensor.obj != undefined && objNameSensor.obj[numEepromSensor].nameSensor != '') {
-                            createOption.innerText = eepromData.obj[numEepromSensor].number + '--' + objNameSensor.obj[numEepromSensor].nameSensor + ' -- ' + eepromData.obj[numEepromSensor].temp;
+                        if (sensorNames.obj != undefined && sensorNames.obj[numEepromSensor].nameSensor != '') {
+                            createOption.innerText = eepromData.obj[numEepromSensor].number + '--' + sensorNames.obj[numEepromSensor].nameSensor + ' -- ' + eepromData.obj[numEepromSensor].temp;
                         } else {
                             createOption.innerText = eepromData.obj[numEepromSensor].number + '--' + eepromData.obj[numEepromSensor].address.toLocaleUpperCase() + ' -- ' + eepromData.obj[numEepromSensor].temp;
                         }
@@ -100,8 +100,8 @@ function fun1() {
 
                     try {
                         if (numSensor != 15) {
-                            if (objNameSensor.obj != undefined && objNameSensor.obj[numSensor].nameSensor != '') {
-                                if (numSensor < 8) e.querySelector('.rele__seting-switch__sensor').innerText = objNameSensor.obj[numSensor].nameSensor + '  ' + eepromData.obj[numSensor].temp;
+                            if (sensorNames.obj != undefined && sensorNames.obj[numSensor].nameSensor != '') {
+                                if (numSensor < 8) e.querySelector('.rele__seting-switch__sensor').innerText = sensorNames.obj[numSensor].nameSensor + '  ' + eepromData.obj[numSensor].temp;
                                 else e.querySelector('.rele__seting-switch__sensor').innerText = 'NONE';
 
                             } else {
