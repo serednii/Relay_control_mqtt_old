@@ -334,7 +334,7 @@ function onMessageArrived(message) {
 
                         timeInput[i].value = relaySettings.TIME[i];
                         timeInput[i + 1].value = relaySettings.TIME[i + 1];
-                        dateTimeArray[namberRele].time[i] = new Date(relaySettings.DATATIME[i]);
+                        dateTimeArray[namberRele].timeList[i] = new Date(relaySettings.DATATIME[i]);
                         dateTimeArray[namberRele].timeRealList[i + 1] = new Date(relaySettings.DATATIME[i + 1]);
                     }
                 }

@@ -437,17 +437,17 @@ function chekTime(parent, datetime, time) {
             t2.setHours(str.substr(0, str.indexOf(':')), str.substr(str.indexOf(':') + 1));
             dateTimeArray[numberReleClick].timeRealList[i] = t2;
             t2 = t2.getTime();
-            dateTimeArray[numberReleClick].time[i] = t2;
+            dateTimeArray[numberReleClick].timeList[i] = t2;
         } else {
             dateTimeArray[numberReleClick].timeRealList[i] = '';
-            dateTimeArray[numberReleClick].time[i] = '';
+            dateTimeArray[numberReleClick].timeList[i] = '';
         }
 
         //   // ********************************************************************************************************************************************************************
 
         for (let _n4 = 0; _n4 < 49; _n4 += 2) {
 
-            if (dateTimeArray[numberReleClick].time[_n4] >= dateTimeArray[numberReleClick].time[_n4 + 1] && dateTimeArray[numberReleClick].time[_n4 + 1] !== '') {
+            if (dateTimeArray[numberReleClick].timeList[_n4] >= dateTimeArray[numberReleClick].timeList[_n4 + 1] && dateTimeArray[numberReleClick].timeList[_n4 + 1] !== '') {
                 //Якщо в одному рядку друга дата менша або дорівнює першій
                 time[_n4].classList.add('time-red__color');
                 time[_n4 + 1].classList.add('time-red__color');
@@ -469,7 +469,7 @@ function chekTime(parent, datetime, time) {
         for (let u = 1; u < 49; u += 10) {
 
             for (let _n5 = u; _n5 < u + 8; _n5 += 2) {
-                if (dateTimeArray[numberReleClick].time[_n5] + 1 > dateTimeArray[numberReleClick].time[_n5 + 1] && dateTimeArray[numberReleClick].time[_n5 + 1] !== '') {
+                if (dateTimeArray[numberReleClick].timeList[_n5] + 1 > dateTimeArray[numberReleClick].timeList[_n5 + 1] && dateTimeArray[numberReleClick].timeList[_n5 + 1] !== '') {
                     //Якщо  другий рядок є менший за перший рядок 
                     time[_n5].classList.add('time-red__backround');
                     time[_n5 + 1].classList.add('time-red__backround');
