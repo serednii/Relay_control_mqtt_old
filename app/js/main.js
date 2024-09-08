@@ -15,7 +15,7 @@
 
 // window.onload = function () {
 
-// innerHtmlText().then(addIdAndFor).then(startLocalStoreg);
+// innerHtmlText().then(addIdAndFor).then(startLocalStorage);
 let deviceData = {};
 let eepromData = {};
 let sensorEepromControl = {};
@@ -44,7 +44,7 @@ for (let i = 0; i < 8; i++) {
 async function go() {
   await innerHtmlText();
   await addIdAndFor();
-  await startLocalStoreg();
+  await startLocalStorage();
   await startSelector();
   await startAllFunctionsPromise();
 

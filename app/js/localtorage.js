@@ -1,16 +1,16 @@
-const btnPopapAddNewDeviceOpen = document.querySelector('.popap-menu__btn-local-storage');
-btnPopapAddNewDeviceClose.addEventListener('click', () => {
+
+
+const btnPoppaAddNewDeviceOpen = document.querySelector('.popap-menu__btn-local-storage');
+btnPoppaAddNewDeviceOpen.addEventListener('click', () => {
   document.querySelector('.popap-local-storage').classList.remove('popap-local-storage__show');
 });
 
 document.querySelector('.popap-local-storage__top-list').addEventListener('click', selectItem)
-
 document.querySelector('.popap-local-storage__btn-add').addEventListener('click', checkForm)
 document.querySelector('.popap-local-storage__btn-remove').addEventListener('click', removeItemList)
 document.querySelector('.popap-local-storage__btn-close').addEventListener('click', closeForm)
 
-
-const startLocalStoreg = () => {
+const startLocalStorage = () => {
   return new Promise(resolve => {
     const language = localStorage.getItem('Language');
     if (language) {
@@ -20,7 +20,7 @@ const startLocalStoreg = () => {
     } else {
       languageChange('ua'); //default language
     }
-    console.log('start function startLocalStoreg()');
+    console.log('start function startLocalStorage()');
     resolve();
   })
 
@@ -47,12 +47,9 @@ function selectItem(event) {
     arr = JSON.parse(localStorage.getItem('DeviceArr'));
   }
   removeList();
-  printListDevuci(arr);
+  printListDevice(arr);
 }
 
-
-
-////////////////////////////////////////////////////
 function removeItemList(event) { //удаляємо видалені пристрої
   event.preventDefault();
   let arr = [];
@@ -61,12 +58,12 @@ function removeItemList(event) { //удаляємо видалені прист�
     arr = JSON.parse(localStorage.getItem('DeviceArr'));
 
     let newArr = [];
-    let flafClick = false;
+    let isClick = false;
     itemDevice.forEach((e, i) => {
       if (i > 0) {
         console.log(arr);
         if (e.classList.contains('click')) {
-          flafClick = true
+          isClick = true
           const deleteDevice = e.querySelector('.popap-local-storage__top-device').innerText;
           arr.forEach((ee) => {
             if (ee != null && ee.NameDevice != deleteDevice) {
@@ -78,16 +75,16 @@ function removeItemList(event) { //удаляємо видалені прист�
     });
 
     // console.log(newArr);
-    if (flafClick == true) {
+    if (isClick == true) {
       localStorage.setItem('DeviceArr', JSON.stringify(newArr));
       removeList();
-      printListDevuci(newArr);
+      printListDevice(newArr);
     }
 
   } else return false;
 }
 
-//////////////////////////////////////////////////////////
+
 
 function closeForm(event) {
   event.preventDefault();
@@ -97,8 +94,6 @@ function checkForm(event) {
   event.preventDefault();
   let arr = [];
   let obj = {
-    // NameDevice: "",
-    // Name: "",
   }
 
   const form = document.querySelector('.popap-local-storage__form');
@@ -132,7 +127,7 @@ function checkForm(event) {
   arr.push(obj);
   localStorage.setItem('DeviceArr', JSON.stringify(arr));
   removeList();
-  printListDevuci(arr);
+  printListDevice(arr);
 }
 
 function removeList() {
@@ -142,48 +137,45 @@ function removeList() {
   })
 }
 
-function printListDevuci(arr) {
+function printListDevice(arr) {
   //******************************************** */  
   arr.forEach((e) => {
     if (e != null) {
       const ul = document.querySelector('.popap-local-storage__top-list');
       const ulMenu = document.querySelector('.popap-local-storage-menu__list');
       let li = document.createElement('li');
-      // let a = document.createElement('a');
       let p = document.createElement('p');
       let p1 = document.createElement('p');
 
-
       li.className = 'popap-local-storage__top-item';
-      // a.href = "#";
+
       p.className = 'popap-local-storage__top-device';
       p.innerText = e.NameDevice;
-      //  a.append(p);
+
       p1.className = 'popap-local-storage__top-name';
       p1.innerText = e.Name;
-      // a.append(p1);
+
       li.append(p);
       li.append(p1);
 
       ul.append(li);
 
-      let limenu = document.createElement('li');
-      // let amenu = document.createElement('a');
-      let pmenu = document.createElement('p');
-      let p1menu = document.createElement('p');
+      let liMenu = document.createElement('li');
+      let pMenu = document.createElement('p');
+      let p1Menu = document.createElement('p');
 
-      limenu.className = 'popap-local-storage-menu__item';
-      // amenu.href = "#";
-      pmenu.className = 'popap-local-storage-menu__device';
-      pmenu.innerText = e.NameDevice;
-      // amenu.append(pmenu);
-      p1menu.className = 'popap-local-storage-menu__name';
-      p1menu.innerText = e.Name;
-      // amenu.append(p1menu);
-      limenu.append(pmenu);
+      liMenu.className = 'popap-local-storage-menu__item';
 
-      limenu.append(p1menu);
-      ulMenu.append(limenu);
+      pMenu.className = 'popap-local-storage-menu__device';
+      pMenu.innerText = e.NameDevice;
+
+      p1Menu.className = 'popap-local-storage-menu__name';
+      p1Menu.innerText = e.Name;
+
+      liMenu.append(pMenu);
+
+      liMenu.append(p1Menu);
+      ulMenu.append(liMenu);
     }
   });
 
