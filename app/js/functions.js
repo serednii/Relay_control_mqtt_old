@@ -325,31 +325,31 @@ function chekDate(parent, datetime, time) {
         // console.log(numberReleClick);
         // console.log(new Date().getTime());
 
-        arrayDatetime[numberReleClick].Datetime[i] = dateInput; //В секундах
-        arrayDatetime[numberReleClick].DatetimeReal[i] = new Date(k.value); //нермальний формат
+        dateTimeArray[numberReleClick].Datetime[i] = dateInput; //В секундах
+        dateTimeArray[numberReleClick].DatetimeReal[i] = new Date(k.value); //нермальний формат
 
-        if (arrayDatetime[numberReleClick].DatetimeReal[i] != 'Invalid Date') { //Якщо введена дата
+        if (dateTimeArray[numberReleClick].DatetimeReal[i] != 'Invalid Date') { //Якщо введена дата
             // console.log('************  '+numberReleClick+'  ****************  '+i+'  *********')
-            // console.log(arrayDatetime[numberReleClick].DatetimeReal[i] )
+            // console.log(dateTimeArray[numberReleClick].DatetimeReal[i] )
             // console.log(time[i * 5].value)
             if (i % 2 == 0) {
                 //neparnyy element
                 if (time[i * 5].value != '') { //Якщо введений час
-                    datetime[i].value = formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i], 'start'); //Міняємо в даті годину на 00:00
-                    if (datetime[i].value != 'Invalid Date') arrayDatetime[numberReleClick].DatetimeReal[i] = new Date(datetime[i].value); //записуємо в елемент datatime
+                    datetime[i].value = formatDataAndTime(dateTimeArray[numberReleClick].DatetimeReal[i], 'start'); //Міняємо в даті годину на 00:00
+                    if (datetime[i].value != 'Invalid Date') dateTimeArray[numberReleClick].DatetimeReal[i] = new Date(datetime[i].value); //записуємо в елемент datatime
                 }
             } else {
                 //parnyy elemen
                 if (time[(i - 1) * 5].value != '') {
-                    datetime[i].value = formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i], 'end'); //Міняємо в даті годину на 23:59
-                    if (datetime[i].value != 'Invalid Date') arrayDatetime[numberReleClick].DatetimeReal[i] = new Date(datetime[i].value); //записуємо в елемент datatime
+                    datetime[i].value = formatDataAndTime(dateTimeArray[numberReleClick].DatetimeReal[i], 'end'); //Міняємо в даті годину на 23:59
+                    if (datetime[i].value != 'Invalid Date') dateTimeArray[numberReleClick].DatetimeReal[i] = new Date(datetime[i].value); //записуємо в елемент datatime
                 }
             }
         }
 
 
         for (let _n2 = 0; _n2 < 9; _n2 += 2) {
-            if (arrayDatetime[numberReleClick].Datetime[_n2] >= arrayDatetime[numberReleClick].Datetime[_n2 + 1]) {
+            if (dateTimeArray[numberReleClick].Datetime[_n2] >= dateTimeArray[numberReleClick].Datetime[_n2 + 1]) {
                 //Якщо в одному рядку друга дата менша або дорівнює першій
                 datetime[_n2].classList.add('date-red__color');
                 datetime[_n2 + 1].classList.add('date-red__color');
@@ -399,22 +399,22 @@ function chekDate(parent, datetime, time) {
 
 // function checkDataAndTime(datetime, time, numberReleClick){  // Якщо є вибрано поля дата і поля час то поле дата годину старт ставимо 00:00 а кінець 23:59
 //   datetime.forEach(function (k, i) {
-//     if (arrayDatetime[numberReleClick].DatetimeReal[i]  != 'Invalid Date') {//Якщо введена дата
+//     if (dateTimeArray[numberReleClick].DatetimeReal[i]  != 'Invalid Date') {//Якщо введена дата
 //       console.log('************  '+numberReleClick+'  ****************  '+i+'  *********')
-//       console.log(arrayDatetime[numberReleClick].DatetimeReal[i] )
+//       console.log(dateTimeArray[numberReleClick].DatetimeReal[i] )
 //       console.log(time[i * 5].value)
 //       if (i % 2 == 0) {
 //         //neparnyy element
 //         if (time[i * 5].value != '') {//Якщо введений час
-//           datetime[i].value = formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i] , 'start');//Міняємо в даті годину на 00:00
-//           if (datetime[i].value != 'Invalid Date') arrayDatetime[numberReleClick].DatetimeReal[i] = new Date(datetime[i].value);//записуємо в елемент datatime
+//           datetime[i].value = formatDataAndTime(dateTimeArray[numberReleClick].DatetimeReal[i] , 'start');//Міняємо в даті годину на 00:00
+//           if (datetime[i].value != 'Invalid Date') dateTimeArray[numberReleClick].DatetimeReal[i] = new Date(datetime[i].value);//записуємо в елемент datatime
 //         }
 //       } else {
 //        //parnyy elemen
 //         if (time[(i-1) * 5].value != '') {
-//           console.log(formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i] , 'end'));
-//           datetime[i].value = formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i] , 'end');//Міняємо в даті годину на 23:59
-//           if (datetime[i].value != 'Invalid Date') arrayDatetime[numberReleClick].DatetimeReal[i] = new Date(datetime[i].value);//записуємо в елемент datatime
+//           console.log(formatDataAndTime(dateTimeArray[numberReleClick].DatetimeReal[i] , 'end'));
+//           datetime[i].value = formatDataAndTime(dateTimeArray[numberReleClick].DatetimeReal[i] , 'end');//Міняємо в даті годину на 23:59
+//           if (datetime[i].value != 'Invalid Date') dateTimeArray[numberReleClick].DatetimeReal[i] = new Date(datetime[i].value);//записуємо в елемент datatime
 //         }
 //       }
 //     }
@@ -435,19 +435,19 @@ function chekTime(parent, datetime, time) {
 
         if (k.value != '') {
             t2.setHours(str.substr(0, str.indexOf(':')), str.substr(str.indexOf(':') + 1));
-            arrayDatetime[numberReleClick].timeReal[i] = t2;
+            dateTimeArray[numberReleClick].timeReal[i] = t2;
             t2 = t2.getTime();
-            arrayDatetime[numberReleClick].time[i] = t2;
+            dateTimeArray[numberReleClick].time[i] = t2;
         } else {
-            arrayDatetime[numberReleClick].timeReal[i] = '';
-            arrayDatetime[numberReleClick].time[i] = '';
+            dateTimeArray[numberReleClick].timeReal[i] = '';
+            dateTimeArray[numberReleClick].time[i] = '';
         }
 
         //   // ********************************************************************************************************************************************************************
 
         for (let _n4 = 0; _n4 < 49; _n4 += 2) {
 
-            if (arrayDatetime[numberReleClick].time[_n4] >= arrayDatetime[numberReleClick].time[_n4 + 1] && arrayDatetime[numberReleClick].time[_n4 + 1] !== '') {
+            if (dateTimeArray[numberReleClick].time[_n4] >= dateTimeArray[numberReleClick].time[_n4 + 1] && dateTimeArray[numberReleClick].time[_n4 + 1] !== '') {
                 //Якщо в одному рядку друга дата менша або дорівнює першій
                 time[_n4].classList.add('time-red__color');
                 time[_n4 + 1].classList.add('time-red__color');
@@ -469,7 +469,7 @@ function chekTime(parent, datetime, time) {
         for (let u = 1; u < 49; u += 10) {
 
             for (let _n5 = u; _n5 < u + 8; _n5 += 2) {
-                if (arrayDatetime[numberReleClick].time[_n5] + 1 > arrayDatetime[numberReleClick].time[_n5 + 1] && arrayDatetime[numberReleClick].time[_n5 + 1] !== '') {
+                if (dateTimeArray[numberReleClick].time[_n5] + 1 > dateTimeArray[numberReleClick].time[_n5 + 1] && dateTimeArray[numberReleClick].time[_n5 + 1] !== '') {
                     //Якщо  другий рядок є менший за перший рядок 
                     time[_n5].classList.add('time-red__backround');
                     time[_n5 + 1].classList.add('time-red__backround');
@@ -488,19 +488,19 @@ function chekTime(parent, datetime, time) {
         if (i === 0 || i === 10 || i === 20 || i === 30 || i === 40) {
 
             // console.log('************  ' + numberReleClick + '  ****************  ' + i + '  *********')
-            // console.log(arrayDatetime[numberReleClick].DatetimeReal[i] )
+            // console.log(dateTimeArray[numberReleClick].DatetimeReal[i] )
             // console.log(time[i].value)
 
-            if (arrayDatetime[numberReleClick].DatetimeReal[i / 5] != 'Invalid Date' && arrayDatetime[numberReleClick].DatetimeReal[i / 5] != undefined && time[i].value != '') {
-                datetime[i / 5].value = formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i / 5], 'start');
-                arrayDatetime[numberReleClick].DatetimeReal[i / 5] = new Date(datetime[i / 5].value);
+            if (dateTimeArray[numberReleClick].DatetimeReal[i / 5] != 'Invalid Date' && dateTimeArray[numberReleClick].DatetimeReal[i / 5] != undefined && time[i].value != '') {
+                datetime[i / 5].value = formatDataAndTime(dateTimeArray[numberReleClick].DatetimeReal[i / 5], 'start');
+                dateTimeArray[numberReleClick].DatetimeReal[i / 5] = new Date(datetime[i / 5].value);
                 // console.log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
 
             }
 
-            if (arrayDatetime[numberReleClick].DatetimeReal[i / 5 + 1] != 'Invalid Date' && arrayDatetime[numberReleClick].DatetimeReal[i / 5 + 1] != undefined && time[i].value != '') {
-                datetime[i / 5 + 1].value = formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i / 5 + 1], 'end');
-                arrayDatetime[numberReleClick].DatetimeReal[i / 5 + 1] = new Date(datetime[i / 5 + 1].value);
+            if (dateTimeArray[numberReleClick].DatetimeReal[i / 5 + 1] != 'Invalid Date' && dateTimeArray[numberReleClick].DatetimeReal[i / 5 + 1] != undefined && time[i].value != '') {
+                datetime[i / 5 + 1].value = formatDataAndTime(dateTimeArray[numberReleClick].DatetimeReal[i / 5 + 1], 'end');
+                dateTimeArray[numberReleClick].DatetimeReal[i / 5 + 1] = new Date(datetime[i / 5 + 1].value);
                 // console.log("NNNNNNNNNNNNNNNNNNNNNNNNNN");
             }
         }

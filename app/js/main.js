@@ -26,12 +26,12 @@ let relaySettings = {};
 let isEepromDataDownloaded = false;
 let isDeviceDataDownloaded = false;
 let showEepromData = true;
-//let timeMessage = void 0;
-let element = void 0;
-let arrayDatetime = [];
+//let timeMessage = null;
+let domElement = null;
+let dateTimeArray = [];
 
 for (let i = 0; i < 8; i++) {
-  arrayDatetime.push({
+  dateTimeArray.push({
     Datetime: [],
     DatetimeReal: [],
     time: [],
@@ -450,7 +450,7 @@ const startAllFunctions = () => {
         e.closest('.address-eeprom__data').classList.toggle('active'); //інверсія класу
         CheckClickDevices();
         if (e.closest('.address-eeprom__data').classList.contains('active')) {
-          element = e.closest('.address-eeprom__data');
+          domElement = e.closest('.address-eeprom__data');
         }
       });
     });
@@ -468,7 +468,7 @@ const startAllFunctions = () => {
       //добавляємо датчики яких немає в списку EEPROM
       e.addEventListener('click', function () {
         if (e.classList.contains('red') && e.classList.contains('click')) {
-          element.querySelector('.address-eeprom__address').innerText = e.querySelector('.address-device__address').textContent;
+          domElement.querySelector('.address-eeprom__address').innerText = e.querySelector('.address-device__address').textContent;
           compareSensorAddressHtml();
           // CheckClickDevices();
         }
@@ -639,21 +639,21 @@ const startAllFunctions = () => {
           let _s = 'RELE' + i + '-' + delayWhenTurned[i].value + '-';
 
           for (nn = 0; nn < 10; nn++) {
-            // console.log('dayElement  ' + arrayDatetime[i].DatetimeReal[nn]);
+            // console.log('dayElement  ' + dateTimeArray[i].DatetimeReal[nn]);
 
-            if (arrayDatetime[i].DatetimeReal[nn] != 'Invalid Date') {
-              // console.log('dayElement  ' + arrayDatetime[i].DatetimeReal[nn]);
-              let dateInput = new Date(arrayDatetime[i].DatetimeReal[nn]).getTime();
+            if (dateTimeArray[i].DatetimeReal[nn] != 'Invalid Date') {
+              // console.log('dayElement  ' + dateTimeArray[i].DatetimeReal[nn]);
+              let dateInput = new Date(dateTimeArray[i].DatetimeReal[nn]).getTime();
               dateInput = dateInput / 1000;
               console.log("ZZZZZZZZZZZZ");
-              console.log(arrayDatetime[i].DatetimeReal[nn]);
+              console.log(dateTimeArray[i].DatetimeReal[nn]);
               _s += dateInput + '-'; //Рік  v minute
-              _s += arrayDatetime[i].DatetimeReal[nn].getFullYear() + '-'; //Рік
-              _s += arrayDatetime[i].DatetimeReal[nn].getMonth() + 1 + '-'; //Місяць
-              _s += arrayDatetime[i].DatetimeReal[nn].getDate() + '-'; //день 1-31
-              _s += arrayDatetime[i].DatetimeReal[nn].getHours() + '-'; //Година
-              _s += arrayDatetime[i].DatetimeReal[nn].getMinutes() + '-'; //Хвилина
-              _s += arrayDatetime[i].DatetimeReal[nn].getDay() + '-'; //День тижня 0-6
+              _s += dateTimeArray[i].DatetimeReal[nn].getFullYear() + '-'; //Рік
+              _s += dateTimeArray[i].DatetimeReal[nn].getMonth() + 1 + '-'; //Місяць
+              _s += dateTimeArray[i].DatetimeReal[nn].getDate() + '-'; //день 1-31
+              _s += dateTimeArray[i].DatetimeReal[nn].getHours() + '-'; //Година
+              _s += dateTimeArray[i].DatetimeReal[nn].getMinutes() + '-'; //Хвилина
+              _s += dateTimeArray[i].DatetimeReal[nn].getDay() + '-'; //День тижня 0-6
             } else {
               _s += '4294967295-65535-99-99-99-99-99-'; //День тижня 0-6
             }
@@ -662,10 +662,10 @@ const startAllFunctions = () => {
           for (nn = 0; nn < 50; nn++) {
             // console.log( "HHHHHHHHH  " ); 
 
-            console.log(arrayDatetime[i].timeReal[nn]);
+            console.log(dateTimeArray[i].timeReal[nn]);
 
-            if (arrayDatetime[i].timeReal[nn] != undefined && arrayDatetime[i].timeReal[nn] != '') {
-              _s += arrayDatetime[i].timeReal[nn].getHours() + "-" + arrayDatetime[i].timeReal[nn].getMinutes() + '-';
+            if (dateTimeArray[i].timeReal[nn] != undefined && dateTimeArray[i].timeReal[nn] != '') {
+              _s += dateTimeArray[i].timeReal[nn].getHours() + "-" + dateTimeArray[i].timeReal[nn].getMinutes() + '-';
             } else _s += '99-99-';
           }
 
