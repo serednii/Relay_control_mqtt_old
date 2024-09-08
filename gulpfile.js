@@ -65,6 +65,7 @@ function scripts() {
       'app/js/handlers/handleRelayTempOn.js',
       'app/js/handlers/handleShowTable.js',
       'app/js/handlers/handleChangeTempOnOff.js',
+      'app/js/handlers/handleSaveNameRelay.js',
       'app/js/handlers/handleInputControlError.js',
 
 

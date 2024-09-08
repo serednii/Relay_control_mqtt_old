@@ -78,7 +78,7 @@ const startAllFunctionsPromise = () => {
 }
 
 const startAllFunctions = () => {
-  interal();
+  interval();
   document.querySelectorAll('.timer-date__item').forEach(e => {
     e.classList.remove('show-block');
   });
@@ -88,7 +88,7 @@ const startAllFunctions = () => {
   handleRelayTempOn();
   handleChangeSelect();
   handleChangeTempOnOff();
-  handleSavaNameRelay();
+  handleSaveNameRelay();
   handleInputControlError();
 
 
