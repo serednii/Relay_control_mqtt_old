@@ -103,15 +103,7 @@ $(document).ready(function () {
 //   }
 //   // console.log(binary);
 // }
-
-
-
-
 // }//window.onload = function  end
-
-
-
-
 
 const startAllFunctionsPromise = () => {
   return promise = new Promise(resolve => {

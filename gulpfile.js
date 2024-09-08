@@ -55,6 +55,7 @@ function scripts() {
       'app/js/localtorage.js',
       'app/js/language.js',
       'app/js/functions.js',
+      'app/js/dataTime.js',
       'app/js/main.js'
     ])
     .pipe(concat('../min_js/main.min.js'))
