@@ -90,25 +90,13 @@ const startAllFunctions = () => {
   handleChangeTempOnOff();
   handleSaveNameRelay();
   handleInputControlError();
+  handleRelayTempChangeRadio();
 
 
 
 
 
 
-  releTempChangeRadio.forEach(function (e, i) {
-    e.addEventListener('change', function () {
-      let ii = Math.trunc(i / 2);
-      if (e.value == '0') {
-        sensorEepromControl.obj[ii].number &= ~(1 << 5);
-      } else if (e.value == '1') {
-        sensorEepromControl.obj[ii].number |= 1 << 5;
-      }
-      s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
-      console.log('setReleEpromUprOneOrTwoRangeTemp----' + s);
-      sendMessage(setReleEpromUprChangeOnOrOff, s);
-    });
-  });
 
   // Включаємо реле або Виключаємо реле  при зміні температури або часу
 

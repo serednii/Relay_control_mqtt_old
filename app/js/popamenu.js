@@ -62,7 +62,7 @@ window.onclick = (e) => {
     //     console.log(e.target)
     //     selectItemMenu(e.target);
     // }
-    if (e.target === btnPopapAddNewDeviceOpen) { //Відкриваємо меню для добавлення або зміни нових пристроїв
+    if (e.target === btnPoppaAddNewDeviceOpen) { //Відкриваємо меню для добавлення або зміни нових пристроїв
         POPAP_MENU.classList.toggle('popap-menu__show');
         popapLocalStorage.classList.add('popap-local-storage__show');
     }
