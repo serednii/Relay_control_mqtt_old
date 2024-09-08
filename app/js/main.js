@@ -94,31 +94,8 @@ const startAllFunctions = () => {
   handleChangeRange();
   handleChangeDataSensor();
   handleClearDataSensor();
+  handleSelectSensor()
 
-
-
-  if (document.querySelector('.address-device__data')) {
-    console.log('YES CLASSES address-device__data  ' + parentListDevice.length);
-
-    parentListDevice.forEach(function (e) {
-      //добавляємо датчики яких немає в списку EEPROM
-      e.addEventListener('click', function () {
-        if (e.classList.contains('red') && e.classList.contains('click')) {
-          domElement.querySelector('.address-eeprom__address').innerText = e.querySelector('.address-device__address').textContent;
-          highlightMismatchedSensorAddresses();
-          // updateClickableDevices();
-        }
-      });
-    });
-  } else {
-    console.log('NOT CLASSES address-device__data');
-  }
-  // ------------------------------
-
-
-  // -------------------------------
-
-  // -------------------------------
 
   if (btnSave) {
     console.log('YES CLASSES address-eeprom__save');
@@ -150,9 +127,7 @@ const startAllFunctions = () => {
     console.log('NOT CLASSES address-eeprom__save');
   }
 
-  //*********************************************************************** */
-  // popapClearDevice.classList.add('disable__global');
-  // popapClearDeviceItem.forEach((e) => e.classList.add('disable__global'));
+
 
   if (btnDefineDevice) {
     console.log('YES CLASSES popap-menu__btn-define-device');
@@ -168,10 +143,7 @@ const startAllFunctions = () => {
   } else {
     console.log('NOT CLASSES popap-menu__btn-define-device');
   }
-  //*********************************************************************** */
 
-  // ********************************************************************************************************************************************************************
-  // document.querySelectorAll('.datetime, .time').forEach(function (e) {
 
   if (releItem.length > 0) {
     console.log('YES CLASSES  rele__item ' + releItem.length);
@@ -206,14 +178,6 @@ const startAllFunctions = () => {
     console.log('NOT CLASSES  rele__item ');
   }
 
-
-
-
-  // document.querySelectorAll('.day ').forEach(function (e, i) {
-  //   e.addEventListener('click', function (ee) {
-  //     const parent = e.closest('.rele__item');
-  //   });
-  // });
 
 
   // 2022-06-12T00:00 format input date set
