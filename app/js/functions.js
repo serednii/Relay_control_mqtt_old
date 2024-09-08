@@ -256,6 +256,24 @@ function fun2() {
     }
 }
 
+function updateRelayTemperatureSettings() {
+    const tempOnInputs = document.querySelectorAll('.rele-temp-vkl');
+    const tempOffInputs = document.querySelectorAll('.rele-temp-otkl');
+    const tempOnSwitches = document.querySelectorAll('.rele__seting-switch__temp-on');
+    const tempOffSwitches = document.querySelectorAll('.rele__seting-switch__temp-off');
+
+    try {
+        for (let i = 0; i < tempOnInputs.length; i++) {
+            if (tempOnSwitches) tempOnSwitches[i].innerText = 'TEMP_ON  ' + sensorOpenCloseTemperature.obj[i].vkl;
+            if (tempOffSwitches) tempOffSwitches[i].innerText = 'TEMP_OFF  ' + sensorOpenCloseTemperature.obj[i].otkl;
+            tempOnInputs[i].value = sensorOpenCloseTemperature.obj[i].vkl;
+            tempOffInputs[i].value = sensorOpenCloseTemperature.obj[i].otkl;
+        }
+    } catch (error) {
+        console.log('ERROR  ' + error);
+    }
+}
+
 function semd_mess() {
     sendMessage(outstartDataSensor, 'ALL');
 }

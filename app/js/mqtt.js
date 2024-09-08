@@ -157,7 +157,7 @@ function onMessageArrived(message) {
             sensorOpenCloseTemperature = JSON.parse(message.payloadString);
             // console.log('sensorOpenCloseTemperature  *****');
             // console.log(message.payloadString);
-            fun2();
+            updateRelayTemperatureSettings();
         }
 
         //************************************************************************************************************** */
