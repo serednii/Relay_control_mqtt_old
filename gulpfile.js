@@ -54,7 +54,10 @@ function scripts() {
       'app/js/addfororid.js',
       'app/js/localtorage.js',
       'app/js/language.js',
-      'app/js/functions.js',
+      'app/js/update_data_relay.js',
+      'app/js/show.js',
+      'app/js/other_function.js',
+
       'app/js/dataTime.js',
       'app/js/main.js'
     ])
