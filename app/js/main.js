@@ -23,8 +23,13 @@ let sensorOpenCloseTemperature = {};
 let sensorNames = {};
 let relayNames = {};
 let relaySettings = {};
-
+let isEepromDataDownloaded = false;
+let downloadedDataDevice = false;
+let showEepromFlag = true;
+let timeMesage = void 0;
+let element = void 0;
 let arrayDatetime = [];
+
 for (let i = 0; i < 8; i++) {
   arrayDatetime.push({
     Datetime: [],
@@ -34,11 +39,7 @@ for (let i = 0; i < 8; i++) {
   });
 }
 
-let downloadedDataEEprom = false;
-let downloadedDataDevice = false;
-let showEepromFlag = true;
-let timeMesage = void 0;
-let element = void 0;
+
 
 async function go() {
   await innerHtmlText();

@@ -113,8 +113,8 @@ function onMessageArrived(message) {
 
             }
 
-            downloadedDataEEprom = true;
-            if (downloadedDataDevice && downloadedDataEEprom) compareSensorAddress();
+            isEepromDataDownloaded = true;
+            if (downloadedDataDevice && isEepromDataDownloaded) compareSensorAddress();
         }
 
         //************************************************************************************************************** */
@@ -130,7 +130,7 @@ function onMessageArrived(message) {
                 tableDeviceTemp[_k2 + 1].innerText = deviceInfo.obj[_k2].temp.toFixed(1);
             }
             downloadedDataDevice = true;
-            if (downloadedDataDevice && downloadedDataEEprom) {
+            if (downloadedDataDevice && isEepromDataDownloaded) {
                 fun1();
                 compareSensorAddress();
             }
