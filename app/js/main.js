@@ -78,65 +78,23 @@ const startAllFunctionsPromise = () => {
 }
 
 const startAllFunctions = () => {
-
-
-  interval()
-
+  interal();
   document.querySelectorAll('.timer-date__item').forEach(e => {
     e.classList.remove('show-block');
   });
+
   handleManualControl();
   handleShowTable();
   handleRelayTempOn();
   handleChangeSelect();
-  handleChangeTempOnOff()
+  handleChangeTempOnOff();
+  handleSavaNameRelay();
+  handleInputControlError();
 
 
 
 
 
-
-
-
-  if (releNameBtn > 0) {
-    console.log('NOT CLASSES rele__name-btn ' + releNameBtn.length);
-    releNameBtn.forEach(function (e, i) {
-      e.addEventListener('click', function () {
-        s = i + '*#*' + e.closest('.rele__item').querySelector('.rele__name-input').value + '*&*';
-
-        sendMessage(outSaveReleName, s);
-        console.log(s);
-      });
-    });
-  } else {
-    console.log('NOT CLASSES rele__name-btn');
-  }
-
-  // // При несправності термодатчика або таймера реле залишаємо вкл або викл
-  if (document.querySelector('.input-control-error')) {
-    console.log('YES CLASSES rele-temp-otkl   rele-temp-vkl  ' + inputControlError.length);
-
-    inputControlError.forEach(function (e, i) {
-
-      e.addEventListener('change', function () {
-        try {
-          let ii = Math.trunc(i / 2);
-
-          if (e.value == '0') {
-            sensorEepromControl.obj[ii].number &= ~(1 << 6);
-          } else if (e.value == '1') {
-            sensorEepromControl.obj[ii].number |= 1 << 6;
-          }
-          s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
-          sendMessage(setReleEpromUprErorrReleVklVukl, s);
-        } catch (e) {
-          console.log('ERROR  ' + e);
-        }
-      });
-    });
-  } else {
-    console.log('NOT CLASSES input-control-error');
-  }
 
   releTempChangeRadio.forEach(function (e, i) {
     e.addEventListener('change', function () {

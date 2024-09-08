@@ -1,0 +1,60 @@
+function handleInputControlError() {
+    const inputControlErrors = document.querySelectorAll('.input-control-error');
+
+    if (inputControlErrors.length > 0) {
+        console.log('Found input-control-error elements: ' + inputControlErrors.length);
+
+        inputControlErrors.forEach(function (inputElement, index) {
+            inputElement.addEventListener('change', function () {
+                try {
+                    let sensorIndex = Math.trunc(index / 2);
+                    let sensorObject = sensorEepromControl.obj[sensorIndex];
+
+                    // Оновлюємо біт залежно від значення
+                    if (inputElement.value == '0') {
+                        sensorObject.number &= ~(1 << 6); // Вимикаємо біт
+                    } else if (inputElement.value == '1') {
+                        sensorObject.number |= 1 << 6; // Вмикаємо біт
+                    }
+
+                    // Формуємо та відправляємо повідомлення
+                    const message = `${sensorIndex}x${sensorObject.number}k`;
+                    sendMessage(setReleEpromUprErorrReleVklVukl, message);
+
+                    console.log('Message sent: ', message);
+                } catch (error) {
+                    console.error('Error handling input change: ', error);
+                }
+            });
+        });
+    } else {
+        console.log('No input-control-error elements found');
+    }
+}
+
+
+// // // При несправності термодатчика або таймера реле залишаємо вкл або викл
+// if (document.querySelector('.input-control-error')) {
+//   console.log('YES CLASSES rele-temp-otkl   rele-temp-vkl  ' + inputControlError.length);
+
+//   inputControlError.forEach(function (e, i) {
+
+//     e.addEventListener('change', function () {
+//       try {
+//         let ii = Math.trunc(i / 2);
+
+//         if (e.value == '0') {
+//           sensorEepromControl.obj[ii].number &= ~(1 << 6);
+//         } else if (e.value == '1') {
+//           sensorEepromControl.obj[ii].number |= 1 << 6;
+//         }
+//         s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
+//         sendMessage(setReleEpromUprErorrReleVklVukl, s);
+//       } catch (e) {
+//         console.log('ERROR  ' + e);
+//       }
+//     });
+//   });
+// } else {
+//   console.log('NOT CLASSES input-control-error');
+// }
