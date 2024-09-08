@@ -376,7 +376,7 @@ function highlightMismatchedSensorAddresses() {
         }
     }
     // Викликаємо функцію для перевірки стану пристроїв
-    checkDeviceClickStatus();
+    updateClickableDevices();
 }
 
 
