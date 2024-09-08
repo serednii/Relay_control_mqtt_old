@@ -131,7 +131,7 @@ function onMessageArrived(message) {
             }
             isDeviceDataDownloaded = true;
             if (isDeviceDataDownloaded && isEepromDataDownloaded) {
-                fun1();
+                updateRelaySettings();
                 compareSensorAddress();
             }
         }
@@ -147,7 +147,7 @@ function onMessageArrived(message) {
             // console.log('sensorEepromControl  *****');
             // console.log(sensorEepromControl );
 
-            fun1();
+            updateRelaySettings();
         }
 
         //************************************************************************************************************** */

@@ -123,6 +123,118 @@ function fun1() {
     }
 }
 
+function updateRelaySettings() {
+
+    if (typeof sensorEepromControl?.obj === 'object' && sensorEepromControl?.obj !== undefined) {
+        // Якщо об'єкт не порожній
+        releItem.forEach(function (relayElement, relayIndex) {
+
+            const sensorSelect = relayElement.querySelector('select');
+            const tempRangeRadios = relayElement.querySelectorAll('.rele-temp-change-radio');
+            const tempSingleRangeRadios = relayElement.querySelectorAll('.rele-temp-change-single');
+            const relayErrorIndicators = relayElement.querySelectorAll('.input-control-error');
+
+            let relaySensorData = sensorEepromControl.obj[relayIndex].number;
+            const sensorNumber = relaySensorData & 0x0F; // номер сенсора, який керує реле
+
+            // Налаштування діапазонів температур
+            if (tempSingleRangeRadios !== null) {
+                if (relaySensorData & (1 << 4)) {
+                    // Два діапазони температур: включення і відключення
+                    tempSingleRangeRadios[1].checked = true;
+                    relayElement.closest('.rele__item').querySelector('.rele-temp-otkl').disabled = false;
+                } else {
+                    // Один діапазон температур
+                    relayElement.closest('.rele__item').querySelector('.rele-temp-otkl').disabled = true;
+                    tempSingleRangeRadios[0].checked = true;
+                }
+            }
+
+            // Налаштування радіо перемикачів
+            if (tempRangeRadios !== null) {
+                if (relaySensorData & (1 << 5)) {
+                    // Увімкнення або вимкнення реле при переключенні
+                    tempRangeRadios[0].checked = true;
+                } else {
+                    tempRangeRadios[1].checked = true;
+                }
+            }
+
+            // Перевірка на помилки реле
+            if (relayErrorIndicators !== null) {
+                if (relaySensorData & (1 << 6)) {
+                    relayErrorIndicators[0].checked = true;
+                } else {
+                    relayErrorIndicators[1].checked = true;
+                }
+            }
+
+            //------------------------------------
+
+            const sensorOptions = sensorSelect.querySelectorAll('option');
+
+            // Видалення всіх опцій, крім першої
+            sensorOptions.forEach(function (option, index) {
+                if (index > 0) option.remove();
+            });
+
+            for (let eepromSensorIndex = 0; eepromSensorIndex < 8; eepromSensorIndex++) {
+                let relayWithSensor = 15;
+
+                // Пошук реле, в якому зберігається сенсор
+                for (let i = 0; i < 8; i++) {
+                    let sensorData = sensorEepromControl.obj[i].number;
+                    sensorData &= ~240;
+                    if (sensorData === eepromSensorIndex) {
+                        relayWithSensor = i;
+                        console.log('relayWithSensor - ' + relayWithSensor);
+                        break;
+                    }
+                }
+
+                // Додавання опцій для сенсора
+                if (typeof eepromData === 'object' && eepromData.obj !== undefined) {
+                    if (!(eepromData.obj[eepromSensorIndex].address === '0000000000000000' || eepromData.obj[eepromSensorIndex].address === 'ffffffffffffffff') && (relayWithSensor === relayIndex || relayWithSensor === 15)) {
+                        const createOption = document.createElement('option');
+                        createOption.value = eepromData.obj[eepromSensorIndex].number;
+                        createOption.className = "rele-control-option";
+
+                        if (sensorNames.obj !== undefined && sensorNames.obj[eepromSensorIndex].nameSensor !== '') {
+                            createOption.innerText = eepromData.obj[eepromSensorIndex].number + '--' + sensorNames.obj[eepromSensorIndex].nameSensor + ' -- ' + eepromData.obj[eepromSensorIndex].temp;
+                        } else {
+                            createOption.innerText = eepromData.obj[eepromSensorIndex].number + '--' + eepromData.obj[eepromSensorIndex].address.toLocaleUpperCase() + ' -- ' + eepromData.obj[eepromSensorIndex].temp;
+                        }
+
+                        if (relayWithSensor === relayIndex) {
+                            createOption.selected = true;
+                        }
+                        sensorSelect.appendChild(createOption);
+                    }
+
+                    try {
+                        if (sensorNumber !== 15) {
+                            if (sensorNames.obj !== undefined && sensorNames.obj[sensorNumber].nameSensor !== '') {
+                                if (sensorNumber < 8) relayElement.querySelector('.rele__seting-switch__sensor').innerText = sensorNames.obj[sensorNumber].nameSensor + '  ' + eepromData.obj[sensorNumber].temp;
+                                else relayElement.querySelector('.rele__seting-switch__sensor').innerText = 'NONE';
+                            } else {
+                                if (sensorNumber < 8) relayElement.querySelector('.rele__seting-switch__sensor').innerText = eepromData.obj[sensorNumber].address.toLocaleUpperCase() + '  ' + eepromData.obj[sensorNumber].temp;
+                                else relayElement.querySelector('.rele__seting-switch__sensor').innerText = 'NONE';
+                            }
+                        } else {
+                            relayElement.querySelector('.rele__seting-switch__sensor').innerText = 'NONE';
+                        }
+                    } catch (error) {
+                        console.log('ERROR sensorNumber  -- ' + sensorNumber);
+                    }
+
+                }
+
+            }
+
+        });
+    }
+}
+
 function fun2() {
     const inputTempVkl = document.querySelectorAll('.rele-temp-vkl');
     const inputTempOtkl = document.querySelectorAll('.rele-temp-otkl');
