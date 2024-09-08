@@ -19,7 +19,7 @@
 let deviceInfo = {};
 let eepromData = {};
 let sensorEepromControl = {};
-let objSensorVklOtklTemp = {};
+let sensorOpenCloseTemperature = {};
 let objNameSensor = {};
 let objNameRele = {};
 let objManualRele = {};
@@ -130,7 +130,7 @@ const startAllFunctions = () => {
   setInterval(function () {
     // Провірка на дані прийшли чи ні якщо обєти пусті то відправляємо запрос на повторну загрузку
 
-    if (isEmpty(eepromData) || isEmpty(deviceInfo) || isEmpty(sensorEepromControl) || isEmpty(objSensorVklOtklTemp)) {
+    if (isEmpty(eepromData) || isEmpty(deviceInfo) || isEmpty(sensorEepromControl) || isEmpty(sensorOpenCloseTemperature)) {
       console.log('Є пусті обкти   ');
 
       sendMessage(outstartDataSensor, 'ALL');
@@ -150,8 +150,8 @@ const startAllFunctions = () => {
       console.log('sensorEepromControl   ');
       console.log(isEmpty(sensorEepromControl));
 
-      console.log('objSensorVklOtklTemp  ');
-      console.log(isEmpty(objSensorVklOtklTemp));
+      console.log('sensorOpenCloseTemperature   ');
+      console.log(isEmpty(sensorOpenCloseTemperature));
 
       console.log('**************************************************');
       console.log(' ');

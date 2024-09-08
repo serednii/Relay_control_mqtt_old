@@ -132,12 +132,12 @@ function fun2() {
 
 
         for (let _i = 0; _i < inputTempVkl.length; _i++) {
-            // if (releSetingSwitchTempOn != null && releSetingSwitchTempOn != undefined) releSetingSwitchTempOn[_i].innerText = 'TEMP_ON  ' + objSensorVklOtklTemp.obj[_i].vkl;
-            // if (releSetingSwitchTempOff != null && releSetingSwitchTempOff != undefined) releSetingSwitchTempOff[_i].innerText = 'TEMP_OFF  ' + objSensorVklOtklTemp.obj[_i].otkl;
-            if (releSetingSwitchTempOn) releSetingSwitchTempOn[_i].innerText = 'TEMP_ON  ' + objSensorVklOtklTemp.obj[_i].vkl;
-            if (releSetingSwitchTempOff) releSetingSwitchTempOff[_i].innerText = 'TEMP_OFF  ' + objSensorVklOtklTemp.obj[_i].otkl;
-            inputTempVkl[_i].value = objSensorVklOtklTemp.obj[_i].vkl;
-            inputTempOtkl[_i].value = objSensorVklOtklTemp.obj[_i].otkl;
+            // if (releSetingSwitchTempOn != null && releSetingSwitchTempOn != undefined) releSetingSwitchTempOn[_i].innerText = 'TEMP_ON  ' + sensorOpenCloseTemperature .obj[_i].vkl;
+            // if (releSetingSwitchTempOff != null && releSetingSwitchTempOff != undefined) releSetingSwitchTempOff[_i].innerText = 'TEMP_OFF  ' + sensorOpenCloseTemperature .obj[_i].otkl;
+            if (releSetingSwitchTempOn) releSetingSwitchTempOn[_i].innerText = 'TEMP_ON  ' + sensorOpenCloseTemperature.obj[_i].vkl;
+            if (releSetingSwitchTempOff) releSetingSwitchTempOff[_i].innerText = 'TEMP_OFF  ' + sensorOpenCloseTemperature.obj[_i].otkl;
+            inputTempVkl[_i].value = sensorOpenCloseTemperature.obj[_i].vkl;
+            inputTempOtkl[_i].value = sensorOpenCloseTemperature.obj[_i].otkl;
         }
     } catch (e) {
         console.log('ERROR  ' + e);

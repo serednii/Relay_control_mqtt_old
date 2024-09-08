@@ -154,8 +154,8 @@ function onMessageArrived(message) {
 
         if (message.destinationName === getSensorVklOtklTemp) {
             //получаємо дані з памяті про температури включення і відкючення
-            objSensorVklOtklTemp = JSON.parse(message.payloadString);
-            // console.log('objSensorVklOtklTemp *****');
+            sensorOpenCloseTemperature = JSON.parse(message.payloadString);
+            // console.log('sensorOpenCloseTemperature  *****');
             // console.log(message.payloadString);
             fun2();
         }
