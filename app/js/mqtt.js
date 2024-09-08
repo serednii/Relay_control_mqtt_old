@@ -121,13 +121,13 @@ function onMessageArrived(message) {
 
         if (message.destinationName === getDeviceSensorData) {
             //Дані прочитані з сенсорів в реальному часі позиція, мак адрес, і температура сенсору
-            deviceInfo = JSON.parse(message.payloadString);
-            // console.log('deviceInfo ');
-            // console.log(deviceInfo );
-            for (let _k2 = 0; _k2 < deviceInfo.obj.length; _k2++) {
-                tableDeviceNumber[_k2 + 1].innerText = deviceInfo.obj[_k2].number;
-                tableDeviceAddress[_k2 + 1].innerText = deviceInfo.obj[_k2].address.toLocaleUpperCase();
-                tableDeviceTemp[_k2 + 1].innerText = deviceInfo.obj[_k2].temp.toFixed(1);
+            deviceData = JSON.parse(message.payloadString);
+            // console.log('deviceData ');
+            // console.log(deviceData );
+            for (let _k2 = 0; _k2 < deviceData.obj.length; _k2++) {
+                tableDeviceNumber[_k2 + 1].innerText = deviceData.obj[_k2].number;
+                tableDeviceAddress[_k2 + 1].innerText = deviceData.obj[_k2].address.toLocaleUpperCase();
+                tableDeviceTemp[_k2 + 1].innerText = deviceData.obj[_k2].temp.toFixed(1);
             }
             isDeviceDataDownloaded = true;
             if (isDeviceDataDownloaded && isEepromDataDownloaded) {

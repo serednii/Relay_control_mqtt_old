@@ -16,7 +16,7 @@
 // window.onload = function () {
 
 // innerHtmlText().then(addIdAndFor).then(startLocalStoreg);
-let deviceInfo = {};
+let deviceData = {};
 let eepromData = {};
 let sensorEepromControl = {};
 let sensorOpenCloseTemperature = {};
@@ -123,7 +123,7 @@ const startAllFunctions = () => {
   setInterval(function () {
     // Провірка на дані прийшли чи ні якщо обєти пусті то відправляємо запрос на повторну загрузку
 
-    if (isEmpty(eepromData) || isEmpty(deviceInfo) || isEmpty(sensorEepromControl) || isEmpty(sensorOpenCloseTemperature)) {
+    if (isEmpty(eepromData) || isEmpty(deviceData) || isEmpty(sensorEepromControl) || isEmpty(sensorOpenCloseTemperature)) {
       console.log('Є пусті обкти   ');
 
       sendMessage(outstartDataSensor, 'ALL');
@@ -137,8 +137,8 @@ const startAllFunctions = () => {
       console.log('eepromData   ');
       console.log(isEmpty(eepromData));
 
-      console.log('deviceInfo   ');
-      console.log(isEmpty(deviceInfo));
+      console.log('deviceData   ');
+      console.log(isEmpty(deviceData));
 
       console.log('sensorEepromControl   ');
       console.log(isEmpty(sensorEepromControl));
