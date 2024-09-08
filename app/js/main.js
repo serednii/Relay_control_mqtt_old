@@ -91,6 +91,7 @@ const startAllFunctions = () => {
   handleSaveNameRelay();
   handleInputControlError();
   handleRelayTempChangeRadio();
+  handleChangeRange();
 
 
 
@@ -98,24 +99,6 @@ const startAllFunctions = () => {
 
 
 
-  // Включаємо реле або Виключаємо реле  при зміні температури або часу
-
-
-  // Один діапазон температур або два
-  releTempChangeSingle.forEach(function (e, i) {
-    e.addEventListener('change', function () {
-      let ii = Math.trunc(i / 2);
-      if (e.value == '1') {
-        sensorEepromControl.obj[ii].number &= ~(1 << 4);
-      } else if (e.value == '0') {
-        sensorEepromControl.obj[ii].number |= 1 << 4;
-      }
-      s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
-      console.log('setReleEpromUprOneOrTwoRangeTemp----' + s);
-      sendMessage(setReleEpromUprOneOrTwoRangeTemp, s);
-
-    });
-  });
   // *************************************************************************
 
   if (document.querySelector('.address-eeprom__btn.change')) {
@@ -140,7 +123,6 @@ const startAllFunctions = () => {
     console.log('NOT CLASSES address-eeprom__btn.change');
   }
   //=====================================
-
 
 
   if (document.querySelector('.address-device__data')) {
