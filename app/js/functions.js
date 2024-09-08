@@ -136,8 +136,6 @@ function addBeforeNullNUmber(number) {
     else return '0' + number;
 }
 
-
-
 function updateClickableDevices() {
     let isEepromActive = false;
 
@@ -165,11 +163,6 @@ function updateClickableDevices() {
     }
 }
 
-function compareSensorAddress() {
-    highlightMismatchedSensorAddresses();
-}
-
-
 function highlightMismatchedSensorAddresses() {
     for (let deviceIndex = 1; deviceIndex < deviceData.obj.length + 1; deviceIndex++) {
         // Додаємо клас "red" для позначення пристроїв, чий адрес не знайдено
@@ -188,7 +181,6 @@ function highlightMismatchedSensorAddresses() {
     // Викликаємо функцію для перевірки стану пристроїв
     updateClickableDevices();
 }
-
 
 function isEmpty(obj) {
     //Провірка на пусті обєкти 

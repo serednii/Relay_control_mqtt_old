@@ -114,7 +114,7 @@ function onMessageArrived(message) {
             }
 
             isEepromDataDownloaded = true;
-            if (isDeviceDataDownloaded && isEepromDataDownloaded) compareSensorAddress();
+            if (isDeviceDataDownloaded && isEepromDataDownloaded) highlightMismatchedSensorAddresses();
         }
 
         //************************************************************************************************************** */
@@ -132,7 +132,7 @@ function onMessageArrived(message) {
             isDeviceDataDownloaded = true;
             if (isDeviceDataDownloaded && isEepromDataDownloaded) {
                 updateRelaySettings();
-                compareSensorAddress();
+                highlightMismatchedSensorAddresses();
             }
         }
 
