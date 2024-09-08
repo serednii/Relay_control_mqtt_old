@@ -16,7 +16,7 @@
 // window.onload = function () {
 
 // innerHtmlText().then(addIdAndFor).then(startLocalStoreg);
-let objDevice = {};
+let deviceInfo = {};
 let objEeprom = {};
 let objSensorEepromUpr = {};
 let objSensorVklOtklTemp = {};
@@ -34,14 +34,11 @@ for (let i = 0; i < 8; i++) {
   });
 }
 
-
 let downloadedDataEEprom = false;
 let downloadedDataDevice = false;
 let showEepromFlag = true;
 let timeMesage = void 0;
 let element = void 0;
-
-
 
 async function go() {
   await innerHtmlText();
@@ -133,7 +130,7 @@ const startAllFunctions = () => {
   setInterval(function () {
     // Провірка на дані прийшли чи ні якщо обєти пусті то відправляємо запрос на повторну загрузку
 
-    if (isEmpty(objEeprom) || isEmpty(objDevice) || isEmpty(objSensorEepromUpr) || isEmpty(objSensorVklOtklTemp)) {
+    if (isEmpty(objEeprom) || isEmpty(deviceInfo) || isEmpty(objSensorEepromUpr) || isEmpty(objSensorVklOtklTemp)) {
       console.log('Є пусті обкти   ');
 
       sendMessage(outstartDataSensor, 'ALL');
@@ -147,8 +144,8 @@ const startAllFunctions = () => {
       console.log('objEeprom  ');
       console.log(isEmpty(objEeprom));
 
-      console.log('objDevice  ');
-      console.log(isEmpty(objDevice));
+      console.log('deviceInfo   ');
+      console.log(isEmpty(deviceInfo));
 
       console.log('objSensorEepromUpr  ');
       console.log(isEmpty(objSensorEepromUpr));

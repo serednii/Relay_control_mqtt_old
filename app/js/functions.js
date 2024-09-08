@@ -190,7 +190,7 @@ function compareSensorAddress() {
 }
 
 function compareSensorAddressHtml() {
-    for (let _k3 = 1; _k3 < objDevice.obj.length + 1; _k3++) {
+    for (let _k3 = 1; _k3 < deviceInfo.obj.length + 1; _k3++) {
         tableDeviceAddress[_k3].closest('.address-device__data').classList.add('red');
         for (let _n = 1; _n < 9; _n++) {
             if (tableDeviceAddress[_k3].textContent == tableEepromAddress[_n].textContent) {
