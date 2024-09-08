@@ -18,7 +18,7 @@
 // innerHtmlText().then(addIdAndFor).then(startLocalStoreg);
 let deviceInfo = {};
 let eepromData = {};
-let objSensorEepromUpr = {};
+let sensorEepromControl = {};
 let objSensorVklOtklTemp = {};
 let objNameSensor = {};
 let objNameRele = {};
@@ -130,7 +130,7 @@ const startAllFunctions = () => {
   setInterval(function () {
     // Провірка на дані прийшли чи ні якщо обєти пусті то відправляємо запрос на повторну загрузку
 
-    if (isEmpty(eepromData) || isEmpty(deviceInfo) || isEmpty(objSensorEepromUpr) || isEmpty(objSensorVklOtklTemp)) {
+    if (isEmpty(eepromData) || isEmpty(deviceInfo) || isEmpty(sensorEepromControl) || isEmpty(objSensorVklOtklTemp)) {
       console.log('Є пусті обкти   ');
 
       sendMessage(outstartDataSensor, 'ALL');
@@ -147,8 +147,8 @@ const startAllFunctions = () => {
       console.log('deviceInfo   ');
       console.log(isEmpty(deviceInfo));
 
-      console.log('objSensorEepromUpr  ');
-      console.log(isEmpty(objSensorEepromUpr));
+      console.log('sensorEepromControl   ');
+      console.log(isEmpty(sensorEepromControl));
 
       console.log('objSensorVklOtklTemp  ');
       console.log(isEmpty(objSensorVklOtklTemp));
@@ -256,7 +256,7 @@ const startAllFunctions = () => {
             // опреділяєм в якому блоці ми знаходимося тобто номер реле
             // console.log(i);
             // console.log(e.querySelectorAll('option')[e.selectedIndex].value);
-            // objSensorEepromUpr.obj[i] = e.querySelectorAll('option')[e.selectedIndex].value ;
+            // sensorEepromControl .obj[i] = e.querySelectorAll('option')[e.selectedIndex].value ;
             s = i + 'x' + e.querySelectorAll('option')[e.selectedIndex].value + 'k';
             // console.log('s----' + s);
             sendMessage(setReleEpromUpr, s);
@@ -357,18 +357,18 @@ const startAllFunctions = () => {
           let ii = Math.trunc(i / 2);
           // console.log('i = ' + i + '  ' + 'e  = ' + e.value);
           // console.log('ii = ' + ii + '  ' + 'e  = ' + e.value);
-          // let temp = objSensorEepromUpr.obj[ii].number;
+          // let temp = sensorEepromControl .obj[ii].number;
 
           if (e.value == '0') {
             // console.log('000');
-            objSensorEepromUpr.obj[ii].number &= ~(1 << 6);
+            sensorEepromControl.obj[ii].number &= ~(1 << 6);
           } else if (e.value == '1') {
             // console.log('111');
-            objSensorEepromUpr.obj[ii].number |= 1 << 6;
+            sensorEepromControl.obj[ii].number |= 1 << 6;
           }
-          s = ii + 'x' + objSensorEepromUpr.obj[ii].number + 'k';
+          s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
           console.log('setReleEpromUprErorrReleVklVukl----' + s);
-          // convertToBinary1(objSensorEepromUpr.obj[ii].number)
+          // convertToBinary1(sensorEepromControl .obj[ii].number)
 
           sendMessage(setReleEpromUprErorrReleVklVukl, s);
         } catch (e) {
@@ -389,18 +389,18 @@ const startAllFunctions = () => {
       let ii = Math.trunc(i / 2);
       // console.log('i = ' + i + '  ' + 'e  = ' + e.value);
       // console.log('ii = ' + ii + '  ' + 'e  = ' + e.value);
-      //  let temp = objSensorEepromUpr.obj[ii].number;
+      //  let temp = sensorEepromControl .obj[ii].number;
 
       if (e.value == '0') {
         // console.log('000');
-        objSensorEepromUpr.obj[ii].number &= ~(1 << 5);
+        sensorEepromControl.obj[ii].number &= ~(1 << 5);
       } else if (e.value == '1') {
         // console.log('111');
-        objSensorEepromUpr.obj[ii].number |= 1 << 5;
+        sensorEepromControl.obj[ii].number |= 1 << 5;
       }
-      s = ii + 'x' + objSensorEepromUpr.obj[ii].number + 'k';
+      s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
       console.log('setReleEpromUprOneOrTwoRangeTemp----' + s);
-      // convertToBinary1(objSensorEepromUpr.obj[ii].number)
+      // convertToBinary1(sensorEepromControl .obj[ii].number)
 
       sendMessage(setReleEpromUprChangeOnOrOff, s);
 
@@ -416,18 +416,18 @@ const startAllFunctions = () => {
       let ii = Math.trunc(i / 2);
       // console.log('i = ' + i + '  ' + 'e  = ' + e.value);
       // console.log('ii = ' + ii + '  ' + 'e  = ' + e.value);
-      // let temp = objSensorEepromUpr.obj[ii].number;
+      // let temp = sensorEepromControl .obj[ii].number;
 
       if (e.value == '1') {
         // console.log('000');
-        objSensorEepromUpr.obj[ii].number &= ~(1 << 4);
+        sensorEepromControl.obj[ii].number &= ~(1 << 4);
       } else if (e.value == '0') {
         // console.log('111');
-        objSensorEepromUpr.obj[ii].number |= 1 << 4;
+        sensorEepromControl.obj[ii].number |= 1 << 4;
       }
-      s = ii + 'x' + objSensorEepromUpr.obj[ii].number + 'k';
+      s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
       console.log('setReleEpromUprOneOrTwoRangeTemp----' + s);
-      // convertToBinary1(objSensorEepromUpr.obj[ii].number)
+      // convertToBinary1(sensorEepromControl .obj[ii].number)
 
       sendMessage(setReleEpromUprOneOrTwoRangeTemp, s);
 

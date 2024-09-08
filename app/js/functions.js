@@ -2,10 +2,10 @@
 
 function fun1() {
 
-    if (objSensorEepromUpr.obj != undefined) {
+    if (sensorEepromControl.obj != undefined) {
         //Якщо не пустий обєкт
         // console.log('ZZZZZZZZZZZZZZZZZZZZZZZZZZ');
-        // console.log(objSensorEepromUpr.obj);
+        // console.log(sensorEepromControl .obj);
         // console.log(eepromData .obj);
         releItem.forEach(function (e, clickRele) {
 
@@ -14,7 +14,7 @@ function fun1() {
             const radioSingle = e.querySelectorAll('.rele-temp-change-single');
             const releError = e.querySelectorAll('.input-control-error');
 
-            k = objSensorEepromUpr.obj[clickRele].number;
+            k = sensorEepromControl.obj[clickRele].number;
             const numSensor = k & 0x0F; // номер сенсора який управляє даним реле
             // console.log('k   +++ ' + clickRele + '  ' + (k &= ~240));
             // console.log('--');
@@ -66,7 +66,7 @@ function fun1() {
                 let numRele = 15; //номер реле в якому записаний термодатчик
                 for (let d = 0; d < 8; d++) {
                     //
-                    z = objSensorEepromUpr.obj[d].number;
+                    z = sensorEepromControl.obj[d].number;
                     z &= ~240;
                     if (z == numEepromSensor) {
                         //Нaходимо в масиві для реле номер термодатчика

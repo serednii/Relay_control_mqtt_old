@@ -143,9 +143,9 @@ function onMessageArrived(message) {
         // біт 6 стан реле при помилці термодатчмка
         if (message.destinationName === getReleEpromUpr) {
             //получаємо дані з памяті про датчики 
-            objSensorEepromUpr = JSON.parse(message.payloadString);
-            // console.log('objSensorEepromUpr *****');
-            // console.log(objSensorEepromUpr);
+            sensorEepromControl = JSON.parse(message.payloadString);
+            // console.log('sensorEepromControl  *****');
+            // console.log(sensorEepromControl );
 
             fun1();
         }
