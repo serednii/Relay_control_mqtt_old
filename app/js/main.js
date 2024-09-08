@@ -53,30 +53,6 @@ go();
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// window.addEventListener('resize', showWidth);
-// function showWidth() {
-//   document.querySelector('.widthtablet').innerText = document.documentElement.clientWidth;
-// }
-// showWidth();
-
-
 const popapInfoWrapper = document.querySelector('.popap-info__wrapper');
 $(document).ready(function () {
   $("#menu").on("click", "a", function (event) {
@@ -93,228 +69,32 @@ $(document).ready(function () {
 
 
 
-
-// function convertToBinary1(number) {
-//   let num = number;
-//   let binary = (num % 2).toString();
-//   for (; num > 1;) {
-//     num = parseInt(num / 2);
-//     binary = (num % 2) + (binary);
-//   }
-//   // console.log(binary);
-// }
-// }//window.onload = function  end
-
 const startAllFunctionsPromise = () => {
   return promise = new Promise(resolve => {
     startAllFunctions();
     console.log('start function startAllFunctionsPromise()');
-
     resolve();
   });
-
 }
 
 const startAllFunctions = () => {
-  //==================================
-
-  //rozblokuvaty
-  /************************************************************************************************************** */
-  setInterval(function () {
-    // Провірка на дані прийшли чи ні якщо обєти пусті то відправляємо запрос на повторну загрузку
-
-    if (isEmpty(eepromData) || isEmpty(deviceData) || isEmpty(sensorEepromControl) || isEmpty(sensorOpenCloseTemperature)) {
-      console.log('Є пусті обкти   ');
-
-      sendMessage(outstartDataSensor, 'ALL');
-      // sendMessage(outstartDataSensor, 'readAddressSensor');
-      // sendMessage(outstartDataSensor, 'releControl'); //
-      // sendMessage(outstartDataSensor, 'ReadTempVklOtkl'); //
-      // sendMessage(outstartDataSensor, 'NameSensor');//
-      // sendMessage(outstartDataSensor, 'NameRele');
-      // sendMessage(outstartDataSensor, 'ReleManual');
-
-      console.log('eepromData   ');
-      console.log(isEmpty(eepromData));
-
-      console.log('deviceData   ');
-      console.log(isEmpty(deviceData));
-
-      console.log('sensorEepromControl   ');
-      console.log(isEmpty(sensorEepromControl));
-
-      console.log('sensorOpenCloseTemperature   ');
-      console.log(isEmpty(sensorOpenCloseTemperature));
-
-      console.log('**************************************************');
-      console.log(' ');
-    } else {
-      console.log('Немає пустих обктів   ');
-    }
-  }, 15000);
-  // ************************************************************************************************************** */
 
 
-  //************************************************************************************************************** */
-  //rozblokuvaty
-  setInterval(function () {
-    showEepromData = false;
-    // console.log(client);
-    sendMessage(outstartDataSensor, 'readAddressSensor');
-  }, 10000);
-
-  //************************************************************************************************************** */
-
-
-  //*******************************************************************
-  //rozblokuvaty
-
-
-  setInterval(function () {
-    let date = new Date();
-    let newDateFormat = date.getFullYear() + '-' +
-      addBeforeNullNUmber(date.getMonth() + 1) + '-' +
-      addBeforeNullNUmber(date.getDate()) + '  ' +
-      addBeforeNullNUmber(date.getHours()) + ':' +
-      addBeforeNullNUmber(date.getMinutes()) + ':' +
-      addBeforeNullNUmber(date.getSeconds());
-    document.querySelector('.popap-info__date-time').innerText = newDateFormat;
-  }, 1000);
-
-
+  interval()
 
   document.querySelectorAll('.timer-date__item').forEach(e => {
     e.classList.remove('show-block');
   });
-
-  // document.querySelectorAll('.rele-control-timer').forEach(e => {
-  //   e.classList.add('block__show');
-  // });
-
-  // document.querySelector('.send__message').addEventListener('click', () => {
-  //   sendMessage(outstartDataSensor, 'ALL');
-  //   console.log('SEND MESSAGE');
-  // });
+  handleManualControl();
+  handleShowTable();
+  handleRelayTempOn();
+  handleChangeSelect();
+  handleChangeTempOnOff()
 
 
 
 
-  if (document.querySelector('.rele__control-manually-on-off')) {
-    // console.log(document.querySelector('.rele__control-manually-on-off ' + document.querySelectorAll('.rele__control-manually-on-off').length))
-    document.querySelectorAll('.rele__control-manually-on-off').forEach(function (e, i) {
-      e.addEventListener('change', function () {
-        if (e.checked) s = i + 'x1k';
-        else s = i + 'x0k';
-        console.log('s----' + s);
-        sendMessage(setReleVklOtkl, s);
-      });
-    });
-  } else {
-    console.log('NOT CLASSES rele__control-manually-on-off');
-  }
 
-  // document.querySelectorAll('.rele__control-manually_off').forEach(function (e, i) {
-  //   e.addEventListener('click', function () {
-  //     s = i + 'x0k';
-  //     console.log('s----' + s);
-
-  //     sendMessage(setReleVklOtkl, s);
-  //   });
-  // });
-
-
-  // -------------------------------------------------------------------------------------------------------
-
-  // -------------------------------------------------------------------------------------------------------
-  if (document.querySelector('.show_table')) {
-    console.log('YES CLASSES  show_table')
-    document.querySelector('.show_table').addEventListener('change', function (e) {
-      const sensorContainer = document.querySelector('.sensor');
-      if (e.target.checked == true) sensorContainer.classList.add('sensor-show');
-      else sensorContainer.classList.remove('sensor-show');
-    });
-  } else {
-    console.log('NO CLASSES  show_table')
-  }
-  // -------------------------------------------------------------------------------------------------------
-
-  if (document.querySelector('select')) {
-    const releItem = document.querySelectorAll('.rele__item');
-    console.log('YES CLASSES select  ' + document.querySelectorAll('select').length);
-    document.querySelectorAll('select').forEach(function (e) {
-      e.addEventListener('change', function (k) {
-        // console.log(e.selectedIndex);
-        releItem.forEach(function (k, i) {
-          if (k == e.closest('.rele__item')) {
-            // опреділяєм в якому блоці ми знаходимося тобто номер реле
-            // console.log(i);
-            // console.log(e.querySelectorAll('option')[e.selectedIndex].value);
-            // sensorEepromControl .obj[i] = e.querySelectorAll('option')[e.selectedIndex].value ;
-            s = i + 'x' + e.querySelectorAll('option')[e.selectedIndex].value + 'k';
-            // console.log('s----' + s);
-            sendMessage(setReleEpromUpr, s);
-          }
-        });
-      });
-    });
-  } else {
-    console.log('NOT CLASSES select');
-  }
-  // **************************************************************************************
-
-
-
-
-  // **************************************************************************************
-  //ненайдено в HTML class input-control-manually__input
-  // document.querySelectorAll('.input-control-manually__input').forEach(function (e, num) {
-  //   e.addEventListener('click', function (a) {
-  //     const parent = e.closest('.rele__item');
-  //     if (a.target.checked) {`
-  //       parent.querySelector('.rele__control-manually').classList.add('block__show'); //Добавляємо клас відкриваємо Select
-  //       parent.querySelector('.rele__seting-sensor-timer').classList.add('block__hidden'); //Добавляємо клас відкриваємо Select
-  //       // console.log('num  ' + num);
-  //       s = num + 'x' + '1' + 'k';
-  //       console.log('s----' + s);
-  //       sendMessage(setReleEpromUprManual, s);
-  //     } else {
-  //       parent.querySelector('.rele__control-manually').classList.remove('block__show');
-  //       parent.querySelector('.rele__seting-sensor-timer').classList.remove('block__hidden'); //Добавляємо клас відкриваємо Select
-  //       // console.log(e.name);
-  //       s = num + 'x' + '0' + 'k';
-  //       console.log('s----' + s);
-  //       sendMessage(setReleEpromUprManual, s);
-  //     }
-  //   });
-  // });
-  // **************************************************************************************
-  if (document.querySelector('.rele-temp-otkl') && document.querySelector('.rele-temp-vkl')) {
-    console.log('YES CLASSES rele-temp-otkl   rele-temp-vkl  ' + document.querySelectorAll('.rele-temp-vkl, .rele-temp-otkl').length);
-    document.querySelectorAll('.rele-temp-vkl, .rele-temp-otkl').forEach(function (e) {
-      e.addEventListener('keyup', function () { //при вводі даних перевірка на мінімальне і максимальне значення
-        // console.log(e.value);
-        if (e.value > 120) e.value = 120;
-        if (e.value < -50) e.value = -50;
-      });
-    });
-  } else {
-    console.log('NOT CLASSES rele-temp-otkl   rele-temp-vkl');
-  }
-
-  if (document.querySelector('.rele-temp-btn')) {
-    console.log('YES CLASSES rele-temp-btn');
-    document.querySelectorAll('.rele-temp-btn').forEach(function (e, i) {
-      //
-      e.addEventListener('click', function () {
-        s = i + 'v' + e.closest('.rele__item').querySelector('.rele-temp-vkl').value + 'o' + e.closest('.rele-temp-change').querySelector('.rele-temp-otkl').value + 'k';
-
-        sendMessage(outSaveDataSensorTemp, s);
-        console.log(s);
-      });
-    });
-  } else {
-    console.log('NOT CLASSES rele-temp-btn');
-  }
 
 
 
@@ -332,13 +112,6 @@ const startAllFunctions = () => {
     console.log('NOT CLASSES rele__name-btn');
   }
 
-
-
-
-
-
-  // *************************************************************************
-
   // // При несправності термодатчика або таймера реле залишаємо вкл або викл
   if (document.querySelector('.input-control-error')) {
     console.log('YES CLASSES rele-temp-otkl   rele-temp-vkl  ' + inputControlError.length);
@@ -348,24 +121,16 @@ const startAllFunctions = () => {
       e.addEventListener('change', function () {
         try {
           let ii = Math.trunc(i / 2);
-          // console.log('i = ' + i + '  ' + 'e  = ' + e.value);
-          // console.log('ii = ' + ii + '  ' + 'e  = ' + e.value);
-          // let temp = sensorEepromControl .obj[ii].number;
 
           if (e.value == '0') {
-            // console.log('000');
             sensorEepromControl.obj[ii].number &= ~(1 << 6);
           } else if (e.value == '1') {
-            // console.log('111');
             sensorEepromControl.obj[ii].number |= 1 << 6;
           }
           s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
-          console.log('setReleEpromUprErorrReleVklVukl----' + s);
-          // convertToBinary1(sensorEepromControl .obj[ii].number)
-
           sendMessage(setReleEpromUprErorrReleVklVukl, s);
         } catch (e) {
-          // console.log('ERROR  ' + e);
+          console.log('ERROR  ' + e);
         }
       });
     });
@@ -373,55 +138,34 @@ const startAllFunctions = () => {
     console.log('NOT CLASSES input-control-error');
   }
 
-
-
-
-
   releTempChangeRadio.forEach(function (e, i) {
     e.addEventListener('change', function () {
       let ii = Math.trunc(i / 2);
-      // console.log('i = ' + i + '  ' + 'e  = ' + e.value);
-      // console.log('ii = ' + ii + '  ' + 'e  = ' + e.value);
-      //  let temp = sensorEepromControl .obj[ii].number;
-
       if (e.value == '0') {
-        // console.log('000');
         sensorEepromControl.obj[ii].number &= ~(1 << 5);
       } else if (e.value == '1') {
-        // console.log('111');
         sensorEepromControl.obj[ii].number |= 1 << 5;
       }
       s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
       console.log('setReleEpromUprOneOrTwoRangeTemp----' + s);
-      // convertToBinary1(sensorEepromControl .obj[ii].number)
-
       sendMessage(setReleEpromUprChangeOnOrOff, s);
-
     });
   });
 
-  // //  / Включаємо реле або Виключаємо реле  при зміні температури або часу
+  // Включаємо реле або Виключаємо реле  при зміні температури або часу
 
 
   // Один діапазон температур або два
   releTempChangeSingle.forEach(function (e, i) {
     e.addEventListener('change', function () {
       let ii = Math.trunc(i / 2);
-      // console.log('i = ' + i + '  ' + 'e  = ' + e.value);
-      // console.log('ii = ' + ii + '  ' + 'e  = ' + e.value);
-      // let temp = sensorEepromControl .obj[ii].number;
-
       if (e.value == '1') {
-        // console.log('000');
         sensorEepromControl.obj[ii].number &= ~(1 << 4);
       } else if (e.value == '0') {
-        // console.log('111');
         sensorEepromControl.obj[ii].number |= 1 << 4;
       }
       s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
       console.log('setReleEpromUprOneOrTwoRangeTemp----' + s);
-      // convertToBinary1(sensorEepromControl .obj[ii].number)
-
       sendMessage(setReleEpromUprOneOrTwoRangeTemp, s);
 
     });
@@ -718,18 +462,6 @@ const startAllFunctions = () => {
 
 
 }
-//************************************************************************************************************************************************************************************************ */
-//************************************************************************************************************************************************************************************************ */
-//************************************************************************************************************************************************************************************************ */
-//************************************************************************************************************************************************************************************************ */
-//************************************************************************************************************************************************************************************************ */
-//************************************************************************************************************************************************************************************************ */
-//************************************************************************************************************************************************************************************************ */
-//************************************************************************************************************************************************************************************************ */
-
-
-
-
 
 
 

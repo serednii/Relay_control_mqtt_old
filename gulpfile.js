@@ -59,7 +59,15 @@ function scripts() {
       'app/js/other_function.js',
 
       'app/js/dataTime.js',
-      'app/js/main.js'
+      'app/js/main.js',
+      'app/js/handlers/handleChangeSelect.js',
+      'app/js/handlers/handleManualControl.js',
+      'app/js/handlers/handleRelayTempOn.js',
+      'app/js/handlers/handleShowTable.js',
+      'app/js/handlers/handleChangeTempOnOff.js',
+
+
+      'app/js/interval.js'
     ])
     .pipe(concat('../min_js/main.min.js'))
     //.pipe(uglify()) // мініиізує файл
