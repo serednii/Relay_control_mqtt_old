@@ -89,22 +89,22 @@ function onMessageArrived(message) {
 
         if (message.destinationName === getEepromSensorData) {
             //Дані що знаходяться в EEPROM позиція, мак адрес, і температура сенсору
-            objEeprom = JSON.parse(message.payloadString);
-            // console.log(objEeprom);
-            for (let _k = 0; _k < objEeprom.obj.length; _k++) {
+            eepromData = JSON.parse(message.payloadString);
+            // console.log(eepromData );
+            for (let _k = 0; _k < eepromData.obj.length; _k++) {
                 if (showEepromFlag) {
-                    tableEepromNumber[_k + 1].innerText = objEeprom.obj[_k].number;
-                    tableEepromAddress[_k + 1].innerText = objEeprom.obj[_k].address.toLocaleUpperCase();
+                    tableEepromNumber[_k + 1].innerText = eepromData.obj[_k].number;
+                    tableEepromAddress[_k + 1].innerText = eepromData.obj[_k].address.toLocaleUpperCase();
                 }
-                tableEepromTemp[_k + 1].innerText = objEeprom.obj[_k].temp.toFixed(1);
+                tableEepromTemp[_k + 1].innerText = eepromData.obj[_k].temp.toFixed(1);
 
-                if (objEeprom.obj[_k].address != '0000000000000000') {
+                if (eepromData.obj[_k].address != '0000000000000000') {
                     if (objNameSensor.obj != undefined) {
                         // console.log('7777777777777 ');
                         // console.log(objNameSensor.obj);
-                        popapTemp[_k].textContent = (objNameSensor.obj[_k].nameSensor) + ' ' + (objEeprom.obj[_k].temp.toFixed(1));
+                        popapTemp[_k].textContent = (objNameSensor.obj[_k].nameSensor) + ' ' + (eepromData.obj[_k].temp.toFixed(1));
                     } else {
-                        popapTemp[_k].innerText = objEeprom.obj[_k].temp.toFixed(1);
+                        popapTemp[_k].innerText = eepromData.obj[_k].temp.toFixed(1);
                     }
                 } else {
                     popapTemp[_k].closest('.popap-info__lamp-item').classList.add('shiden');

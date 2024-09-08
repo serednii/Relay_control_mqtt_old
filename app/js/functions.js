@@ -6,7 +6,7 @@ function fun1() {
         //Якщо не пустий обєкт
         // console.log('ZZZZZZZZZZZZZZZZZZZZZZZZZZ');
         // console.log(objSensorEepromUpr.obj);
-        // console.log(objEeprom.obj);
+        // console.log(eepromData .obj);
         releItem.forEach(function (e, clickRele) {
 
             const select = e.querySelector('select');
@@ -77,19 +77,19 @@ function fun1() {
                 }
 
                 //якщо адрес не нуль добавляємо  і термодатчика немає в списку реле або він є але записаний в тому реле з яким ми працюємо option з адресом
-                if (objEeprom.obj != undefined) {
-                    if (!(objEeprom.obj[numEepromSensor].address == '0000000000000000' || objEeprom.obj[numEepromSensor].address == 'ffffffffffffffff') && (numRele == clickRele || numRele == 15)) {
+                if (eepromData.obj != undefined) {
+                    if (!(eepromData.obj[numEepromSensor].address == '0000000000000000' || eepromData.obj[numEepromSensor].address == 'ffffffffffffffff') && (numRele == clickRele || numRele == 15)) {
 
                         const releSetingSwitchSensor = e.querySelector('.rele__seting-switch__sensor');
 
                         const createOption = document.createElement('option');
-                        createOption.value = objEeprom.obj[numEepromSensor].number;
+                        createOption.value = eepromData.obj[numEepromSensor].number;
                         createOption.className = "rele-control-option";
 
                         if (objNameSensor.obj != undefined && objNameSensor.obj[numEepromSensor].nameSensor != '') {
-                            createOption.innerText = objEeprom.obj[numEepromSensor].number + '--' + objNameSensor.obj[numEepromSensor].nameSensor + ' -- ' + objEeprom.obj[numEepromSensor].temp;
+                            createOption.innerText = eepromData.obj[numEepromSensor].number + '--' + objNameSensor.obj[numEepromSensor].nameSensor + ' -- ' + eepromData.obj[numEepromSensor].temp;
                         } else {
-                            createOption.innerText = objEeprom.obj[numEepromSensor].number + '--' + objEeprom.obj[numEepromSensor].address.toLocaleUpperCase() + ' -- ' + objEeprom.obj[numEepromSensor].temp;
+                            createOption.innerText = eepromData.obj[numEepromSensor].number + '--' + eepromData.obj[numEepromSensor].address.toLocaleUpperCase() + ' -- ' + eepromData.obj[numEepromSensor].temp;
                         }
 
                         if (numRele == clickRele) {
@@ -101,11 +101,11 @@ function fun1() {
                     try {
                         if (numSensor != 15) {
                             if (objNameSensor.obj != undefined && objNameSensor.obj[numSensor].nameSensor != '') {
-                                if (numSensor < 8) e.querySelector('.rele__seting-switch__sensor').innerText = objNameSensor.obj[numSensor].nameSensor + '  ' + objEeprom.obj[numSensor].temp;
+                                if (numSensor < 8) e.querySelector('.rele__seting-switch__sensor').innerText = objNameSensor.obj[numSensor].nameSensor + '  ' + eepromData.obj[numSensor].temp;
                                 else e.querySelector('.rele__seting-switch__sensor').innerText = 'NONE';
 
                             } else {
-                                if (numSensor < 8) e.querySelector('.rele__seting-switch__sensor').innerText = objEeprom.obj[numSensor].address.toLocaleUpperCase() + '  ' + objEeprom.obj[numSensor].temp;
+                                if (numSensor < 8) e.querySelector('.rele__seting-switch__sensor').innerText = eepromData.obj[numSensor].address.toLocaleUpperCase() + '  ' + eepromData.obj[numSensor].temp;
                                 else e.querySelector('.rele__seting-switch__sensor').innerText = 'NONE';
                             }
                         } else {
