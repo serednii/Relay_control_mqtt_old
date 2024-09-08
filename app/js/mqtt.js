@@ -114,7 +114,7 @@ function onMessageArrived(message) {
             }
 
             isEepromDataDownloaded = true;
-            if (downloadedDataDevice && isEepromDataDownloaded) compareSensorAddress();
+            if (isDeviceDataDownloaded && isEepromDataDownloaded) compareSensorAddress();
         }
 
         //************************************************************************************************************** */
@@ -129,8 +129,8 @@ function onMessageArrived(message) {
                 tableDeviceAddress[_k2 + 1].innerText = deviceInfo.obj[_k2].address.toLocaleUpperCase();
                 tableDeviceTemp[_k2 + 1].innerText = deviceInfo.obj[_k2].temp.toFixed(1);
             }
-            downloadedDataDevice = true;
-            if (downloadedDataDevice && isEepromDataDownloaded) {
+            isDeviceDataDownloaded = true;
+            if (isDeviceDataDownloaded && isEepromDataDownloaded) {
                 fun1();
                 compareSensorAddress();
             }
