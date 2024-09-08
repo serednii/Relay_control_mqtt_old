@@ -16,30 +16,29 @@
 // window.onload = function () {
 
 // innerHtmlText().then(addIdAndFor).then(startLocalStoreg);
-let objDevice = {};
-let objEeprom = {};
-let objSensorEepromUpr = {};
-let objSensorVklOtklTemp = {};
-let objNameSensor = {};
-let objNameRele = {};
-let objManualRele = {};
+let deviceData = {};
+let eepromData = {};
+let sensorEepromControl = {};
+let sensorOpenCloseTemperature = {};
+let sensorNames = {};
+let relayNames = {};
+let relaySettings = {};
+let isEepromDataDownloaded = false;
+let isDeviceDataDownloaded = false;
+let isEepromVisible = true;
+let domElement = null;
+let timestampsArray = [];
 
-let arrayDatetime = [];
 for (let i = 0; i < 8; i++) {
-  arrayDatetime.push({
-    Datetime: [],
-    DatetimeReal: [],
+  timestampsArray.push({
+    dateTimeList: [],
+    dateTimeRealList: [],
     time: [],
     timeReal: []
   });
 }
 
 
-let downloadedDataEEprom = false;
-let downloadedDataDevice = false;
-let showEepromFlag = true;
-let timeMesage = void 0;
-let element = void 0;
 
 
 
@@ -52,31 +51,6 @@ async function go() {
 
 }
 go();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// window.addEventListener('resize', showWidth);
-// function showWidth() {
-//   document.querySelector('.widthtablet').innerText = document.documentElement.clientWidth;
-// }
-// showWidth();
 
 
 const popapInfoWrapper = document.querySelector('.popap-info__wrapper');
@@ -133,7 +107,7 @@ const startAllFunctions = () => {
   setInterval(function () {
     // Провірка на дані прийшли чи ні якщо обєти пусті то відправляємо запрос на повторну загрузку
 
-    if (isEmpty(objEeprom) || isEmpty(objDevice) || isEmpty(objSensorEepromUpr) || isEmpty(objSensorVklOtklTemp)) {
+    if (isEmpty(eepromData) || isEmpty(deviceData) || isEmpty(sensorEepromControl) || isEmpty(sensorOpenCloseTemperature)) {
       console.log('Є пусті обкти   ');
 
       sendMessage(outstartDataSensor, 'ALL');
@@ -144,17 +118,17 @@ const startAllFunctions = () => {
       // sendMessage(outstartDataSensor, 'NameRele');
       // sendMessage(outstartDataSensor, 'ReleManual');
 
-      console.log('objEeprom  ');
-      console.log(isEmpty(objEeprom));
+      console.log('eepromData   ');
+      console.log(isEmpty(eepromData));
 
-      console.log('objDevice  ');
-      console.log(isEmpty(objDevice));
+      console.log('deviceData   ');
+      console.log(isEmpty(deviceData));
 
-      console.log('objSensorEepromUpr  ');
-      console.log(isEmpty(objSensorEepromUpr));
+      console.log('sensorEepromControl   ');
+      console.log(isEmpty(sensorEepromControl));
 
-      console.log('objSensorVklOtklTemp  ');
-      console.log(isEmpty(objSensorVklOtklTemp));
+      console.log('sensorOpenCloseTemperature   ');
+      console.log(isEmpty(sensorOpenCloseTemperature));
 
       console.log('**************************************************');
       console.log(' ');
@@ -168,7 +142,7 @@ const startAllFunctions = () => {
   //************************************************************************************************************** */
   //rozblokuvaty
   setInterval(function () {
-    showEepromFlag = false;
+    isEepromVisible = false;
     // console.log(client);
     sendMessage(outstartDataSensor, 'readAddressSensor');
   }, 10000);
@@ -259,7 +233,7 @@ const startAllFunctions = () => {
             // опреділяєм в якому блоці ми знаходимося тобто номер реле
             // console.log(i);
             // console.log(e.querySelectorAll('option')[e.selectedIndex].value);
-            // objSensorEepromUpr.obj[i] = e.querySelectorAll('option')[e.selectedIndex].value ;
+            // sensorEepromControl .obj[i] = e.querySelectorAll('option')[e.selectedIndex].value ;
             s = i + 'x' + e.querySelectorAll('option')[e.selectedIndex].value + 'k';
             // console.log('s----' + s);
             sendMessage(setReleEpromUpr, s);
@@ -360,18 +334,18 @@ const startAllFunctions = () => {
           let ii = Math.trunc(i / 2);
           // console.log('i = ' + i + '  ' + 'e  = ' + e.value);
           // console.log('ii = ' + ii + '  ' + 'e  = ' + e.value);
-          // let temp = objSensorEepromUpr.obj[ii].number;
+          // let temp = sensorEepromControl .obj[ii].number;
 
           if (e.value == '0') {
             // console.log('000');
-            objSensorEepromUpr.obj[ii].number &= ~(1 << 6);
+            sensorEepromControl.obj[ii].number &= ~(1 << 6);
           } else if (e.value == '1') {
             // console.log('111');
-            objSensorEepromUpr.obj[ii].number |= 1 << 6;
+            sensorEepromControl.obj[ii].number |= 1 << 6;
           }
-          s = ii + 'x' + objSensorEepromUpr.obj[ii].number + 'k';
+          s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
           console.log('setReleEpromUprErorrReleVklVukl----' + s);
-          // convertToBinary1(objSensorEepromUpr.obj[ii].number)
+          // convertToBinary1(sensorEepromControl .obj[ii].number)
 
           sendMessage(setReleEpromUprErorrReleVklVukl, s);
         } catch (e) {
@@ -392,18 +366,18 @@ const startAllFunctions = () => {
       let ii = Math.trunc(i / 2);
       // console.log('i = ' + i + '  ' + 'e  = ' + e.value);
       // console.log('ii = ' + ii + '  ' + 'e  = ' + e.value);
-      //  let temp = objSensorEepromUpr.obj[ii].number;
+      //  let temp = sensorEepromControl .obj[ii].number;
 
       if (e.value == '0') {
         // console.log('000');
-        objSensorEepromUpr.obj[ii].number &= ~(1 << 5);
+        sensorEepromControl.obj[ii].number &= ~(1 << 5);
       } else if (e.value == '1') {
         // console.log('111');
-        objSensorEepromUpr.obj[ii].number |= 1 << 5;
+        sensorEepromControl.obj[ii].number |= 1 << 5;
       }
-      s = ii + 'x' + objSensorEepromUpr.obj[ii].number + 'k';
+      s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
       console.log('setReleEpromUprOneOrTwoRangeTemp----' + s);
-      // convertToBinary1(objSensorEepromUpr.obj[ii].number)
+      // convertToBinary1(sensorEepromControl .obj[ii].number)
 
       sendMessage(setReleEpromUprChangeOnOrOff, s);
 
@@ -419,18 +393,18 @@ const startAllFunctions = () => {
       let ii = Math.trunc(i / 2);
       // console.log('i = ' + i + '  ' + 'e  = ' + e.value);
       // console.log('ii = ' + ii + '  ' + 'e  = ' + e.value);
-      // let temp = objSensorEepromUpr.obj[ii].number;
+      // let temp = sensorEepromControl .obj[ii].number;
 
       if (e.value == '1') {
         // console.log('000');
-        objSensorEepromUpr.obj[ii].number &= ~(1 << 4);
+        sensorEepromControl.obj[ii].number &= ~(1 << 4);
       } else if (e.value == '0') {
         // console.log('111');
-        objSensorEepromUpr.obj[ii].number |= 1 << 4;
+        sensorEepromControl.obj[ii].number |= 1 << 4;
       }
-      s = ii + 'x' + objSensorEepromUpr.obj[ii].number + 'k';
+      s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
       console.log('setReleEpromUprOneOrTwoRangeTemp----' + s);
-      // convertToBinary1(objSensorEepromUpr.obj[ii].number)
+      // convertToBinary1(sensorEepromControl .obj[ii].number)
 
       sendMessage(setReleEpromUprOneOrTwoRangeTemp, s);
 
@@ -452,7 +426,7 @@ const startAllFunctions = () => {
         e.closest('.address-eeprom__data').classList.toggle('active'); //інверсія класу
         CheckClickDevices();
         if (e.closest('.address-eeprom__data').classList.contains('active')) {
-          element = e.closest('.address-eeprom__data');
+          domElement = e.closest('.address-eeprom__data');
         }
       });
     });
@@ -470,7 +444,7 @@ const startAllFunctions = () => {
       //добавляємо датчики яких немає в списку EEPROM
       e.addEventListener('click', function () {
         if (e.classList.contains('red') && e.classList.contains('click')) {
-          element.querySelector('.address-eeprom__address').innerText = e.querySelector('.address-device__address').textContent;
+          domElement.querySelector('.address-eeprom__address').innerText = e.querySelector('.address-device__address').textContent;
           compareSensorAddressHtml();
           // CheckClickDevices();
         }
@@ -641,21 +615,21 @@ const startAllFunctions = () => {
           let _s = 'RELE' + i + '-' + delayWhenTurned[i].value + '-';
 
           for (nn = 0; nn < 10; nn++) {
-            // console.log('dayElement  ' + arrayDatetime[i].DatetimeReal[nn]);
+            // console.log('dayElement  ' + timestampsArray [i].dateTimeListReal[nn]);
 
-            if (arrayDatetime[i].DatetimeReal[nn] != 'Invalid Date') {
-              // console.log('dayElement  ' + arrayDatetime[i].DatetimeReal[nn]);
-              let dateInput = new Date(arrayDatetime[i].DatetimeReal[nn]).getTime();
+            if (timestampsArray[i].dateTimeListReal[nn] != 'Invalid Date') {
+              // console.log('dayElement  ' + timestampsArray [i].dateTimeListReal[nn]);
+              let dateInput = new Date(timestampsArray[i].dateTimeListReal[nn]).getTime();
               dateInput = dateInput / 1000;
               console.log("ZZZZZZZZZZZZ");
-              console.log(arrayDatetime[i].DatetimeReal[nn]);
+              console.log(timestampsArray[i].dateTimeListReal[nn]);
               _s += dateInput + '-'; //Рік  v minute
-              _s += arrayDatetime[i].DatetimeReal[nn].getFullYear() + '-'; //Рік
-              _s += arrayDatetime[i].DatetimeReal[nn].getMonth() + 1 + '-'; //Місяць
-              _s += arrayDatetime[i].DatetimeReal[nn].getDate() + '-'; //день 1-31
-              _s += arrayDatetime[i].DatetimeReal[nn].getHours() + '-'; //Година
-              _s += arrayDatetime[i].DatetimeReal[nn].getMinutes() + '-'; //Хвилина
-              _s += arrayDatetime[i].DatetimeReal[nn].getDay() + '-'; //День тижня 0-6
+              _s += timestampsArray[i].dateTimeListReal[nn].getFullYear() + '-'; //Рік
+              _s += timestampsArray[i].dateTimeListReal[nn].getMonth() + 1 + '-'; //Місяць
+              _s += timestampsArray[i].dateTimeListReal[nn].getDate() + '-'; //день 1-31
+              _s += timestampsArray[i].dateTimeListReal[nn].getHours() + '-'; //Година
+              _s += timestampsArray[i].dateTimeListReal[nn].getMinutes() + '-'; //Хвилина
+              _s += timestampsArray[i].dateTimeListReal[nn].getDay() + '-'; //День тижня 0-6
             } else {
               _s += '4294967295-65535-99-99-99-99-99-'; //День тижня 0-6
             }
@@ -664,10 +638,10 @@ const startAllFunctions = () => {
           for (nn = 0; nn < 50; nn++) {
             // console.log( "HHHHHHHHH  " ); 
 
-            console.log(arrayDatetime[i].timeReal[nn]);
+            console.log(timestampsArray[i].timeRealList[nn]);
 
-            if (arrayDatetime[i].timeReal[nn] != undefined && arrayDatetime[i].timeReal[nn] != '') {
-              _s += arrayDatetime[i].timeReal[nn].getHours() + "-" + arrayDatetime[i].timeReal[nn].getMinutes() + '-';
+            if (timestampsArray[i].timeRealList[nn] != undefined && timestampsArray[i].timeRealList[nn] != '') {
+              _s += timestampsArray[i].timeRealList[nn].getHours() + "-" + timestampsArray[i].timeRealList[nn].getMinutes() + '-';
             } else _s += '99-99-';
           }
 

@@ -89,22 +89,22 @@ function onMessageArrived(message) {
 
         if (message.destinationName === getEepromSensorData) {
             //Дані що знаходяться в EEPROM позиція, мак адрес, і температура сенсору
-            objEeprom = JSON.parse(message.payloadString);
-            // console.log(objEeprom);
-            for (let _k = 0; _k < objEeprom.obj.length; _k++) {
-                if (showEepromFlag) {
-                    tableEepromNumber[_k + 1].innerText = objEeprom.obj[_k].number;
-                    tableEepromAddress[_k + 1].innerText = objEeprom.obj[_k].address.toLocaleUpperCase();
+            eepromData = JSON.parse(message.payloadString);
+            // console.log(eepromData );
+            for (let _k = 0; _k < eepromData.obj.length; _k++) {
+                if (isEepromVisible) {
+                    tableEepromNumber[_k + 1].innerText = eepromData.obj[_k].number;
+                    tableEepromAddress[_k + 1].innerText = eepromData.obj[_k].address.toLocaleUpperCase();
                 }
-                tableEepromTemp[_k + 1].innerText = objEeprom.obj[_k].temp.toFixed(1);
+                tableEepromTemp[_k + 1].innerText = eepromData.obj[_k].temp.toFixed(1);
 
-                if (objEeprom.obj[_k].address != '0000000000000000') {
-                    if (objNameSensor.obj != undefined) {
+                if (eepromData.obj[_k].address != '0000000000000000') {
+                    if (sensorNames.obj != undefined) {
                         // console.log('7777777777777 ');
-                        // console.log(objNameSensor.obj);
-                        popapTemp[_k].textContent = (objNameSensor.obj[_k].nameSensor) + ' ' + (objEeprom.obj[_k].temp.toFixed(1));
+                        // console.log(sensorNames .obj);
+                        popapTemp[_k].textContent = (sensorNames.obj[_k].nameSensor) + ' ' + (eepromData.obj[_k].temp.toFixed(1));
                     } else {
-                        popapTemp[_k].innerText = objEeprom.obj[_k].temp.toFixed(1);
+                        popapTemp[_k].innerText = eepromData.obj[_k].temp.toFixed(1);
                     }
                 } else {
                     popapTemp[_k].closest('.popap-info__lamp-item').classList.add('shiden');
@@ -113,24 +113,24 @@ function onMessageArrived(message) {
 
             }
 
-            downloadedDataEEprom = true;
-            if (downloadedDataDevice && downloadedDataEEprom) compareSensorAddress();
+            isEepromDataDownloaded = true;
+            if (isDeviceDataDownloaded && isEepromDataDownloaded) compareSensorAddress();
         }
 
         //************************************************************************************************************** */
 
         if (message.destinationName === getDeviceSensorData) {
             //Дані прочитані з сенсорів в реальному часі позиція, мак адрес, і температура сенсору
-            objDevice = JSON.parse(message.payloadString);
-            // console.log('objDevice');
-            // console.log(objDevice);
-            for (let _k2 = 0; _k2 < objDevice.obj.length; _k2++) {
-                tableDeviceNumber[_k2 + 1].innerText = objDevice.obj[_k2].number;
-                tableDeviceAddress[_k2 + 1].innerText = objDevice.obj[_k2].address.toLocaleUpperCase();
-                tableDeviceTemp[_k2 + 1].innerText = objDevice.obj[_k2].temp.toFixed(1);
+            deviceData = JSON.parse(message.payloadString);
+            // console.log('deviceData ');
+            // console.log(deviceData );
+            for (let _k2 = 0; _k2 < deviceData.obj.length; _k2++) {
+                tableDeviceNumber[_k2 + 1].innerText = deviceData.obj[_k2].number;
+                tableDeviceAddress[_k2 + 1].innerText = deviceData.obj[_k2].address.toLocaleUpperCase();
+                tableDeviceTemp[_k2 + 1].innerText = deviceData.obj[_k2].temp.toFixed(1);
             }
-            downloadedDataDevice = true;
-            if (downloadedDataDevice && downloadedDataEEprom) {
+            isDeviceDataDownloaded = true;
+            if (isDeviceDataDownloaded && isEepromDataDownloaded) {
                 fun1();
                 compareSensorAddress();
             }
@@ -143,9 +143,9 @@ function onMessageArrived(message) {
         // біт 6 стан реле при помилці термодатчмка
         if (message.destinationName === getReleEpromUpr) {
             //получаємо дані з памяті про датчики 
-            objSensorEepromUpr = JSON.parse(message.payloadString);
-            // console.log('objSensorEepromUpr *****');
-            // console.log(objSensorEepromUpr);
+            sensorEepromControl = JSON.parse(message.payloadString);
+            // console.log('sensorEepromControl  *****');
+            // console.log(sensorEepromControl );
 
             fun1();
         }
@@ -154,8 +154,8 @@ function onMessageArrived(message) {
 
         if (message.destinationName === getSensorVklOtklTemp) {
             //получаємо дані з памяті про температури включення і відкючення
-            objSensorVklOtklTemp = JSON.parse(message.payloadString);
-            // console.log('objSensorVklOtklTemp *****');
+            sensorOpenCloseTemperature = JSON.parse(message.payloadString);
+            // console.log('sensorOpenCloseTemperature  *****');
             // console.log(message.payloadString);
             fun2();
         }
@@ -186,14 +186,14 @@ function onMessageArrived(message) {
                 // console.log('getSensorName');
                 // console.log(message.payloadString);
                 //получаємо дані про стан кожного реле
-                objNameSensor = JSON.parse(message.payloadString);
+                sensorNames = JSON.parse(message.payloadString);
                 tableEepromNameSensor.forEach(function (e, i) {
 
                     if (i > 0) {
-                        e.value = objNameSensor.obj[i - 1].nameSensor;
+                        e.value = sensorNames.obj[i - 1].nameSensor;
                     }
                 });
-                // console.log(objNameSensor);
+                // console.log(sensorNames );
 
             } catch (e) {
                 console.log('ERROR NAME SENSOR' + e);
@@ -210,20 +210,20 @@ function onMessageArrived(message) {
                 // console.log(message.payloadString);
 
                 //получаємо дані про стан кожного реле
-                objNameRele = JSON.parse(message.payloadString);
+                relayNames = JSON.parse(message.payloadString);
 
                 const releItemTitleName = document.querySelectorAll('.rele__item-title-name');
                 releItemTitleName.forEach((e, i) => {
-                    e.textContent = objNameRele.obj[i].nameRele;
+                    e.textContent = relayNames.obj[i].nameRele;
 
                 });
 
                 releNameInput.forEach(function (e, i) {
-                    e.value = objNameRele.obj[i].nameRele;
-                    popapInfoTempItem[i].textContent = objNameRele.obj[i].nameRele;
-                    releItemTitleName[i].textContent = objNameRele.obj[i].nameRele;
+                    e.value = relayNames.obj[i].nameRele;
+                    popapInfoTempItem[i].textContent = relayNames.obj[i].nameRele;
+                    releItemTitleName[i].textContent = relayNames.obj[i].nameRele;
                 });
-                // console.log('objNameRele');
+                // console.log('relayNames');
 
             } catch (e) {
                 console.log('ERROR NAME RELE' + e);
@@ -238,19 +238,19 @@ function onMessageArrived(message) {
         if (message.destinationName === getReleEpromUprManual) {
 
             //получаємо дані про стан кожного реле
-            let objManualRele = JSON.parse(message.payloadString);
+            let relaySettings = JSON.parse(message.payloadString);
             console.log('message.payloadString   ////// getReleEpromUprManual');
             console.log(message.payloadString);
             document.querySelectorAll('.input-control-manually-svg').forEach(function (e, i) {
                 const parent = e.closest('.rele__item');
                 console.log("testttt")
-                if (objManualRele.obj[i].namberRele == 1) {
+                if (relaySettings.obj[i].namberRele == 1) {
                     // e.checked = true;
                     parent.querySelector('.input-control-manually-svg').classList.add('on');
                     parent.querySelector('.rele__control-manually-show').classList.add('on');
                     parent.querySelector('.rele__control-manually').classList.add('show-block'); //Добавляємо клас відкриваємо Select
                     parent.querySelector('.rele__seting-sensor-timer').classList.add('block__hidden'); //Добавляємо клас відкриваємо Select
-                } else if (objManualRele.obj[i].namberRele == 0) {
+                } else if (relaySettings.obj[i].namberRele == 0) {
                     // e.checked = false;
                     parent.querySelector('.input-control-manually-svg').classList.remove('on');
                     parent.querySelector('.rele__control-manually-show').classList.remove('on');
@@ -287,9 +287,9 @@ function onMessageArrived(message) {
             if (tempObj.NUMPACKAGE === 4) {
                 obj_3 = Object.assign({}, tempObj);
                 // obj_3 = JSON.parse(message.payloadString);
-                objManualRele = Object.assign(obj_1, obj_2, obj_3);
-                // console.log(objManualRele);
-                let namberRele = parseInt(objManualRele.NUM);
+                relaySettings = Object.assign(obj_1, obj_2, obj_3);
+                // console.log(relaySettings);
+                let namberRele = parseInt(relaySettings.NUM);
                 const dateTimeInput = releItem[namberRele].querySelectorAll('.datetime');
                 const timeInput = releItem[namberRele].querySelectorAll('.time');
                 const dayWikend = releItem[namberRele].querySelectorAll('.day');
@@ -308,34 +308,34 @@ function onMessageArrived(message) {
                     e.checked = true; //ttt
                 });
 
-                let delaySecondStart = parseInt(objManualRele.DELAYSECONDSTART);
+                let delaySecondStart = parseInt(relaySettings.DELAYSECONDSTART);
 
                 if (delaySecondStart < 36000) releControlTimer[namberRele].value = delaySecondStart;
                 else releControlTimer[namberRele].value = '0';
 
                 // dateTimeInput[0].value = "2022-05-02T12:55";
                 for (i = 0; i < 9; i += 2) {
-                    if (objManualRele.DATATIME[i] != '65535-99-99T99:99' && objManualRele.DATATIME[i + 1] != '65535-99-99T99:99') {
-                        // console.log(objManualRele.DATATIME[i]);
-                        // console.log(objManualRele.DATATIME[i + 1]);
-                        dateTimeInput[i].value = objManualRele.DATATIME[i];
-                        dateTimeInput[i + 1].value = objManualRele.DATATIME[i + 1];
-                        arrayDatetime[namberRele].Datetime[i] = new Date(objManualRele.DATATIME[i]).getTime();
-                        arrayDatetime[namberRele].DatetimeReal[i] = new Date(objManualRele.DATATIME[i]);
-                        arrayDatetime[namberRele].Datetime[i + 1] = new Date(objManualRele.DATATIME[i + 1]).getTime();
-                        arrayDatetime[namberRele].DatetimeReal[i + 1] = new Date(objManualRele.DATATIME[i + 1]);
+                    if (relaySettings.DATATIME[i] != '65535-99-99T99:99' && relaySettings.DATATIME[i + 1] != '65535-99-99T99:99') {
+                        // console.log(relaySettings.DATATIME[i]);
+                        // console.log(relaySettings.DATATIME[i + 1]);
+                        dateTimeInput[i].value = relaySettings.DATATIME[i];
+                        dateTimeInput[i + 1].value = relaySettings.DATATIME[i + 1];
+                        timestampsArray[namberRele].dateTimeList[i] = new Date(relaySettings.DATATIME[i]).getTime();
+                        timestampsArray[namberRele].dateTimeListReal[i] = new Date(relaySettings.DATATIME[i]);
+                        timestampsArray[namberRele].dateTimeList[i + 1] = new Date(relaySettings.DATATIME[i + 1]).getTime();
+                        timestampsArray[namberRele].dateTimeListReal[i + 1] = new Date(relaySettings.DATATIME[i + 1]);
                     }
                 }
 
                 for (i = 0; i < 49; i += 2) {
-                    if (objManualRele.TIME[i] != '99:99' && objManualRele.TIME[i + 1] != '99:99') {
-                        // console.log(objManualRele.TIME[i]); 
-                        // console.log( objManualRele.TIME[i+1]);
+                    if (relaySettings.TIME[i] != '99:99' && relaySettings.TIME[i + 1] != '99:99') {
+                        // console.log(relaySettings.TIME[i]); 
+                        // console.log( relaySettings.TIME[i+1]);
 
-                        timeInput[i].value = objManualRele.TIME[i];
-                        timeInput[i + 1].value = objManualRele.TIME[i + 1];
-                        arrayDatetime[namberRele].time[i] = new Date(objManualRele.DATATIME[i]);
-                        arrayDatetime[namberRele].timeReal[i + 1] = new Date(objManualRele.DATATIME[i + 1]);
+                        timeInput[i].value = relaySettings.TIME[i];
+                        timeInput[i + 1].value = relaySettings.TIME[i + 1];
+                        timestampsArray[namberRele].timeList[i] = new Date(relaySettings.DATATIME[i]);
+                        timestampsArray[namberRele].timeRealList[i + 1] = new Date(relaySettings.DATATIME[i + 1]);
                     }
                 }
 
@@ -348,11 +348,11 @@ function onMessageArrived(message) {
 
 
                 for (i = 0; i < 35; i++) {
-                    if (objManualRele.DEY[i] == 1) {
+                    if (relaySettings.DEY[i] == 1) {
                         dayWikend[i].checked = true;
                         dayWikend[i].previousElementSibling.classList.add('checked');
                     } ///ttt
-                    if (objManualRele.DEY[i] == 0) {
+                    if (relaySettings.DEY[i] == 0) {
                         dayWikend[i].checked = false;
                         dayWikend[i].previousElementSibling.classList.remove('checked');
                     } ///ttt

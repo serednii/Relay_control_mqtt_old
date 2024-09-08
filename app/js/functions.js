@@ -2,11 +2,11 @@
 
 function fun1() {
 
-    if (objSensorEepromUpr.obj != undefined) {
+    if (sensorEepromControl.obj != undefined) {
         //Якщо не пустий обєкт
         // console.log('ZZZZZZZZZZZZZZZZZZZZZZZZZZ');
-        // console.log(objSensorEepromUpr.obj);
-        // console.log(objEeprom.obj);
+        // console.log(sensorEepromControl .obj);
+        // console.log(eepromData .obj);
         releItem.forEach(function (e, clickRele) {
 
             const select = e.querySelector('select');
@@ -14,7 +14,7 @@ function fun1() {
             const radioSingle = e.querySelectorAll('.rele-temp-change-single');
             const releError = e.querySelectorAll('.input-control-error');
 
-            k = objSensorEepromUpr.obj[clickRele].number;
+            k = sensorEepromControl.obj[clickRele].number;
             const numSensor = k & 0x0F; // номер сенсора який управляє даним реле
             // console.log('k   +++ ' + clickRele + '  ' + (k &= ~240));
             // console.log('--');
@@ -66,7 +66,7 @@ function fun1() {
                 let numRele = 15; //номер реле в якому записаний термодатчик
                 for (let d = 0; d < 8; d++) {
                     //
-                    z = objSensorEepromUpr.obj[d].number;
+                    z = sensorEepromControl.obj[d].number;
                     z &= ~240;
                     if (z == numEepromSensor) {
                         //Нaходимо в масиві для реле номер термодатчика
@@ -77,19 +77,19 @@ function fun1() {
                 }
 
                 //якщо адрес не нуль добавляємо  і термодатчика немає в списку реле або він є але записаний в тому реле з яким ми працюємо option з адресом
-                if (objEeprom.obj != undefined) {
-                    if (!(objEeprom.obj[numEepromSensor].address == '0000000000000000' || objEeprom.obj[numEepromSensor].address == 'ffffffffffffffff') && (numRele == clickRele || numRele == 15)) {
+                if (eepromData.obj != undefined) {
+                    if (!(eepromData.obj[numEepromSensor].address == '0000000000000000' || eepromData.obj[numEepromSensor].address == 'ffffffffffffffff') && (numRele == clickRele || numRele == 15)) {
 
                         const releSetingSwitchSensor = e.querySelector('.rele__seting-switch__sensor');
 
                         const createOption = document.createElement('option');
-                        createOption.value = objEeprom.obj[numEepromSensor].number;
+                        createOption.value = eepromData.obj[numEepromSensor].number;
                         createOption.className = "rele-control-option";
 
-                        if (objNameSensor.obj != undefined && objNameSensor.obj[numEepromSensor].nameSensor != '') {
-                            createOption.innerText = objEeprom.obj[numEepromSensor].number + '--' + objNameSensor.obj[numEepromSensor].nameSensor + ' -- ' + objEeprom.obj[numEepromSensor].temp;
+                        if (sensorNames.obj != undefined && sensorNames.obj[numEepromSensor].nameSensor != '') {
+                            createOption.innerText = eepromData.obj[numEepromSensor].number + '--' + sensorNames.obj[numEepromSensor].nameSensor + ' -- ' + eepromData.obj[numEepromSensor].temp;
                         } else {
-                            createOption.innerText = objEeprom.obj[numEepromSensor].number + '--' + objEeprom.obj[numEepromSensor].address.toLocaleUpperCase() + ' -- ' + objEeprom.obj[numEepromSensor].temp;
+                            createOption.innerText = eepromData.obj[numEepromSensor].number + '--' + eepromData.obj[numEepromSensor].address.toLocaleUpperCase() + ' -- ' + eepromData.obj[numEepromSensor].temp;
                         }
 
                         if (numRele == clickRele) {
@@ -100,12 +100,12 @@ function fun1() {
 
                     try {
                         if (numSensor != 15) {
-                            if (objNameSensor.obj != undefined && objNameSensor.obj[numSensor].nameSensor != '') {
-                                if (numSensor < 8) e.querySelector('.rele__seting-switch__sensor').innerText = objNameSensor.obj[numSensor].nameSensor + '  ' + objEeprom.obj[numSensor].temp;
+                            if (sensorNames.obj != undefined && sensorNames.obj[numSensor].nameSensor != '') {
+                                if (numSensor < 8) e.querySelector('.rele__seting-switch__sensor').innerText = sensorNames.obj[numSensor].nameSensor + '  ' + eepromData.obj[numSensor].temp;
                                 else e.querySelector('.rele__seting-switch__sensor').innerText = 'NONE';
 
                             } else {
-                                if (numSensor < 8) e.querySelector('.rele__seting-switch__sensor').innerText = objEeprom.obj[numSensor].address.toLocaleUpperCase() + '  ' + objEeprom.obj[numSensor].temp;
+                                if (numSensor < 8) e.querySelector('.rele__seting-switch__sensor').innerText = eepromData.obj[numSensor].address.toLocaleUpperCase() + '  ' + eepromData.obj[numSensor].temp;
                                 else e.querySelector('.rele__seting-switch__sensor').innerText = 'NONE';
                             }
                         } else {
@@ -132,12 +132,12 @@ function fun2() {
 
 
         for (let _i = 0; _i < inputTempVkl.length; _i++) {
-            // if (releSetingSwitchTempOn != null && releSetingSwitchTempOn != undefined) releSetingSwitchTempOn[_i].innerText = 'TEMP_ON  ' + objSensorVklOtklTemp.obj[_i].vkl;
-            // if (releSetingSwitchTempOff != null && releSetingSwitchTempOff != undefined) releSetingSwitchTempOff[_i].innerText = 'TEMP_OFF  ' + objSensorVklOtklTemp.obj[_i].otkl;
-            if (releSetingSwitchTempOn) releSetingSwitchTempOn[_i].innerText = 'TEMP_ON  ' + objSensorVklOtklTemp.obj[_i].vkl;
-            if (releSetingSwitchTempOff) releSetingSwitchTempOff[_i].innerText = 'TEMP_OFF  ' + objSensorVklOtklTemp.obj[_i].otkl;
-            inputTempVkl[_i].value = objSensorVklOtklTemp.obj[_i].vkl;
-            inputTempOtkl[_i].value = objSensorVklOtklTemp.obj[_i].otkl;
+            // if (releSetingSwitchTempOn != null && releSetingSwitchTempOn != undefined) releSetingSwitchTempOn[_i].innerText = 'TEMP_ON  ' + sensorOpenCloseTemperature .obj[_i].vkl;
+            // if (releSetingSwitchTempOff != null && releSetingSwitchTempOff != undefined) releSetingSwitchTempOff[_i].innerText = 'TEMP_OFF  ' + sensorOpenCloseTemperature .obj[_i].otkl;
+            if (releSetingSwitchTempOn) releSetingSwitchTempOn[_i].innerText = 'TEMP_ON  ' + sensorOpenCloseTemperature.obj[_i].vkl;
+            if (releSetingSwitchTempOff) releSetingSwitchTempOff[_i].innerText = 'TEMP_OFF  ' + sensorOpenCloseTemperature.obj[_i].otkl;
+            inputTempVkl[_i].value = sensorOpenCloseTemperature.obj[_i].vkl;
+            inputTempOtkl[_i].value = sensorOpenCloseTemperature.obj[_i].otkl;
         }
     } catch (e) {
         console.log('ERROR  ' + e);
@@ -190,7 +190,7 @@ function compareSensorAddress() {
 }
 
 function compareSensorAddressHtml() {
-    for (let _k3 = 1; _k3 < objDevice.obj.length + 1; _k3++) {
+    for (let _k3 = 1; _k3 < deviceData.obj.length + 1; _k3++) {
         tableDeviceAddress[_k3].closest('.address-device__data').classList.add('red');
         for (let _n = 1; _n < 9; _n++) {
             if (tableDeviceAddress[_k3].textContent == tableEepromAddress[_n].textContent) {
@@ -325,31 +325,31 @@ function chekDate(parent, datetime, time) {
         // console.log(numberReleClick);
         // console.log(new Date().getTime());
 
-        arrayDatetime[numberReleClick].Datetime[i] = dateInput; //В секундах
-        arrayDatetime[numberReleClick].DatetimeReal[i] = new Date(k.value); //нермальний формат
+        timestampsArray[numberReleClick].dateTimeList[i] = dateInput; //В секундах
+        timestampsArray[numberReleClick].dateTimeListReal[i] = new Date(k.value); //нермальний формат
 
-        if (arrayDatetime[numberReleClick].DatetimeReal[i] != 'Invalid Date') { //Якщо введена дата
+        if (timestampsArray[numberReleClick].dateTimeListReal[i] != 'Invalid Date') { //Якщо введена дата
             // console.log('************  '+numberReleClick+'  ****************  '+i+'  *********')
-            // console.log(arrayDatetime[numberReleClick].DatetimeReal[i] )
+            // console.log(timestampsArray [numberReleClick].dateTimeListReal[i] )
             // console.log(time[i * 5].value)
             if (i % 2 == 0) {
                 //neparnyy element
                 if (time[i * 5].value != '') { //Якщо введений час
-                    datetime[i].value = formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i], 'start'); //Міняємо в даті годину на 00:00
-                    if (datetime[i].value != 'Invalid Date') arrayDatetime[numberReleClick].DatetimeReal[i] = new Date(datetime[i].value); //записуємо в елемент datatime
+                    datetime[i].value = formatDataAndTime(timestampsArray[numberReleClick].dateTimeListReal[i], 'start'); //Міняємо в даті годину на 00:00
+                    if (datetime[i].value != 'Invalid Date') timestampsArray[numberReleClick].dateTimeListReal[i] = new Date(datetime[i].value); //записуємо в елемент datatime
                 }
             } else {
                 //parnyy elemen
                 if (time[(i - 1) * 5].value != '') {
-                    datetime[i].value = formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i], 'end'); //Міняємо в даті годину на 23:59
-                    if (datetime[i].value != 'Invalid Date') arrayDatetime[numberReleClick].DatetimeReal[i] = new Date(datetime[i].value); //записуємо в елемент datatime
+                    datetime[i].value = formatDataAndTime(timestampsArray[numberReleClick].dateTimeListReal[i], 'end'); //Міняємо в даті годину на 23:59
+                    if (datetime[i].value != 'Invalid Date') timestampsArray[numberReleClick].dateTimeListReal[i] = new Date(datetime[i].value); //записуємо в елемент datatime
                 }
             }
         }
 
 
         for (let _n2 = 0; _n2 < 9; _n2 += 2) {
-            if (arrayDatetime[numberReleClick].Datetime[_n2] >= arrayDatetime[numberReleClick].Datetime[_n2 + 1]) {
+            if (timestampsArray[numberReleClick].dateTimeList[_n2] >= timestampsArray[numberReleClick].dateTimeList[_n2 + 1]) {
                 //Якщо в одному рядку друга дата менша або дорівнює першій
                 datetime[_n2].classList.add('date-red__color');
                 datetime[_n2 + 1].classList.add('date-red__color');
@@ -399,22 +399,22 @@ function chekDate(parent, datetime, time) {
 
 // function checkDataAndTime(datetime, time, numberReleClick){  // Якщо є вибрано поля дата і поля час то поле дата годину старт ставимо 00:00 а кінець 23:59
 //   datetime.forEach(function (k, i) {
-//     if (arrayDatetime[numberReleClick].DatetimeReal[i]  != 'Invalid Date') {//Якщо введена дата
+//     if (timestampsArray [numberReleClick].dateTimeListReal[i]  != 'Invalid Date') {//Якщо введена дата
 //       console.log('************  '+numberReleClick+'  ****************  '+i+'  *********')
-//       console.log(arrayDatetime[numberReleClick].DatetimeReal[i] )
+//       console.log(timestampsArray [numberReleClick].dateTimeListReal[i] )
 //       console.log(time[i * 5].value)
 //       if (i % 2 == 0) {
 //         //neparnyy element
 //         if (time[i * 5].value != '') {//Якщо введений час
-//           datetime[i].value = formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i] , 'start');//Міняємо в даті годину на 00:00
-//           if (datetime[i].value != 'Invalid Date') arrayDatetime[numberReleClick].DatetimeReal[i] = new Date(datetime[i].value);//записуємо в елемент datatime
+//           datetime[i].value = formatDataAndTime(timestampsArray [numberReleClick].dateTimeListReal[i] , 'start');//Міняємо в даті годину на 00:00
+//           if (datetime[i].value != 'Invalid Date') timestampsArray [numberReleClick].dateTimeListReal[i] = new Date(datetime[i].value);//записуємо в елемент datatime
 //         }
 //       } else {
 //        //parnyy elemen
 //         if (time[(i-1) * 5].value != '') {
-//           console.log(formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i] , 'end'));
-//           datetime[i].value = formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i] , 'end');//Міняємо в даті годину на 23:59
-//           if (datetime[i].value != 'Invalid Date') arrayDatetime[numberReleClick].DatetimeReal[i] = new Date(datetime[i].value);//записуємо в елемент datatime
+//           console.log(formatDataAndTime(timestampsArray [numberReleClick].dateTimeListReal[i] , 'end'));
+//           datetime[i].value = formatDataAndTime(timestampsArray [numberReleClick].dateTimeListReal[i] , 'end');//Міняємо в даті годину на 23:59
+//           if (datetime[i].value != 'Invalid Date') timestampsArray [numberReleClick].dateTimeListReal[i] = new Date(datetime[i].value);//записуємо в елемент datatime
 //         }
 //       }
 //     }
@@ -435,19 +435,19 @@ function chekTime(parent, datetime, time) {
 
         if (k.value != '') {
             t2.setHours(str.substr(0, str.indexOf(':')), str.substr(str.indexOf(':') + 1));
-            arrayDatetime[numberReleClick].timeReal[i] = t2;
+            timestampsArray[numberReleClick].timeRealList[i] = t2;
             t2 = t2.getTime();
-            arrayDatetime[numberReleClick].time[i] = t2;
+            timestampsArray[numberReleClick].timeList[i] = t2;
         } else {
-            arrayDatetime[numberReleClick].timeReal[i] = '';
-            arrayDatetime[numberReleClick].time[i] = '';
+            timestampsArray[numberReleClick].timeRealList[i] = '';
+            timestampsArray[numberReleClick].timeList[i] = '';
         }
 
         //   // ********************************************************************************************************************************************************************
 
         for (let _n4 = 0; _n4 < 49; _n4 += 2) {
 
-            if (arrayDatetime[numberReleClick].time[_n4] >= arrayDatetime[numberReleClick].time[_n4 + 1] && arrayDatetime[numberReleClick].time[_n4 + 1] !== '') {
+            if (timestampsArray[numberReleClick].timeList[_n4] >= timestampsArray[numberReleClick].timeList[_n4 + 1] && timestampsArray[numberReleClick].timeList[_n4 + 1] !== '') {
                 //Якщо в одному рядку друга дата менша або дорівнює першій
                 time[_n4].classList.add('time-red__color');
                 time[_n4 + 1].classList.add('time-red__color');
@@ -469,7 +469,7 @@ function chekTime(parent, datetime, time) {
         for (let u = 1; u < 49; u += 10) {
 
             for (let _n5 = u; _n5 < u + 8; _n5 += 2) {
-                if (arrayDatetime[numberReleClick].time[_n5] + 1 > arrayDatetime[numberReleClick].time[_n5 + 1] && arrayDatetime[numberReleClick].time[_n5 + 1] !== '') {
+                if (timestampsArray[numberReleClick].timeList[_n5] + 1 > timestampsArray[numberReleClick].timeList[_n5 + 1] && timestampsArray[numberReleClick].timeList[_n5 + 1] !== '') {
                     //Якщо  другий рядок є менший за перший рядок 
                     time[_n5].classList.add('time-red__backround');
                     time[_n5 + 1].classList.add('time-red__backround');
@@ -488,19 +488,19 @@ function chekTime(parent, datetime, time) {
         if (i === 0 || i === 10 || i === 20 || i === 30 || i === 40) {
 
             // console.log('************  ' + numberReleClick + '  ****************  ' + i + '  *********')
-            // console.log(arrayDatetime[numberReleClick].DatetimeReal[i] )
+            // console.log(timestampsArray [numberReleClick].dateTimeListReal[i] )
             // console.log(time[i].value)
 
-            if (arrayDatetime[numberReleClick].DatetimeReal[i / 5] != 'Invalid Date' && arrayDatetime[numberReleClick].DatetimeReal[i / 5] != undefined && time[i].value != '') {
-                datetime[i / 5].value = formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i / 5], 'start');
-                arrayDatetime[numberReleClick].DatetimeReal[i / 5] = new Date(datetime[i / 5].value);
+            if (timestampsArray[numberReleClick].dateTimeListReal[i / 5] != 'Invalid Date' && timestampsArray[numberReleClick].dateTimeListReal[i / 5] != undefined && time[i].value != '') {
+                datetime[i / 5].value = formatDataAndTime(timestampsArray[numberReleClick].dateTimeListReal[i / 5], 'start');
+                timestampsArray[numberReleClick].dateTimeListReal[i / 5] = new Date(datetime[i / 5].value);
                 // console.log("KKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
 
             }
 
-            if (arrayDatetime[numberReleClick].DatetimeReal[i / 5 + 1] != 'Invalid Date' && arrayDatetime[numberReleClick].DatetimeReal[i / 5 + 1] != undefined && time[i].value != '') {
-                datetime[i / 5 + 1].value = formatDataAndTime(arrayDatetime[numberReleClick].DatetimeReal[i / 5 + 1], 'end');
-                arrayDatetime[numberReleClick].DatetimeReal[i / 5 + 1] = new Date(datetime[i / 5 + 1].value);
+            if (timestampsArray[numberReleClick].dateTimeListReal[i / 5 + 1] != 'Invalid Date' && timestampsArray[numberReleClick].dateTimeListReal[i / 5 + 1] != undefined && time[i].value != '') {
+                datetime[i / 5 + 1].value = formatDataAndTime(timestampsArray[numberReleClick].dateTimeListReal[i / 5 + 1], 'end');
+                timestampsArray[numberReleClick].dateTimeListReal[i / 5 + 1] = new Date(datetime[i / 5 + 1].value);
                 // console.log("NNNNNNNNNNNNNNNNNNNNNNNNNN");
             }
         }
