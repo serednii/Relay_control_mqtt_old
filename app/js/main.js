@@ -35,7 +35,7 @@ for (let i = 0; i < 8; i++) {
     dateTimeList: [],
     dateTimeRealList: [],
     time: [],
-    timeReal: []
+    timeRealList: []
   });
 }
 
@@ -662,10 +662,10 @@ const startAllFunctions = () => {
           for (nn = 0; nn < 50; nn++) {
             // console.log( "HHHHHHHHH  " ); 
 
-            console.log(dateTimeArray[i].timeReal[nn]);
+            console.log(dateTimeArray[i].timeRealList[nn]);
 
-            if (dateTimeArray[i].timeReal[nn] != undefined && dateTimeArray[i].timeReal[nn] != '') {
-              _s += dateTimeArray[i].timeReal[nn].getHours() + "-" + dateTimeArray[i].timeReal[nn].getMinutes() + '-';
+            if (dateTimeArray[i].timeRealList[nn] != undefined && dateTimeArray[i].timeRealList[nn] != '') {
+              _s += dateTimeArray[i].timeRealList[nn].getHours() + "-" + dateTimeArray[i].timeRealList[nn].getMinutes() + '-';
             } else _s += '99-99-';
           }
 

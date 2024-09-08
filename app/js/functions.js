@@ -435,11 +435,11 @@ function chekTime(parent, datetime, time) {
 
         if (k.value != '') {
             t2.setHours(str.substr(0, str.indexOf(':')), str.substr(str.indexOf(':') + 1));
-            dateTimeArray[numberReleClick].timeReal[i] = t2;
+            dateTimeArray[numberReleClick].timeRealList[i] = t2;
             t2 = t2.getTime();
             dateTimeArray[numberReleClick].time[i] = t2;
         } else {
-            dateTimeArray[numberReleClick].timeReal[i] = '';
+            dateTimeArray[numberReleClick].timeRealList[i] = '';
             dateTimeArray[numberReleClick].time[i] = '';
         }
 
