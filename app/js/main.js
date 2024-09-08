@@ -448,7 +448,7 @@ const startAllFunctions = () => {
           }
         });
         e.closest('.address-eeprom__data').classList.toggle('active'); //інверсія класу
-        CheckClickDevices();
+        updateClickableDevices();
         if (e.closest('.address-eeprom__data').classList.contains('active')) {
           domElement = e.closest('.address-eeprom__data');
         }
@@ -470,7 +470,7 @@ const startAllFunctions = () => {
         if (e.classList.contains('red') && e.classList.contains('click')) {
           domElement.querySelector('.address-eeprom__address').innerText = e.querySelector('.address-device__address').textContent;
           compareSensorAddressHtml();
-          // CheckClickDevices();
+          // updateClickableDevices();
         }
       });
     });
@@ -488,7 +488,7 @@ const startAllFunctions = () => {
         parent.querySelector('.address-eeprom__address').innerText = '0000000000000000';
         parent.querySelector('.address-eeprom__temp').innerText = '';
         compareSensorAddressHtml();
-        //CheckClickDevices();
+        //updateClickableDevices();
       });
     });
   } else {

@@ -315,6 +315,33 @@ function CheckClickDevices() {
     }
 }
 
+function updateClickableDevices() {
+    let isEepromActive = false;
+
+    // Перевіряємо, чи є клас "active" серед елементів EEPROM
+    parentListEeprom.forEach(function (eepromElement) {
+        if (eepromElement.classList.contains('active')) {
+            isEepromActive = true;
+        }
+    });
+
+    if (isEepromActive) {
+        // Робимо клікабельними ті пристрої, яких немає у списку (з класом "red")
+        parentListDevice.forEach(function (deviceElement, index) {
+            if (index > 0 && deviceElement.classList.contains('red')) {
+                deviceElement.classList.add('click');
+            }
+        });
+    } else {
+        // Якщо немає активних елементів, знімаємо клас "click"
+        parentListDevice.forEach(function (deviceElement, index) {
+            if (index > 0) {
+                deviceElement.classList.remove('click');
+            }
+        });
+    }
+}
+
 function compareSensorAddress() {
     compareSensorAddressHtml();
 }
@@ -330,7 +357,7 @@ function compareSensorAddressHtml() {
             }
         }
     }
-    CheckClickDevices();
+    updateClickableDevices();
 }
 
 
