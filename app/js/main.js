@@ -469,7 +469,7 @@ const startAllFunctions = () => {
       e.addEventListener('click', function () {
         if (e.classList.contains('red') && e.classList.contains('click')) {
           domElement.querySelector('.address-eeprom__address').innerText = e.querySelector('.address-device__address').textContent;
-          compareSensorAddressHtml();
+          highlightMismatchedSensorAddresses();
           // updateClickableDevices();
         }
       });
@@ -487,7 +487,7 @@ const startAllFunctions = () => {
         console.log(parent);
         parent.querySelector('.address-eeprom__address').innerText = '0000000000000000';
         parent.querySelector('.address-eeprom__temp').innerText = '';
-        compareSensorAddressHtml();
+        highlightMismatchedSensorAddresses();
         //updateClickableDevices();
       });
     });

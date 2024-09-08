@@ -343,7 +343,7 @@ function updateClickableDevices() {
 }
 
 function compareSensorAddress() {
-    compareSensorAddressHtml();
+    highlightMismatchedSensorAddresses();
 }
 
 function compareSensorAddressHtml() {
@@ -358,6 +358,25 @@ function compareSensorAddressHtml() {
         }
     }
     updateClickableDevices();
+}
+
+function highlightMismatchedSensorAddresses() {
+    for (let deviceIndex = 1; deviceIndex < deviceData.obj.length + 1; deviceIndex++) {
+        // Додаємо клас "red" для позначення пристроїв, чий адрес не знайдено
+        tableDeviceAddress[deviceIndex].closest('.address-device__data').classList.add('red');
+
+        for (let eepromIndex = 1; eepromIndex < 9; eepromIndex++) {
+            // Якщо адрес пристрою співпадає з адресом у EEPROM
+            if (tableDeviceAddress[deviceIndex].textContent === tableEepromAddress[eepromIndex].textContent) {
+                // Видаляємо класи "red" і "click" для елементів, що знайшли відповідний адрес
+                tableDeviceAddress[deviceIndex].closest('.address-device__data').classList.remove('red');
+                tableDeviceAddress[deviceIndex].closest('.address-device__data').classList.remove('click');
+                break;
+            }
+        }
+    }
+    // Викликаємо функцію для перевірки стану пристроїв
+    checkDeviceClickStatus();
 }
 
 
