@@ -25,8 +25,8 @@ let relayNames = {};
 let relaySettings = {};
 let isEepromDataDownloaded = false;
 let isDeviceDataDownloaded = false;
-let showEepromFlag = true;
-let timeMesage = void 0;
+let showEepromData = true;
+//let timeMessage = void 0;
 let element = void 0;
 let arrayDatetime = [];
 
@@ -166,7 +166,7 @@ const startAllFunctions = () => {
   //************************************************************************************************************** */
   //rozblokuvaty
   setInterval(function () {
-    showEepromFlag = false;
+    showEepromData = false;
     // console.log(client);
     sendMessage(outstartDataSensor, 'readAddressSensor');
   }, 10000);

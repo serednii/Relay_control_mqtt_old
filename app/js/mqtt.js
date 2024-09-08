@@ -92,7 +92,7 @@ function onMessageArrived(message) {
             eepromData = JSON.parse(message.payloadString);
             // console.log(eepromData );
             for (let _k = 0; _k < eepromData.obj.length; _k++) {
-                if (showEepromFlag) {
+                if (showEepromData) {
                     tableEepromNumber[_k + 1].innerText = eepromData.obj[_k].number;
                     tableEepromAddress[_k + 1].innerText = eepromData.obj[_k].address.toLocaleUpperCase();
                 }
