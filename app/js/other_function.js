@@ -1,9 +1,17 @@
+// function isEmpty(obj) {
+//     //Провірка на пусті обєкти 
+//     for (let key in obj) {
+//         return false;
+//     }
+//     return true;
+// }
+
 function isEmpty(obj) {
-    //Провірка на пусті обєкти 
-    for (let key in obj) {
-        return false;
+    // Перевіряємо чи це об'єкт і чи не null
+    if (obj && typeof obj === 'object' && !Array.isArray(obj)) {
+        return Object.keys(obj).length === 0;
     }
-    return true;
+    return false;  // Якщо це не об'єкт або null, то це не порожній об'єкт
 }
 
 
