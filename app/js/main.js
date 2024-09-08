@@ -20,9 +20,9 @@ let deviceInfo = {};
 let eepromData = {};
 let sensorEepromControl = {};
 let sensorOpenCloseTemperature = {};
-let objNameSensor = {};
-let objNameRele = {};
-let objManualRele = {};
+let sensorNames = {};
+let relayNames = {};
+let relaySettings = {};
 
 let arrayDatetime = [];
 for (let i = 0; i < 8; i++) {
