@@ -320,9 +320,9 @@ function onMessageArrived(message) {
                         // console.log(relaySettings.DATATIME[i + 1]);
                         dateTimeInput[i].value = relaySettings.DATATIME[i];
                         dateTimeInput[i + 1].value = relaySettings.DATATIME[i + 1];
-                        dateTimeArray[namberRele].Datetime[i] = new Date(relaySettings.DATATIME[i]).getTime();
+                        dateTimeArray[namberRele].dateTimeList[i] = new Date(relaySettings.DATATIME[i]).getTime();
                         dateTimeArray[namberRele].DatetimeReal[i] = new Date(relaySettings.DATATIME[i]);
-                        dateTimeArray[namberRele].Datetime[i + 1] = new Date(relaySettings.DATATIME[i + 1]).getTime();
+                        dateTimeArray[namberRele].dateTimeList[i + 1] = new Date(relaySettings.DATATIME[i + 1]).getTime();
                         dateTimeArray[namberRele].DatetimeReal[i + 1] = new Date(relaySettings.DATATIME[i + 1]);
                     }
                 }

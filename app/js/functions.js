@@ -325,7 +325,7 @@ function chekDate(parent, datetime, time) {
         // console.log(numberReleClick);
         // console.log(new Date().getTime());
 
-        dateTimeArray[numberReleClick].Datetime[i] = dateInput; //В секундах
+        dateTimeArray[numberReleClick].dateTimeList[i] = dateInput; //В секундах
         dateTimeArray[numberReleClick].DatetimeReal[i] = new Date(k.value); //нермальний формат
 
         if (dateTimeArray[numberReleClick].DatetimeReal[i] != 'Invalid Date') { //Якщо введена дата
@@ -349,7 +349,7 @@ function chekDate(parent, datetime, time) {
 
 
         for (let _n2 = 0; _n2 < 9; _n2 += 2) {
-            if (dateTimeArray[numberReleClick].Datetime[_n2] >= dateTimeArray[numberReleClick].Datetime[_n2 + 1]) {
+            if (dateTimeArray[numberReleClick].dateTimeList[_n2] >= dateTimeArray[numberReleClick].dateTimeList[_n2 + 1]) {
                 //Якщо в одному рядку друга дата менша або дорівнює першій
                 datetime[_n2].classList.add('date-red__color');
                 datetime[_n2 + 1].classList.add('date-red__color');
