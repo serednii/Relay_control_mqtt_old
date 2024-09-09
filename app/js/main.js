@@ -1,21 +1,4 @@
-// "use strict";
 
-// window.onload = function() {
-// console.log(localStorage.getItem('test'));
-// localStorage.setItem('nameDevice', 'miro-benech_1')
-
-// document.querySelector('.releSetingSwitcIhnput').addEventListener('change', ()=>{
-//   console.log('lkjj;lk')
-// });
-
-// try {
-// if (localStorage.getItem('Device') != null || itemDevice.length > 0) { //якщо в LOCALSTORAGE  є щось записано і є списки на екрані 
-//   arr = JSON.parse(localStorage.getItem('Device'));
-// }
-
-// window.onload = function () {
-
-// innerHtmlText().then(addIdAndFor).then(startLocalStorage);
 let deviceData = {};
 let eepromData = {};
 let sensorEepromControl = {};
@@ -47,7 +30,6 @@ async function go() {
   await startLocalStorage();
   await startSelector();
   await startAllFunctionsPromise();
-
 }
 go();
 
@@ -95,37 +77,9 @@ const startAllFunctions = () => {
   handleChangeDataSensor();
   handleClearDataSensor();
   handleSelectSensor()
+  handleBtnSave();
 
 
-  if (btnSave) {
-    console.log('YES CLASSES address-eeprom__save');
-
-    btnSave.addEventListener('click', function () {
-
-      let s = '';
-      tableEepromAddress.forEach(function (e, i) {
-        if (i > 0) {
-          s += 'na' + e.textContent.toLocaleUpperCase();
-        };
-      });
-      console.log(s);
-
-      sendMessage(outSaveDataSensorEeprom, s);
-
-
-      s = '';
-      tableEepromNameSensor.forEach(function (e, i) {
-        if (i > 0) {
-          s += '*&' + e.value;
-        };
-      });
-      console.log(s);
-
-      sendMessage(outSaveNameSensorEeprom, s);
-    });
-  } else {
-    console.log('NOT CLASSES address-eeprom__save');
-  }
 
 
 
