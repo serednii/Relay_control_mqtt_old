@@ -60,6 +60,7 @@ function scripts() {
 
       'app/js/dataTime.js',
       'app/js/main.js',
+      'app/js/startIntervals.js',
       'app/js/handlers/handleChangeSelect.js',
       'app/js/handlers/handleManualControl.js',
       'app/js/handlers/handleRelayTempOn.js',
@@ -72,7 +73,6 @@ function scripts() {
       'app/js/handlers/handleChangeDataSensor.js',
       'app/js/handlers/handleClearDataSensor.js',
       'app/js/handlers/handleSelectSensor.js',
-      'app/js/interval.js',
       'app/js/handlers/handleBtnSave.js',
       'app/js/handlers/handleDefineDevice.js',
       'app/js/handlers/handleRelaySection.js',
@@ -80,9 +80,7 @@ function scripts() {
       'app/js/handlers/handleClearTime.js',
       'app/js/removeShowBlock.js',
       'app/js/printPin.js',
-
-
-
+      'app/js/initDateTimeArray.js',
 
     ])
     .pipe(concat('../min_js/main.min.js'))

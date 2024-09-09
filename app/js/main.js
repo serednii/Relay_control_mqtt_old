@@ -12,15 +12,8 @@ let showEepromData = true;
 let domElement = null;
 let dateTimeArray = [];
 
-for (let i = 0; i < 8; i++) {
-  dateTimeArray.push({
-    dateTimeList: [],
-    dateTimeRealList: [],
-    timeList: [],
-    timeRealList: []
-  });
-}
 
+initDateTimeArray()
 
 
 async function go() {
@@ -59,9 +52,7 @@ const startAllFunctionsPromise = () => {
 }
 
 const startAllFunctions = () => {
-
-  interval();
-
+  startIntervals();
   removeShowBlock();
   printPin();
   handleManualControl();
@@ -81,10 +72,6 @@ const startAllFunctions = () => {
   handleRelaySection();
   handleSaveTime();
   handleClearTime();
-
-
-
-
 }
 
 
