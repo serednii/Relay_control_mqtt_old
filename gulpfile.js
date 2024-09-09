@@ -81,6 +81,10 @@ function scripts() {
       'app/js/removeShowBlock.js',
       'app/js/printPin.js',
       'app/js/initDateTimeArray.js',
+      'app/js/startAllFunctions.js',
+      'app/js/animationPopup.js',
+
+
 
     ])
     .pipe(concat('../min_js/main.min.js'))
