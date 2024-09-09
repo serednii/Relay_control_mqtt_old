@@ -76,6 +76,8 @@ function scripts() {
       'app/js/handlers/handleBtnSave.js',
       'app/js/handlers/handleDefineDevice.js',
       'app/js/handlers/handleRelaySection.js',
+      'app/js/handlers/handleSaveTime.js',
+
 
 
     ])
