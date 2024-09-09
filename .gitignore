@@ -10,3 +10,4 @@ dist/
 psd/
 package-lock.json
 app/css/*
+min_js/
