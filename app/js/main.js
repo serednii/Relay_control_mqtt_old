@@ -78,25 +78,11 @@ const startAllFunctions = () => {
   handleClearDataSensor();
   handleSelectSensor()
   handleBtnSave();
+  handleDefineDevice();
 
 
 
 
-
-  if (btnDefineDevice) {
-    console.log('YES CLASSES popap-menu__btn-define-device');
-    btnDefineDevice.onclick = () => {
-      let rezult = prompt("Підтвердіть введіть (ok)");
-      if (rezult === 'ok') {
-        // popapClearDevice.classList.remove('disable__global');
-        sendMessage(setDefineDevice, 'setDefineDevice');
-        console.log('DEFAULT_DEVICE');
-      }
-
-    };
-  } else {
-    console.log('NOT CLASSES popap-menu__btn-define-device');
-  }
 
 
   if (releItem.length > 0) {

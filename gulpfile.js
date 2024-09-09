@@ -73,6 +73,7 @@ function scripts() {
       'app/js/handlers/handleClearDataSensor.js',
       'app/js/handlers/handleSelectSensor.js',
       'app/js/handlers/handleBtnSave.js',
+      'app/js/handlers/handleDefineDevice.js',
 
 
 
