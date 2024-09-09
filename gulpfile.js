@@ -72,14 +72,12 @@ function scripts() {
       'app/js/handlers/handleChangeDataSensor.js',
       'app/js/handlers/handleClearDataSensor.js',
       'app/js/handlers/handleSelectSensor.js',
+      'app/js/interval.js',
       'app/js/handlers/handleBtnSave.js',
       'app/js/handlers/handleDefineDevice.js',
+      'app/js/handlers/handleRelaySection.js',
 
 
-
-
-
-      'app/js/interval.js'
     ])
     .pipe(concat('../min_js/main.min.js'))
     //.pipe(uglify()) // мініиізує файл
