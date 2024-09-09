@@ -1,15 +1,15 @@
 function printPin() {
     if (releItemTitlePin.length > 0) {
-        console.log('YES CLASSES rele__item-title-pin ' + releItemTitlePin.length);
-        releItemTitlePin[0].textContent = 'PIN 5'
-        releItemTitlePin[1].textContent = 'PIN 4'
-        releItemTitlePin[2].textContent = 'PIN 0'
-        releItemTitlePin[3].textContent = 'PIN 2'
-        releItemTitlePin[4].textContent = 'PIN 12'
-        releItemTitlePin[5].textContent = 'PIN 13'
-        releItemTitlePin[6].textContent = 'PIN 3'
-        releItemTitlePin[7].textContent = 'PIN 1'
+        console.log(`YES CLASSES rele__item-title-pin ${releItemTitlePin.length}`);
+
+        const pinLabels = ['PIN 5', 'PIN 4', 'PIN 0', 'PIN 2', 'PIN 12', 'PIN 13', 'PIN 3', 'PIN 1'];
+
+        releItemTitlePin.forEach((element, index) => {
+            if (index < pinLabels.length) {
+                element.textContent = pinLabels[index];
+            }
+        });
     } else {
-        console.log('NOT CLASSES rele__item-title-pin ' + releItemTitlePin.length);
+        console.log(`NOT CLASSES rele__item-title-pin ${releItemTitlePin.length}`);
     }
 }
