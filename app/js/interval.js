@@ -12,7 +12,6 @@ function interval() {
         }
     }, 15000);
 
-
     setInterval(function () {
         showEepromData = false;
         sendMessage(outstartDataSensor, 'readAddressSensor');

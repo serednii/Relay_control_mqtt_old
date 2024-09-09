@@ -77,6 +77,10 @@ function scripts() {
       'app/js/handlers/handleDefineDevice.js',
       'app/js/handlers/handleRelaySection.js',
       'app/js/handlers/handleSaveTime.js',
+      'app/js/handlers/handleClearTime.js',
+      'app/js/removeShowBlock.js',
+      'app/js/printPin.js',
+
 
 
 
