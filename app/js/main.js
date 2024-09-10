@@ -1,58 +1,25 @@
 
-let deviceData = {};
-let eepromData = {};
-let sensorEepromControl = {};
-let sensorOpenCloseTemperature = {};
-let sensorNames = {};
-let relayNames = {};
-let relaySettings = {};
-let isEepromDataDownloaded = false;
-let isDeviceDataDownloaded = false;
-let showEepromData = true;
-let domElement = null;
-let dateTimeArray = [];
-
-
 initDateTimeArray()
 
+async function start() {
+  try {
+    // Оновлює HTML текст
+    await innerHtmlText();
 
-async function go() {
-  await innerHtmlText();
-  await addIdAndFor();
-  await startLocalStorage();
-  await startSelector();
-  await startAllFunctions();
+    // Додає атрибути ID та for
+    await addIdAndFor();
+
+    // Ініціалізує Local Storage
+    await startLocalStorage();
+
+    // Налаштовує селектори
+    await startSelector();
+
+    // Виконує всі інші функції
+    await startAllFunctions();
+  } catch (error) {
+    // Обробка помилок
+    console.error('Error during initialization:', error);
+  }
 }
-go();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+start();
