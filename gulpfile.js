@@ -83,6 +83,8 @@ function scripts() {
       'app/js/initDateTimeArray.js',
       'app/js/startAllFunctions.js',
       'app/js/animationPopup.js',
+      'app/js/onMessageArrived.js',
+
 
 
 

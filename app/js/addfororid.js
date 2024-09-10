@@ -74,9 +74,8 @@ const addIdAndFor = () => {
 
 }
 
-
-function setIdAndFor(classLabel, clasInput, nameId) {
-  clasInput.forEach((e, i) => {
+function setIdAndFor(classLabel, classInput, nameId) {
+  classInput.forEach((e, i) => {
     if (classLabel[i] && e) {
       e.setAttribute('id', (nameId + i));
       classLabel[i].setAttribute('for', ((nameId + i)));

@@ -1,4 +1,19 @@
+
+let deviceData = {};
+let eepromData = {};
+let sensorEepromControl = {};
+let sensorOpenCloseTemperature = {};
+let sensorNames = {};
+let relayNames = {};
+let relaySettings = {};
+let isEepromDataDownloaded = false;
+let isDeviceDataDownloaded = false;
+let showEepromData = true;
+let domElement = null;
+let dateTimeArray = [];
+
 let userName;
+
 if (localStorage.getItem('Device') != null) {
     console.log(localStorage.getItem('nameDevice'));
     arr = JSON.parse(localStorage.getItem('Device'));
