@@ -5,20 +5,23 @@ function handleBtnSave() {
 
         btnSave.addEventListener('click', function () {
             // Збираємо дані адрес сенсорів
-            const sensorAddresses = tableEepromAddress
-                .slice(1) // Пропускаємо перший елемент
-                .map(e => 'na' + e.textContent.toLocaleUpperCase()) // Формуємо рядок
-                .join(''); // Збираємо все в одну строку
-
+            let sensorAddresses = '';
+            tableEepromAddress.forEach(function (e, i) {
+                if (i > 0) {
+                    sensorAddresses += 'na' + e.textContent.toLocaleUpperCase();
+                };
+            });
             console.log(sensorAddresses);
             sendMessage(outSaveDataSensorEeprom, sensorAddresses);
 
             // Збираємо назви сенсорів
-            const sensorNames = tableEepromNameSensor
-                .slice(1) // Пропускаємо перший елемент
-                .map(e => '*&' + e.value) // Формуємо рядок
-                .join(''); // Збираємо все в одну строку
 
+            let sensorNames = '';
+            tableEepromNameSensor.forEach(function (e, i) {
+                if (i > 0) {
+                    sensorNames += '*&' + e.value;
+                };
+            });
             console.log(sensorNames);
             sendMessage(outSaveNameSensorEeprom, sensorNames);
         });
