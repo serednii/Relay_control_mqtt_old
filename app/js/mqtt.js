@@ -49,8 +49,9 @@ function sendMessage(topic, message) {
 
 
 
+let obj_1, obj_2, obj_3;
 
-function onMessageArrived11(message) {
+function onMessageArrived(message) {
     setTimeout(() => {
         try {
             handleAnalogInput(message);
@@ -292,8 +293,8 @@ function updateRelayManualSettings(relaySettings) {
 function handleReleDateTime(message) {
     try {
         if (message.destinationName === getReleDATATIME) {
-            let relaySettings = parseRelayDateTime(message.payloadString);
-            updateRelayDateTimeSettings(relaySettings);
+            parseRelayDateTime(message.payloadString);
+
         }
     } catch (e) {
         console.error('Error in handleReleDateTime: ', e);
@@ -301,28 +302,83 @@ function handleReleDateTime(message) {
 }
 
 function parseRelayDateTime(payload) {
-    let obj_1, obj_2, obj_3;
     const tempObj = JSON.parse(payload);
-    if (tempObj.obj.length == 3) {
-        obj_1 = tempObj.obj[0];
-        obj_2 = tempObj.obj[1];
-        obj_3 = tempObj.obj[2];
-    } else {
-        obj_1 = tempObj.obj[0];
-        obj_2 = tempObj.obj[0];
-        obj_3 = tempObj.obj[0];
+    if (tempObj.NUMPACKAGE === 1) {
+        obj_1 = Object.assign({}, tempObj);
     }
-    return [obj_1, obj_2, obj_3];
+
+    if (tempObj.NUMPACKAGE === 2) {
+        obj_2 = Object.assign({}, tempObj);
+    }
+
+    if (tempObj.NUMPACKAGE === 3) {
+        obj_2.TIME = obj_2.TIME.concat(tempObj.TIME);
+    }
+
+    if (tempObj.NUMPACKAGE === 4) {
+        obj_3 = Object.assign({}, tempObj);
+        relaySettings = Object.assign(obj_1, obj_2, obj_3);
+        console.log(relaySettings);
+        const namberRele = parseInt(relaySettings.NUM);
+        const dateTimeInput = releItem[namberRele].querySelectorAll('.datetime');
+        const timeInput = releItem[namberRele].querySelectorAll('.time');
+        const dayWikend = releItem[namberRele].querySelectorAll('.day');
+
+        dateTimeInput.forEach(e => e.value = '');
+        timeInput.forEach(e => e.value = '');
+        dayWikend.forEach(e => e.checked = true);
+
+        const delaySecondStart = parseInt(relaySettings.DELAYSECONDSTART);
+
+        if (delaySecondStart < 36000) releControlTimer[namberRele].value = delaySecondStart;
+        else releControlTimer[namberRele].value = '0';
+
+        // dateTimeInput[0].value = "2022-05-02T12:55";
+        for (i = 0; i < 9; i += 2) {
+            if (relaySettings.DATATIME[i] != '65535-99-99T99:99' && relaySettings.DATATIME[i + 1] != '65535-99-99T99:99') {
+                // console.log(relaySettings.DATATIME[i]);
+                // console.log(relaySettings.DATATIME[i + 1]);
+                dateTimeInput[i].value = relaySettings.DATATIME[i];
+                dateTimeInput[i + 1].value = relaySettings.DATATIME[i + 1];
+                dateTimeArray[namberRele].dateTimeList[i] = new Date(relaySettings.DATATIME[i]).getTime();
+                dateTimeArray[namberRele].dateTimeRealList[i] = new Date(relaySettings.DATATIME[i]);
+                dateTimeArray[namberRele].dateTimeList[i + 1] = new Date(relaySettings.DATATIME[i + 1]).getTime();
+                dateTimeArray[namberRele].dateTimeRealList[i + 1] = new Date(relaySettings.DATATIME[i + 1]);
+            }
+        }
+
+        for (i = 0; i < 49; i += 2) {
+            if (relaySettings.TIME[i] != '99:99' && relaySettings.TIME[i + 1] != '99:99') {
+                // console.log(relaySettings.TIME[i]); 
+                // console.log( relaySettings.TIME[i+1]);
+                timeInput[i].value = relaySettings.TIME[i];
+                timeInput[i + 1].value = relaySettings.TIME[i + 1];
+                dateTimeArray[namberRele].timeList[i] = new Date(relaySettings.DATATIME[i]);
+                dateTimeArray[namberRele].timeRealList[i + 1] = new Date(relaySettings.DATATIME[i + 1]);
+            }
+        }
+
+        for (i = 0; i < 35; i++) {
+            if (relaySettings.DEY[i] == 1) {
+                dayWikend[i].checked = true;
+                dayWikend[i].previousElementSibling.classList.add('checked');
+            }
+            if (relaySettings.DEY[i] == 0) {
+                dayWikend[i].checked = false;
+                dayWikend[i].previousElementSibling.classList.remove('checked');
+            }
+        }
+
+        releItem.forEach((parent) => {
+            const datetime = parent.querySelectorAll('.datetime');
+            const time = parent.querySelectorAll('.time');
+            chekDate(parent, datetime, time);
+            chekTime(parent, datetime, time);
+            showTimerIcons(parent, datetime, time); //Добавляє іконки таймера
+        });
+
+    }
 }
 
-function updateRelayDateTimeSettings(relaySettings) {
-    document.querySelectorAll('.rele__control-data-time').forEach(function (e, i) {
-        const relayObj = relaySettings[i];
-        e.querySelector('.rele__control-time-on').innerText = relayObj.timeOn;
-        e.querySelector('.rele__control-time-off').innerText = relayObj.timeOff;
-    });
-}
 
-function sendMessage(topic, message) {
-    // Функція для надсилання повідомлень на MQTT сервер
-}
+
