@@ -8,9 +8,8 @@ function handleManualControl() {
             control.addEventListener('change', () => {
                 const status = control.checked ? `${index}x1k` : `${index}x0k`;
                 console.log(`s---- ${status}`);
-
                 try {
-                    sendMessage(setReleVklOtkl, status);
+                    // sendMessage(setReleVklOtkl, status);
                 } catch (error) {
                     console.error('Error sending message:', error);
                 }

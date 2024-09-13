@@ -1,4 +1,4 @@
-function onMessageArrived(message) {
+function onMessageArrived11(message) {
     setTimeout(() => {
         // called when a message arrives
         // console.log("onMessageArrived:  " + message.payloadString);
@@ -184,7 +184,6 @@ function onMessageArrived(message) {
         //************************************************************************************************************** */
 
         if (message.destinationName === getReleDATATIME) {
-            let obj_1, obj_2, obj_3;
 
             //получаємо дані про таймери
             const tempObj = JSON.parse(message.payloadString);
