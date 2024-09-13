@@ -10,13 +10,13 @@ function handleRelaySection() {
                 const time = parent.querySelectorAll('.time');
 
                 if (event.target.classList.contains('day')) {
-                    chekChecedDay(event);
+                    checkCheckedDay(event);
                 }
                 if (event.target.classList.contains('datetime')) {
-                    chekDate(parent, datetime, time);
+                    checkDate(parent, datetime, time);
                 }
                 if (event.target.classList.contains('time')) {
-                    chekTime(parent, datetime, time);
+                    checkTime(parent, datetime, time);
                 }
 
                 showTimerIcons(parent, datetime, time); // Додає іконки таймера
@@ -51,9 +51,9 @@ function handleRelaySection() {
 //             event.stopPropagation ? event.stopPropagation() : (event.cancelBubble = true);
 //             const datetime = parent.querySelectorAll('.datetime');
 //             const time = parent.querySelectorAll('.time');
-//             if (event.target.classList.contains('day')) chekChecedDay(event);
-//             if (event.target.classList.contains('datetime')) chekDate(parent, datetime, time);
-//             if (event.target.classList.contains('time')) chekTime(parent, datetime, time);
+//             if (event.target.classList.contains('day')) checkCheckedDay(event);
+//             if (event.target.classList.contains('datetime')) checkDate(parent, datetime, time);
+//             if (event.target.classList.contains('time')) checkTime(parent, datetime, time);
 //             showTimerIcons(parent, datetime, time); //Добавляє іконки таймера
 //         });
 

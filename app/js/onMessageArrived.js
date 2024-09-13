@@ -269,8 +269,8 @@ function onMessageArrived11(message) {
                 releItem.forEach((parent) => {
                     const datetime = parent.querySelectorAll('.datetime');
                     const time = parent.querySelectorAll('.time');
-                    chekDate(parent, datetime, time);
-                    chekTime(parent, datetime, time);
+                    checkDate(parent, datetime, time);
+                    checkTime(parent, datetime, time);
                     showTimerIcons(parent, datetime, time); //Добавляє іконки таймера
 
                 });

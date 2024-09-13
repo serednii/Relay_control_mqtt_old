@@ -1,4 +1,6 @@
 
+"use strict"
+
 let deviceData = {};
 let eepromData = {};
 let sensorEepromControl = {};
@@ -16,7 +18,7 @@ let userName;
 
 if (localStorage.getItem('Device') != null) {
     console.log(localStorage.getItem('nameDevice'));
-    arr = JSON.parse(localStorage.getItem('Device'));
+    const arr = JSON.parse(localStorage.getItem('Device'));
     document.querySelector('.info__local-storage').innerText = arr.NameDevice + '  ---   ' + arr.Name;
     userName = arr.NameDevice;
 } else {

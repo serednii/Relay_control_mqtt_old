@@ -57,14 +57,14 @@ function onMessageArrived(message) {
             handleAnalogInput(message);
             handleSSID(message);
             handleLocalIP(message);
+            handleReleEpromUprManual(message);
+            handleReleState(message);
+            handleSensorVklOtklTemp(message);
+            handleReleEpromUpr(message);
             handleEepromSensorData(message);
             handleDeviceSensorData(message);
-            handleReleEpromUpr(message);
-            handleSensorVklOtklTemp(message);
-            handleReleState(message);
             handleSensorNames(message);
             handleReleNames(message);
-            handleReleEpromUprManual(message);
             handleReleDateTime(message);
         } catch (e) {
             console.error('Error in onMessageArrived: ', e);
@@ -189,9 +189,6 @@ function handleSensorVklOtklTemp(message) {
     }
 }
 
-function updateRelayTemperatureSettings() {
-    // Логіка для оновлення температурних налаштувань реле
-}
 
 function handleReleState(message) {
     try {
@@ -334,7 +331,7 @@ function parseRelayDateTime(payload) {
         else releControlTimer[namberRele].value = '0';
 
         // dateTimeInput[0].value = "2022-05-02T12:55";
-        for (i = 0; i < 9; i += 2) {
+        for (let i = 0; i < 9; i += 2) {
             if (relaySettings.DATATIME[i] != '65535-99-99T99:99' && relaySettings.DATATIME[i + 1] != '65535-99-99T99:99') {
                 // console.log(relaySettings.DATATIME[i]);
                 // console.log(relaySettings.DATATIME[i + 1]);
@@ -347,7 +344,7 @@ function parseRelayDateTime(payload) {
             }
         }
 
-        for (i = 0; i < 49; i += 2) {
+        for (let i = 0; i < 49; i += 2) {
             if (relaySettings.TIME[i] != '99:99' && relaySettings.TIME[i + 1] != '99:99') {
                 // console.log(relaySettings.TIME[i]); 
                 // console.log( relaySettings.TIME[i+1]);
@@ -358,7 +355,7 @@ function parseRelayDateTime(payload) {
             }
         }
 
-        for (i = 0; i < 35; i++) {
+        for (let i = 0; i < 35; i++) {
             if (relaySettings.DEY[i] == 1) {
                 dayWikend[i].checked = true;
                 dayWikend[i].previousElementSibling.classList.add('checked');
@@ -372,8 +369,8 @@ function parseRelayDateTime(payload) {
         releItem.forEach((parent) => {
             const datetime = parent.querySelectorAll('.datetime');
             const time = parent.querySelectorAll('.time');
-            chekDate(parent, datetime, time);
-            chekTime(parent, datetime, time);
+            checkDate(parent, datetime, time);
+            checkTime(parent, datetime, time);
             showTimerIcons(parent, datetime, time); //Добавляє іконки таймера
         });
 
