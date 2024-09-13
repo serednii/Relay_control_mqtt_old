@@ -10,64 +10,188 @@ function checkCheckedDay(event) { //Включає виключає дні ти�
 }
 
 // ********************************************************************************************************************************************************************
-function checkDate(parent, dateTime, time) {
-    //обробка дати 
-    const numberRelayClick = parent.getAttribute('data-rele');
-    const timerBlock = parent.querySelectorAll('.timer-date__item');
 
-    dateTime.forEach(function (k, i) {
-        let dateInput = new Date(k.value).getTime();
-        dateTimeArray[numberRelayClick].dateTimeList[i] = dateInput; //В секундах
-        dateTimeArray[numberRelayClick].dateTimeRealList[i] = new Date(k.value); //нермальний формат
+function checkDate(parent, dateTimeInputs, timeInputs) {
+    const relayIndex = parent.getAttribute('data-rele');
+    const timerBlocks = parent.querySelectorAll('.timer-date__item');
 
-        if (dateTimeArray[numberRelayClick].dateTimeRealList[i] != 'Invalid Date') { //Якщо введена дата
-            if (i % 2 == 0) {
-                //neparnyy element
-                if (time[i * 5].value != '') { //Якщо введений час
-                    dateTime[i].value = formatDataAndTime(dateTimeArray[numberRelayClick].dateTimeRealList[i], 'start'); //Міняємо в даті годину на 00:00
-                    if (dateTime[i].value != 'Invalid Date') dateTimeArray[numberRelayClick].dateTimeRealList[i] = new Date(dateTime[i].value); //записуємо в елемент datatime
-                }
-            } else {
-                //parnyy elemen
-                if (time[(i - 1) * 5].value != '') {
-                    dateTime[i].value = formatDataAndTime(dateTimeArray[numberRelayClick].dateTimeRealList[i], 'end'); //Міняємо в даті годину на 23:59
-                    if (dateTime[i].value != 'Invalid Date') dateTimeArray[numberRelayClick].dateTimeRealList[i] = new Date(dateTime[i].value); //записуємо в елемент datatime
-                }
-            }
-        }
+    dateTimeInputs.forEach((dateInput, index) => {
+        const parsedDate = new Date(dateInput.value).getTime();
+        updateDateTimeArray(relayIndex, index, parsedDate, dateInput.value);
+        handleTimeFormatting(dateTimeInputs, timeInputs, relayIndex, index);
 
-
-        for (let _n2 = 0; _n2 < 9; _n2 += 2) {
-            if (dateTimeArray[numberRelayClick].dateTimeList[_n2] >= dateTimeArray[numberRelayClick].dateTimeList[_n2 + 1]) {
-                //Якщо в одному рядку друга дата менша або дорівнює першій
-                dateTime[_n2].classList.add('date-red__color');
-                dateTime[_n2 + 1].classList.add('date-red__color');
-            } else {
-                dateTime[_n2].classList.remove('date-red__color');
-                dateTime[_n2 + 1].classList.remove('date-red__color');
-            }
-
-            if (dateTime[_n2].value == '' && dateTime[_n2 + 1].value !== '' || dateTime[_n2].value !== '' && dateTime[_n2 + 1].value == '') {
-                //Якщо в рядку незаповнене одне з полів
-                if (dateTime[_n2].value == '') dateTime[_n2].classList.add('date-blue__backround');
-                else dateTime[_n2 + 1].classList.add('date-blue__backround');
-            } else {
-                dateTime[_n2].classList.remove('date-blue__backround');
-                dateTime[_n2 + 1].classList.remove('date-blue__backround');
-            }
-
-            for (let _n3 = 0, _nn = 1; _n3 < 7; _n3 += 2, _nn++) {
-                // n= [0 1 2 3 4 5 6 7 ]    nn = [1 3 ]
-                if (dateTime[_n3].value != '' && dateTime[_n3 + 1].value != '' && !dateTime[_n3].classList.contains('date-red__color')) {
-                    //Для розблокіровки для дальших блоків
-                    timerBlock[_nn].classList.add('date-show-block');
-                } else {
-                    timerBlock[_nn].classList.remove('date-show-block');
-                }
-            }
-        }
+        validateDateRanges(dateTimeInputs, relayIndex);
+        toggleTimerBlockVisibility(timerBlocks, dateTimeInputs);
     });
 }
+
+//Функція для оновлення масиву dateTimeArray
+function updateDateTimeArray(relayIndex, index, parsedDate, dateValue) {
+    dateTimeArray[relayIndex].dateTimeList[index] = parsedDate; // У секундах
+    dateTimeArray[relayIndex].dateTimeRealList[index] = new Date(dateValue); // У нормальному форматі
+}
+
+//Функція для форматування часу
+function handleTimeFormatting(dateTimeInputs, timeInputs, relayIndex, index) {
+    const isEvenIndex = index % 2 === 0;
+    const timeValue = isEvenIndex ? timeInputs[index * 5].value : timeInputs[(index - 1) * 5].value;
+
+    if (timeValue !== '' && dateTimeArray[relayIndex].dateTimeRealList[index] != 'Invalid Date') {
+        const formattedDate = formatDataAndTime(dateTimeArray[relayIndex].dateTimeRealList[index], isEvenIndex ? 'start' : 'end');
+        dateTimeInputs[index].value = formattedDate;
+
+        if (formattedDate != 'Invalid Date') {
+            dateTimeArray[relayIndex].dateTimeRealList[index] = new Date(formattedDate);
+        }
+    }
+}
+
+//Функція для валідації діапазонів дати
+function validateDateRanges(dateTimeInputs, relayIndex) {
+    for (let i = 0; i < 9; i += 2) {
+        const startTime = dateTimeArray[relayIndex].dateTimeList[i];
+        const endTime = dateTimeArray[relayIndex].dateTimeList[i + 1];
+
+        if (startTime >= endTime && endTime !== '') {
+            markAsInvalid(dateTimeInputs, i, 'date-red__color');
+        } else {
+            removeInvalidMark(dateTimeInputs, i, 'date-red__color');
+        }
+
+        if (isIncompleteDateRange(dateTimeInputs, i)) {
+            markAsIncomplete(dateTimeInputs, i, 'date-blue__backround');
+        } else {
+            removeInvalidMark(dateTimeInputs, i, 'date-blue__backround');
+        }
+    }
+}
+
+
+//Функція для перевірки на незаповнені поля
+function isIncompleteDateRange(dateTimeInputs, index) {
+    return (dateTimeInputs[index].value === '' && dateTimeInputs[index + 1].value !== '') ||
+        (dateTimeInputs[index].value !== '' && dateTimeInputs[index + 1].value === '');
+}
+
+
+//Функції для роботи з класами помилок
+function markAsInvalid(dateTimeInputs, index, className) {
+    dateTimeInputs[index].classList.add(className);
+    dateTimeInputs[index + 1].classList.add(className);
+}
+
+function removeInvalidMark(dateTimeInputs, index, className) {
+    dateTimeInputs[index].classList.remove(className);
+    dateTimeInputs[index + 1].classList.remove(className);
+}
+
+function markAsIncomplete(dateTimeInputs, index, className) {
+    if (dateTimeInputs[index].value === '') dateTimeInputs[index].classList.add(className);
+    else dateTimeInputs[index + 1].classList.add(className);
+}
+
+//Функція для оновлення видимості блоків таймера
+function toggleTimerBlockVisibility(timerBlocks, dateTimeInputs) {
+    for (let i = 0, blockIndex = 1; i < 7; i += 2, blockIndex++) {
+        const isValid = dateTimeInputs[i].value !== '' && dateTimeInputs[i + 1].value !== '' &&
+            !dateTimeInputs[i].classList.contains('date-red__color');
+
+        if (isValid) {
+            timerBlocks[blockIndex].classList.add('date-show-block');
+        } else {
+            timerBlocks[blockIndex].classList.remove('date-show-block');
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// function checkDate(parent, dateTime, time) {
+//     //обробка дати 
+//     const numberRelayClick = parent.getAttribute('data-rele');
+//     const timerBlock = parent.querySelectorAll('.timer-date__item');
+
+//     dateTime.forEach(function (k, i) {
+//         let dateInput = new Date(k.value).getTime();
+//         dateTimeArray[numberRelayClick].dateTimeList[i] = dateInput; //В секундах
+//         dateTimeArray[numberRelayClick].dateTimeRealList[i] = new Date(k.value); //нермальний формат
+
+//         if (dateTimeArray[numberRelayClick].dateTimeRealList[i] != 'Invalid Date') { //Якщо введена дата
+//             if (i % 2 == 0) {
+//                 //neparnyy element
+//                 if (time[i * 5].value != '') { //Якщо введений час
+//                     dateTime[i].value = formatDataAndTime(dateTimeArray[numberRelayClick].dateTimeRealList[i], 'start'); //Міняємо в даті годину на 00:00
+//                     if (dateTime[i].value != 'Invalid Date') dateTimeArray[numberRelayClick].dateTimeRealList[i] = new Date(dateTime[i].value); //записуємо в елемент datatime
+//                 }
+//             } else {
+//                 //parnyy elemen
+//                 if (time[(i - 1) * 5].value != '') {
+//                     dateTime[i].value = formatDataAndTime(dateTimeArray[numberRelayClick].dateTimeRealList[i], 'end'); //Міняємо в даті годину на 23:59
+//                     if (dateTime[i].value != 'Invalid Date') dateTimeArray[numberRelayClick].dateTimeRealList[i] = new Date(dateTime[i].value); //записуємо в елемент datatime
+//                 }
+//             }
+//         }
+
+
+//         for (let _n2 = 0; _n2 < 9; _n2 += 2) {
+//             if (dateTimeArray[numberRelayClick].dateTimeList[_n2] >= dateTimeArray[numberRelayClick].dateTimeList[_n2 + 1]) {
+//                 //Якщо в одному рядку друга дата менша або дорівнює першій
+//                 dateTime[_n2].classList.add('date-red__color');
+//                 dateTime[_n2 + 1].classList.add('date-red__color');
+//             } else {
+//                 dateTime[_n2].classList.remove('date-red__color');
+//                 dateTime[_n2 + 1].classList.remove('date-red__color');
+//             }
+
+//             if (dateTime[_n2].value == '' && dateTime[_n2 + 1].value !== '' || dateTime[_n2].value !== '' && dateTime[_n2 + 1].value == '') {
+//                 //Якщо в рядку незаповнене одне з полів
+//                 if (dateTime[_n2].value == '') dateTime[_n2].classList.add('date-blue__backround');
+//                 else dateTime[_n2 + 1].classList.add('date-blue__backround');
+//             } else {
+//                 dateTime[_n2].classList.remove('date-blue__backround');
+//                 dateTime[_n2 + 1].classList.remove('date-blue__backround');
+//             }
+
+//             for (let _n3 = 0, _nn = 1; _n3 < 7; _n3 += 2, _nn++) {
+//                 // n= [0 1 2 3 4 5 6 7 ]    nn = [1 3 ]
+//                 if (dateTime[_n3].value != '' && dateTime[_n3 + 1].value != '' && !dateTime[_n3].classList.contains('date-red__color')) {
+//                     //Для розблокіровки для дальших блоків
+//                     timerBlock[_nn].classList.add('date-show-block');
+//                 } else {
+//                     timerBlock[_nn].classList.remove('date-show-block');
+//                 }
+//             }
+//         }
+//     });
+// }
 
 
 // ********************************************************************************************************************************************************************
