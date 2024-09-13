@@ -45,7 +45,7 @@ function showSectionTimeAndSeting(event, parent, classLink, classShowSection, nu
         parent.querySelector(classShowSection).classList.remove('show-block');
         if (event.target.classList.contains('rele__control-manually-show')) {
             parent.querySelector('.rele__seting-sensor-timer').classList.remove('block__hidden'); //Добавляємо клас відкриваємо Select
-            s = num + 'x' + '0' + 'k';
+            const s = num + 'x0k';
             console.log('s----' + s);
             sendMessage(setReleEpromUprManual, s);
         }
@@ -55,7 +55,7 @@ function showSectionTimeAndSeting(event, parent, classLink, classShowSection, nu
         parent.querySelector(classShowSection).classList.add('show-block');
         if (event.target.classList.contains('rele__control-manually-show')) {
             parent.querySelector('.rele__seting-sensor-timer').classList.add('block__hidden'); //Добавляємо клас відкриваємо Select
-            s = num + 'x' + '1' + 'k';
+            const s = num + 'x1k';
             console.log('s----' + s);
             sendMessage(setReleEpromUprManual, s);
         }

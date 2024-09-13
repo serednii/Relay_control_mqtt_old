@@ -4,7 +4,7 @@ function onMessageArrived11(message) {
         // console.log("onMessageArrived:  " + message.payloadString);
         //  console.log("onMessageArrived:  "+message.destinationName);
         //************************************************************************************************************** */
-        if (message.destinationName === getanaloInputA0) {
+        if (message.destinationName === getAnalogInputA0) {
             // console.log(message.payloadString);
             printAnalogInput.innerText = message.payloadString;
         }
@@ -35,12 +35,12 @@ function onMessageArrived11(message) {
 
                 if (eepromData.obj[_k].address != '0000000000000000') {
                     if (sensorNames.obj != undefined) {
-                        popapTemp[_k].textContent = (sensorNames.obj[_k].nameSensor) + ' ' + (eepromData.obj[_k].temp.toFixed(1));
+                        popupTemp[_k].textContent = (sensorNames.obj[_k].nameSensor) + ' ' + (eepromData.obj[_k].temp.toFixed(1));
                     } else {
-                        popapTemp[_k].innerText = eepromData.obj[_k].temp.toFixed(1);
+                        popupTemp[_k].innerText = eepromData.obj[_k].temp.toFixed(1);
                     }
                 } else {
-                    popapTemp[_k].closest('.popap-info__lamp-item').classList.add('shiden');
+                    popupTemp[_k].closest('.popap-info__lamp-item').classList.add('shiden');
                 }
             }
 
@@ -99,10 +99,10 @@ function onMessageArrived11(message) {
                 //Засвічуємо або гасимо лампочки
                 if (stanReleTemp & 1 << n) {
                     releOnOff[n].checked = false;
-                    popapInfoTempItem[n].classList.remove('on')
+                    popupInfoTempItem[n].classList.remove('on')
                 } else {
                     releOnOff[n].checked = true;
-                    popapInfoTempItem[n].classList.add('on');
+                    popupInfoTempItem[n].classList.add('on');
                 }
             }
         }
@@ -142,9 +142,9 @@ function onMessageArrived11(message) {
                     e.textContent = relayNames.obj[i].nameRele;
                 });
 
-                releNameInput.forEach(function (e, i) {
+                relayNameInput.forEach(function (e, i) {
                     e.value = relayNames.obj[i].nameRele;
-                    popapInfoTempItem[i].textContent = relayNames.obj[i].nameRele;
+                    popupInfoTempItem[i].textContent = relayNames.obj[i].nameRele;
                     releItemTitleName[i].textContent = relayNames.obj[i].nameRele;
                 });
                 // console.log('relayNames');
@@ -227,8 +227,8 @@ function onMessageArrived11(message) {
 
                 const delaySecondStart = parseInt(relaySettings.DELAYSECONDSTART);
 
-                if (delaySecondStart < 36000) releControlTimer[namberRele].value = delaySecondStart;
-                else releControlTimer[namberRele].value = '0';
+                if (delaySecondStart < 36000) relayControlTimer[namberRele].value = delaySecondStart;
+                else relayControlTimer[namberRele].value = '0';
 
                 // dateTimeInput[0].value = "2022-05-02T12:55";
                 for (i = 0; i < 9; i += 2) {

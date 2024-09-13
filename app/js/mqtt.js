@@ -26,7 +26,7 @@ function onConnect() {
     client.subscribe(getRelayDataTime);
     client.subscribe(CONNECT_SSID);
     client.subscribe(LOCAL_IP);
-    client.subscribe(getanaloInputA0);
+    client.subscribe(getAnalogInputA0);
     sendMessage(outstartDataSensor, 'ALL');
 }
 
@@ -74,7 +74,7 @@ function onMessageArrived(message) {
 
 function handleAnalogInput(message) {
     try {
-        if (message.destinationName === getanaloInputA0) {
+        if (message.destinationName === getAnalogInputA0) {
             printAnalogInput.innerText = message.payloadString;
         }
     } catch (e) {
@@ -126,12 +126,12 @@ function updateEepromTable(index) {
 
     if (eepromData.obj[index].address != '0000000000000000') {
         if (sensorNames.obj != undefined) {
-            popapTemp[index].textContent = sensorNames.obj[index].nameSensor + ' ' + eepromData.obj[index].temp.toFixed(1);
+            popupTemp[index].textContent = sensorNames.obj[index].nameSensor + ' ' + eepromData.obj[index].temp.toFixed(1);
         } else {
-            popapTemp[index].innerText = eepromData.obj[index].temp.toFixed(1);
+            popupTemp[index].innerText = eepromData.obj[index].temp.toFixed(1);
         }
     } else {
-        popapTemp[index].closest('.popap-info__lamp-item').classList.add('shiden');
+        popupTemp[index].closest('.popap-info__lamp-item').classList.add('shiden');
     }
 }
 
@@ -206,10 +206,10 @@ function updateReleState(stanReleTemp) {
     for (let n = 0; n < 8; n++) {
         if (stanReleTemp & (1 << n)) {
             releOnOff[n].checked = false;
-            popapInfoTempItem[n].classList.remove('on');
+            popupInfoTempItem[n].classList.remove('on');
         } else {
             releOnOff[n].checked = true;
-            popapInfoTempItem[n].classList.add('on');
+            popupInfoTempItem[n].classList.add('on');
         }
     }
 }
@@ -252,9 +252,9 @@ function updateReleNames() {
         e.textContent = relayNames.obj[i].nameRele;
     });
 
-    releNameInput.forEach(function (e, i) {
+    relayNameInput.forEach(function (e, i) {
         e.value = relayNames.obj[i].nameRele;
-        popapInfoTempItem[i].textContent = relayNames.obj[i].nameRele;
+        popupInfoTempItem[i].textContent = relayNames.obj[i].nameRele;
         releItemTitleName[i].textContent = relayNames.obj[i].nameRele;
     });
 }
@@ -327,8 +327,8 @@ function parseRelayDateTime(payload) {
 
         const delaySecondStart = parseInt(relaySettings.DELAYSECONDSTART);
 
-        if (delaySecondStart < 36000) releControlTimer[namberRele].value = delaySecondStart;
-        else releControlTimer[namberRele].value = '0';
+        if (delaySecondStart < 36000) relayControlTimer[namberRele].value = delaySecondStart;
+        else relayControlTimer[namberRele].value = '0';
 
         // dateTimeInput[0].value = "2022-05-02T12:55";
         for (let i = 0; i < 9; i += 2) {

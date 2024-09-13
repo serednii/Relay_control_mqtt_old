@@ -37,7 +37,7 @@ function handleChangeRange() {
 //   function handleChangeRange() {
 
 //     // Один діапазон температур або два
-//     releTempChangeSingle.forEach(function (e, i) {
+//     relayTempChangeSingle.forEach(function (e, i) {
 //       e.addEventListener('change', function () {
 //         let ii = Math.trunc(i / 2);
 //         if (e.value == '1') {
