@@ -183,7 +183,7 @@ function onMessageArrived11(message) {
 
         //************************************************************************************************************** */
 
-        if (message.destinationName === getReleDATATIME) {
+        if (message.destinationName === getRelayDataTime) {
 
             //получаємо дані про таймери
             const tempObj = JSON.parse(message.payloadString);
@@ -209,9 +209,9 @@ function onMessageArrived11(message) {
                 relaySettings = Object.assign(obj_1, obj_2, obj_3);
                 // console.log(relaySettings);
                 const namberRele = parseInt(relaySettings.NUM);
-                const dateTimeInput = releItem[namberRele].querySelectorAll('.datetime');
-                const timeInput = releItem[namberRele].querySelectorAll('.time');
-                const dayWikend = releItem[namberRele].querySelectorAll('.day');
+                const dateTimeInput = relayItem[namberRele].querySelectorAll('.datetime');
+                const timeInput = relayItem[namberRele].querySelectorAll('.time');
+                const dayWikend = relayItem[namberRele].querySelectorAll('.day');
 
                 dateTimeInput.forEach(function (e) {
                     e.value = '';
@@ -266,7 +266,7 @@ function onMessageArrived11(message) {
                     }
                 }
 
-                releItem.forEach((parent) => {
+                relayItem.forEach((parent) => {
                     const datetime = parent.querySelectorAll('.datetime');
                     const time = parent.querySelectorAll('.time');
                     checkDate(parent, datetime, time);

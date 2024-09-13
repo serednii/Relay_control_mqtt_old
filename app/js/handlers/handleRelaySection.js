@@ -2,8 +2,8 @@
 
 function handleRelaySection() {
 
-    if (releItem.length > 0) {
-        releItem.forEach((parent, num) => {
+    if (relayItem.length > 0) {
+        relayItem.forEach((parent, num) => {
             parent.addEventListener('change', (event) => {
                 event.stopPropagation(); // Зупинка спливання подій
                 const datetime = parent.querySelectorAll('.datetime');
@@ -42,10 +42,10 @@ function handleRelaySection() {
 
 }
 
-// if (releItem.length > 0) {
-//     // console.log('YES CLASSES  rele__item ' + releItem.length);
+// if (relayItem.length > 0) {
+//     // console.log('YES CLASSES  rele__item ' + relayItem.length);
 
-//     releItem.forEach((parent, num) => {
+//     relayItem.forEach((parent, num) => {
 
 //         parent.addEventListener('change', function (event) {
 //             event.stopPropagation ? event.stopPropagation() : (event.cancelBubble = true);

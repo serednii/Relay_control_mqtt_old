@@ -1,8 +1,8 @@
 function handleRelayTempChangeRadio() {
-    const releTempChangeRadio = document.querySelectorAll('.rele-temp-change-radio');
+    const relayTempChangeRadio = document.querySelectorAll('.rele-temp-change-radio');
 
-    if (releTempChangeRadio.length > 0) {
-        releTempChangeRadio.forEach(function (radioElement, index) {
+    if (relayTempChangeRadio.length > 0) {
+        relayTempChangeRadio.forEach(function (radioElement, index) {
             radioElement.addEventListener('change', function () {
                 let sensorIndex = Math.trunc(index / 2);
                 let sensorObject = sensorEepromControl.obj[sensorIndex];
@@ -27,7 +27,7 @@ function handleRelayTempChangeRadio() {
     }
 }
 
-// releTempChangeRadio.forEach(function (e, i) {
+// relayTempChangeRadio.forEach(function (e, i) {
 //     e.addEventListener('change', function () {
 //       let ii = Math.trunc(i / 2);
 //       if (e.value == '0') {

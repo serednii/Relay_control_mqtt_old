@@ -23,7 +23,7 @@ function onConnect() {
     client.subscribe(getSensorName);
     client.subscribe(getReleName);
     client.subscribe(getReleEpromUprManual);
-    client.subscribe(getReleDATATIME);
+    client.subscribe(getRelayDataTime);
     client.subscribe(CONNECT_SSID);
     client.subscribe(LOCAL_IP);
     client.subscribe(getanaloInputA0);
@@ -289,7 +289,7 @@ function updateRelayManualSettings(relaySettings) {
 
 function handleReleDateTime(message) {
     try {
-        if (message.destinationName === getReleDATATIME) {
+        if (message.destinationName === getRelayDataTime) {
             parseRelayDateTime(message.payloadString);
 
         }
@@ -317,9 +317,9 @@ function parseRelayDateTime(payload) {
         relaySettings = Object.assign(obj_1, obj_2, obj_3);
         console.log(relaySettings);
         const namberRele = parseInt(relaySettings.NUM);
-        const dateTimeInput = releItem[namberRele].querySelectorAll('.datetime');
-        const timeInput = releItem[namberRele].querySelectorAll('.time');
-        const dayWikend = releItem[namberRele].querySelectorAll('.day');
+        const dateTimeInput = relayItem[namberRele].querySelectorAll('.datetime');
+        const timeInput = relayItem[namberRele].querySelectorAll('.time');
+        const dayWikend = relayItem[namberRele].querySelectorAll('.day');
 
         dateTimeInput.forEach(e => e.value = '');
         timeInput.forEach(e => e.value = '');
@@ -366,7 +366,7 @@ function parseRelayDateTime(payload) {
             }
         }
 
-        releItem.forEach((parent) => {
+        relayItem.forEach((parent) => {
             const datetime = parent.querySelectorAll('.datetime');
             const time = parent.querySelectorAll('.time');
             checkDate(parent, datetime, time);

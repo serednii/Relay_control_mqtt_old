@@ -6,8 +6,8 @@ function handleSaveNameRelay() {
 
         releNameButtons.forEach(function (button, index) {
             button.addEventListener('click', function () {
-                const releItem = button.closest('.rele__item');
-                const releNameInput = releItem.querySelector('.rele__name-input');
+                const parentRelayItem = button.closest('.rele__item');
+                const releNameInput = parentRelayItem.querySelector('.rele__name-input');
 
                 // Перевіряємо, чи існує поле вводу для імені
                 if (releNameInput && releNameInput.value !== '') {

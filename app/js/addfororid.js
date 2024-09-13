@@ -54,11 +54,11 @@ let arrayClass = [
   // }
 ];
 //Призначаємо for and id for label and input
-// setIdAndFor(releSetingSwitchLabel, releSetingSwitcIhnput,'seting-switch-');
+// setIdAndFor(relaySettingSwitchLabel, relaySettingSwitchInput,'seting-switch-');
 // setIdAndFor(labelDey, inputDey,'time-id-' );
 
-// setIdAndFor(releTempChangeLabel, releTempChangeRadio,'on_' );
-// setIdAndFor(releSetingSensorSelectLabel, releSetingSensorSelect,'cars' );
+// setIdAndFor(relayTempChangeLabel, relayTempChangeRadio,'on_' );
+// setIdAndFor(relaySettingSensorSelectLabel, relaySettingSensorSelect,'cars' );
 
 
 const addIdAndFor = () => {

@@ -6,13 +6,13 @@ function handleChangeTempOnOff() {
 
         releTempButtons.forEach(function (button, index) {
             button.addEventListener('click', function () {
-                const releItem = button.closest('.rele__item');
-                const releTempVkl = releItem.querySelector('.rele-temp-vkl');
-                const releTempOtkl = releItem.querySelector('.rele-temp-change .rele-temp-otkl');
+                const parentRelayItem = button.closest('.rele__item');
+                const relayTempOn = parentRelayItem.querySelector('.rele-temp-vkl');
+                const releTempOtkl = parentRelayItem.querySelector('.rele-temp-change .rele-temp-otkl');
 
                 // Перевірка наявності елементів та їх значень
-                if (releTempVkl && releTempOtkl && releTempVkl.value !== '' && releTempOtkl.value !== '') {
-                    const message = `${index}v${releTempVkl.value}o${releTempOtkl.value}k`;
+                if (relayTempOn && releTempOtkl && relayTempOn.value !== '' && releTempOtkl.value !== '') {
+                    const message = `${index}v${relayTempOn.value}o${releTempOtkl.value}k`;
                     sendMessage(outSaveDataSensorTemp, message);
                     console.log('Message sent: ', message);
                 } else {

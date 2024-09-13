@@ -4,7 +4,7 @@ function updateRelaySettings() {
 
     if (typeof sensorEepromControl?.obj === 'object' && sensorEepromControl?.obj !== undefined) {
         // Якщо об'єкт не порожній
-        releItem.forEach(function (relayElement, relayIndex) {
+        relayItem.forEach(function (relayElement, relayIndex) {
 
             const sensorSelect = relayElement.querySelector('select');
             const tempRangeRadios = relayElement.querySelectorAll('.rele-temp-change-radio');
