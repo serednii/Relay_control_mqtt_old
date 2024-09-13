@@ -85,5 +85,5 @@ btnRestartDevice.addEventListener('click', restartDevice);
 
 function restartDevice() {
     let rezult = prompt("Підтвердіть введіть (ok)");
-    if (rezult === 'ok') sendMessage(setResetFunction, 'resetFunction');
+    if (rezult === 'ok') sendMessage(SET_RESET_FUNCTION, 'resetFunction');
 }

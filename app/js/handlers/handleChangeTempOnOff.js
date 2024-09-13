@@ -13,7 +13,7 @@ function handleChangeTempOnOff() {
                 // Перевірка наявності елементів та їх значень
                 if (relayTempOn && releTempOtkl && relayTempOn.value !== '' && releTempOtkl.value !== '') {
                     const message = `${index}v${relayTempOn.value}o${releTempOtkl.value}k`;
-                    sendMessage(outSaveDataSensorTemp, message);
+                    sendMessage(OUT_SAVE_DATA_SENSOR_TEMP, message);
                     console.log('Message sent: ', message);
                 } else {
                     console.log('Invalid temperature values');
@@ -45,7 +45,7 @@ function handleChangeTempOnOff() {
 //             e.addEventListener('click', function () {
 //                 s = i + 'v' + e.closest('.rele__item').querySelector('.rele-temp-vkl').value + 'o' + e.closest('.rele-temp-change').querySelector('.rele-temp-otkl').value + 'k';
 
-//                 sendMessage(outSaveDataSensorTemp, s);
+//                 sendMessage(OUT_SAVE_DATA_SENSOR_TEMP, s);
 //                 console.log(s);
 //             });
 //         });

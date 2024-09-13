@@ -12,7 +12,7 @@ function handleSaveNameRelay() {
                 // Перевіряємо, чи існує поле вводу для імені
                 if (findRelayNameInput && findRelayNameInput.value !== '') {
                     const message = `${index}*#*${findRelayNameInput.value}*&*`;
-                    sendMessage(outSaveRelayName, message);
+                    sendMessage(OUT_SAVE_RELAY_NAME, message);
                     console.log('Message sent: ', message);
                 } else {
                     console.log('Name input is empty or missing');
@@ -33,7 +33,7 @@ function handleSaveNameRelay() {
 //         e.addEventListener('click', function () {
 //           s = i + '*#*' + e.closest('.rele__item').querySelector('.rele__name-input').value + '*&*';
 
-//           sendMessage(outSaveRelayName, s);
+//           sendMessage(OUT_SAVE_RELAY_NAME, s);
 //           console.log(s);
 //         });
 //       });

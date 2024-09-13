@@ -16,7 +16,7 @@ function handleChangeSelect() {
                 releItems.forEach((relayItem, index) => {
                     if (relayItem === parentReleItem) {
                         const s = `${index}x${selectedValue}k`;
-                        sendMessage(setRelayEepromUpr, s);
+                        sendMessage(SET_RELAY_EEPROM_UPR, s);
                     }
                 });
             });
@@ -37,7 +37,7 @@ function handleChangeSelect() {
 //                 if (k == e.closest('.rele__item')) {
 //                     // опреділяєм в якому блоці ми знаходимося тобто номер реле
 //                     s = i + 'x' + e.querySelectorAll('option')[e.selectedIndex].value + 'k';
-//                     sendMessage(setRelayEepromUpr, s);
+//                     sendMessage(SET_RELAY_EEPROM_UPR, s);
 //                 }
 //             });
 //         });

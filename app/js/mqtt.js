@@ -15,19 +15,19 @@ client.connect(options);
 function onConnect() {
     // Once a connection has been made, make a subscription and send a message.
     console.log("onConnect");
-    client.subscribe(getEepromSensorData);
-    client.subscribe(getDeviceSensorData);
-    client.subscribe(getRelayEepromUpr);
-    client.subscribe(getSensorTempOnOff);
-    client.subscribe(relayStatus);
-    client.subscribe(getSensorName);
-    client.subscribe(getRelayName);
-    client.subscribe(getRelayEepromControlManual);
-    client.subscribe(getRelayDataTime);
+    client.subscribe(GET_EEPROM_SENSOR_DATA);
+    client.subscribe(GET_DEVICE_SENSOR_DATA);
+    client.subscribe(GET_RELAY_EEPROM_UPR);
+    client.subscribe(GET_SENSOR_TEMP_ON_OFF);
+    client.subscribe(RELAY_STATUS);
+    client.subscribe(GET_SENSOR_NAME);
+    client.subscribe(GET_RELAY_NAME);
+    client.subscribe(GET_RELAY_EEPROM_CONTROL_MANUAL);
+    client.subscribe(GET_RELAY_DATA_TIME);
     client.subscribe(CONNECT_SSID);
     client.subscribe(LOCAL_IP);
-    client.subscribe(getAnalogInputA0);
-    sendMessage(outStartDataSensor, 'ALL');
+    client.subscribe(GET_ANALOG_INPUT_A0);
+    sendMessage(OUT_START_DATA_SENSOR, 'ALL');
 }
 
 function doFail(e) { }
@@ -74,7 +74,7 @@ function onMessageArrived(message) {
 
 function handleAnalogInput(message) {
     try {
-        if (message.destinationName === getAnalogInputA0) {
+        if (message.destinationName === GET_ANALOG_INPUT_A0) {
             printAnalogInput.innerText = message.payloadString;
         }
     } catch (e) {
@@ -104,7 +104,7 @@ function handleLocalIP(message) {
 
 function handleEepromSensorData(message) {
     try {
-        if (message.destinationName === getEepromSensorData) {
+        if (message.destinationName === GET_EEPROM_SENSOR_DATA) {
             eepromData = JSON.parse(message.payloadString);
             for (let _k = 0; _k < eepromData.obj.length; _k++) {
                 updateEepromTable(_k);
@@ -137,7 +137,7 @@ function updateEepromTable(index) {
 
 function handleDeviceSensorData(message) {
     try {
-        if (message.destinationName === getDeviceSensorData) {
+        if (message.destinationName === GET_DEVICE_SENSOR_DATA) {
             deviceData = JSON.parse(message.payloadString);
             for (let _k2 = 0; _k2 < deviceData.obj.length; _k2++) {
                 updateDeviceTable(_k2);
@@ -165,7 +165,7 @@ function checkAndUpdateData() {
 
 function handleReleEpromUpr(message) {
     try {
-        if (message.destinationName === getRelayEepromUpr) {
+        if (message.destinationName === GET_RELAY_EEPROM_UPR) {
             sensorEepromControl = JSON.parse(message.payloadString);
             updateRelaySettings();
         }
@@ -180,7 +180,7 @@ function updateRelaySettings() {
 
 function handleSensorVklOtklTemp(message) {
     try {
-        if (message.destinationName === getSensorTempOnOff) {
+        if (message.destinationName === GET_SENSOR_TEMP_ON_OFF) {
             sensorOpenCloseTemperature = JSON.parse(message.payloadString);
             updateRelayTemperatureSettings();
         }
@@ -192,7 +192,7 @@ function handleSensorVklOtklTemp(message) {
 
 function handleReleState(message) {
     try {
-        if (message.destinationName === relayStatus) {
+        if (message.destinationName === RELAY_STATUS) {
             const stanReleTemp = parseInt(message.payloadString);
             updateReleState(stanReleTemp);
         }
@@ -216,13 +216,13 @@ function updateReleState(stanReleTemp) {
 
 function handleSensorNames(message) {
     try {
-        if (message.destinationName === getSensorName) {
+        if (message.destinationName === GET_SENSOR_NAME) {
             sensorNames = JSON.parse(message.payloadString);
             updateSensorNames();
         }
     } catch (e) {
         console.error('Error in handleSensorNames: ', e);
-        sendMessage(setDefineDevice, 'setDefineDevice');
+        sendMessage(SET_DEFINE_DEVICE, 'SET_DEFINE_DEVICE');
     }
 }
 
@@ -236,13 +236,13 @@ function updateSensorNames() {
 
 function handleReleNames(message) {
     try {
-        if (message.destinationName === getRelayName) {
+        if (message.destinationName === GET_RELAY_NAME) {
             relayNames = JSON.parse(message.payloadString);
             updateReleNames();
         }
     } catch (e) {
         console.error('Error in handleReleNames: ', e);
-        sendMessage(setDefineDevice, 'setDefineDevice');
+        sendMessage(SET_DEFINE_DEVICE, 'SET_DEFINE_DEVICE');
     }
 }
 
@@ -261,7 +261,7 @@ function updateReleNames() {
 
 function handleReleEpromUprManual(message) {
     try {
-        if (message.destinationName === getRelayEepromControlManual) {
+        if (message.destinationName === GET_RELAY_EEPROM_CONTROL_MANUAL) {
             let relaySettings = JSON.parse(message.payloadString);
             updateRelayManualSettings(relaySettings);
         }
@@ -289,7 +289,7 @@ function updateRelayManualSettings(relaySettings) {
 
 function handleReleDateTime(message) {
     try {
-        if (message.destinationName === getRelayDataTime) {
+        if (message.destinationName === GET_RELAY_DATA_TIME) {
             parseRelayDateTime(message.payloadString);
 
         }

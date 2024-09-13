@@ -4,7 +4,7 @@ function onMessageArrived11(message) {
         // console.log("onMessageArrived:  " + message.payloadString);
         //  console.log("onMessageArrived:  "+message.destinationName);
         //************************************************************************************************************** */
-        if (message.destinationName === getAnalogInputA0) {
+        if (message.destinationName === GET_ANALOG_INPUT_A0) {
             // console.log(message.payloadString);
             printAnalogInput.innerText = message.payloadString;
         }
@@ -22,7 +22,7 @@ function onMessageArrived11(message) {
 
         //************************************************************************************************************** */
 
-        if (message.destinationName === getEepromSensorData) {
+        if (message.destinationName === GET_EEPROM_SENSOR_DATA) {
             //Дані що знаходяться в EEPROM позиція, мак адрес, і температура сенсору
             eepromData = JSON.parse(message.payloadString);
             // console.log(eepromData );
@@ -50,7 +50,7 @@ function onMessageArrived11(message) {
 
         //************************************************************************************************************** */
 
-        if (message.destinationName === getDeviceSensorData) {
+        if (message.destinationName === GET_DEVICE_SENSOR_DATA) {
             //Дані прочитані з сенсорів в реальному часі позиція, мак адрес, і температура сенсору
             deviceData = JSON.parse(message.payloadString);
             // console.log('deviceData ');
@@ -72,7 +72,7 @@ function onMessageArrived11(message) {
         // біт 4 один або два діапазона контроля температрур
         // біт 5 вкл або викл реле при зміні температур або таймера
         // біт 6 стан реле при помилці термодатчмка
-        if (message.destinationName === getRelayEepromUpr) {
+        if (message.destinationName === GET_RELAY_EEPROM_UPR) {
             //получаємо дані з памяті про датчики 
             sensorEepromControl = JSON.parse(message.payloadString);
             // console.log('sensorEepromControl  *****');
@@ -81,7 +81,7 @@ function onMessageArrived11(message) {
         }
         //************************************************************************************************************** */
 
-        if (message.destinationName === getSensorTempOnOff) {
+        if (message.destinationName === GET_SENSOR_TEMP_ON_OFF) {
             //получаємо дані з памяті про температури включення і відкючення
             sensorOpenCloseTemperature = JSON.parse(message.payloadString);
             // console.log('sensorOpenCloseTemperature  *****');
@@ -91,7 +91,7 @@ function onMessageArrived11(message) {
 
         //************************************************************************************************************** */
 
-        if (message.destinationName === relayStatus) {
+        if (message.destinationName === RELAY_STATUS) {
             //получаємо дані про стан кожного реле включене або відключене 
             const stanReleTemp = parseInt(message.payloadString);
             const releOnOff = document.querySelectorAll('.rele__control-manually-on-off');
@@ -109,10 +109,10 @@ function onMessageArrived11(message) {
 
         //************************************************************************************************************** */
 
-        if (message.destinationName === getSensorName) {
+        if (message.destinationName === GET_SENSOR_NAME) {
 
             try {
-                // console.log('getSensorName');
+                // console.log('GET_SENSOR_NAME');
                 // console.log(message.payloadString);
                 sensorNames = JSON.parse(message.payloadString);
                 tableEepromNameSensor.forEach(function (e, i) {
@@ -125,16 +125,16 @@ function onMessageArrived11(message) {
 
             } catch (e) {
                 console.log('ERROR NAME SENSOR' + e);
-                sendMessage(setDefineDevice, 'setDefineDevice');
+                sendMessage(SET_DEFINE_DEVICE, 'SET_DEFINE_DEVICE');
                 console.log('DEFAULT_DEVICE');
             }
         }
 
         //************************************************************************************************************** */
 
-        if (message.destinationName === getRelayName) {
+        if (message.destinationName === GET_RELAY_NAME) {
             try {
-                // console.log('getRelayName');
+                // console.log('GET_RELAY_NAME');
                 // console.log(message.payloadString);
                 relayNames = JSON.parse(message.payloadString);
                 const releItemTitleName = document.querySelectorAll('.rele__item-title-name');
@@ -151,18 +151,18 @@ function onMessageArrived11(message) {
 
             } catch (e) {
                 console.log('ERROR NAME RELE' + e);
-                sendMessage(setDefineDevice, 'setDefineDevice');
+                sendMessage(SET_DEFINE_DEVICE, 'SET_DEFINE_DEVICE');
                 console.log('DEFAULT_DEVICE');
             }
         }
         //" "
         //************************************************************************************************************** */
 
-        if (message.destinationName === getRelayEepromControlManual) {
+        if (message.destinationName === GET_RELAY_EEPROM_CONTROL_MANUAL) {
 
 
             let relaySettings = JSON.parse(message.payloadString);
-            console.log('message.payloadString   ////// getRelayEepromControlManual');
+            console.log('message.payloadString   ////// GET_RELAY_EEPROM_CONTROL_MANUAL');
             console.log(message.payloadString);
             document.querySelectorAll('.input-control-manually-svg').forEach(function (e, i) {
                 const parent = e.closest('.rele__item');
@@ -183,7 +183,7 @@ function onMessageArrived11(message) {
 
         //************************************************************************************************************** */
 
-        if (message.destinationName === getRelayDataTime) {
+        if (message.destinationName === GET_RELAY_DATA_TIME) {
 
             //получаємо дані про таймери
             const tempObj = JSON.parse(message.payloadString);

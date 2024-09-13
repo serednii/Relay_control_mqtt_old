@@ -47,7 +47,7 @@ function handleSaveTime() {
                     });
 
                     console.log(dataString);
-                    sendMessage(setRelayDataTime, dataString);
+                    sendMessage(SET_RELAY_DATA_TIME, dataString);
                 }
             });
         });
@@ -143,7 +143,7 @@ function handleSaveTime() {
 //           });
 //           console.log(_s);
 
-//           sendMessage(setRelayDataTime, _s);
+//           sendMessage(SET_RELAY_DATA_TIME, _s);
 
 //         }
 //       });

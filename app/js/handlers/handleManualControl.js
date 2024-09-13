@@ -10,7 +10,7 @@ function handleManualControl() {
                 control.checked = !control.checked;
                 console.log(`s---- ${status}`);
                 try {
-                    sendMessage(setRelayOnOff, status);
+                    sendMessage(SET_RELAY_ON_OFF, status);
                 } catch (error) {
                     console.error('Error sending message:', error);
                 }
@@ -27,7 +27,7 @@ function handleManualControl() {
   //       if (e.checked) s = i + 'x1k';
   //       else s = i + 'x0k';
   //       console.log('s----' + s);
-  //       sendMessage(setRelayOnOff, s);
+  //       sendMessage(SET_RELAY_ON_OFF, s);
   //     });
   //   });
   // } else {

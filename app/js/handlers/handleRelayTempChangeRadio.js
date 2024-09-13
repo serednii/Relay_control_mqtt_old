@@ -16,10 +16,10 @@ function handleRelayTempChangeRadio() {
 
                 // Формуємо повідомлення
                 const message = `${sensorIndex}x${sensorObject.number}k`;
-                console.log('Sending message: setRelayEepromUprChangeOnOrOff - ' + message);
+                console.log('Sending message: SET_RELAY_EEPROM_UPR_CHANGE_ON_OR_OFF - ' + message);
 
                 // Відправляємо повідомлення
-                sendMessage(setRelayEepromUprChangeOnOrOff, message);
+                sendMessage(SET_RELAY_EEPROM_UPR_CHANGE_ON_OR_OFF, message);
             });
         });
     } else {
@@ -36,7 +36,7 @@ function handleRelayTempChangeRadio() {
 //         sensorEepromControl.obj[ii].number |= 1 << 5;
 //       }
 //       s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
-//       console.log('setRelayEepromUprOneOrTwoRangeTemp----' + s);
-//       sendMessage(setRelayEepromUprChangeOnOrOff, s);
+//       console.log('SET_RELAY_EEPROM_UPR_ONE_OR_TWO_RANGE_TEMP----' + s);
+//       sendMessage(SET_RELAY_EEPROM_UPR_CHANGE_ON_OR_OFF, s);
 //     });
 //   });

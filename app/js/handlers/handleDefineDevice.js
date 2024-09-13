@@ -7,7 +7,7 @@ function handleDefineDevice() {
 
             if (confirmation === 'ok') {
                 // popapClearDevice.classList.remove('disable__global'); // Розкоментувати, якщо потрібно
-                sendMessage(setDefineDevice, 'setDefineDevice');
+                sendMessage(SET_DEFINE_DEVICE, 'SET_DEFINE_DEVICE');
                 console.log('DEFAULT_DEVICE');
             } else {
                 console.log('Введено неправильне значення');
@@ -26,7 +26,7 @@ function handleDefineDevice() {
 //         let rezult = prompt("Підтвердіть введіть (ok)");
 //         if (rezult === 'ok') {
 //             // popapClearDevice.classList.remove('disable__global');
-//             sendMessage(setDefineDevice, 'setDefineDevice');
+//             sendMessage(SET_DEFINE_DEVICE, 'SET_DEFINE_DEVICE');
 //             console.log('DEFAULT_DEVICE');
 //         }
 //     };

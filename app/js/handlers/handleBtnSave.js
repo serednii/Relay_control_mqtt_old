@@ -12,7 +12,7 @@ function handleBtnSave() {
                 };
             });
             console.log(sensorAddresses);
-            sendMessage(outSaveDataSensorEeprom, sensorAddresses);
+            sendMessage(OUT_SAVE_DATA_SENSOR_EEPROM, sensorAddresses);
 
             // Збираємо назви сенсорів
 
@@ -23,7 +23,7 @@ function handleBtnSave() {
                 };
             });
             console.log(sensorNames);
-            sendMessage(outSaveNameSensorEeprom, sensorNames);
+            sendMessage(OUT_SAVE_NAME_SENSOR_EEPROM, sensorNames);
         });
     } else {
         console.log('NOT CLASSES address-eeprom__save');
@@ -44,7 +44,7 @@ function handleBtnSave() {
 //         });
 //         console.log(s);
 
-//         sendMessage(outSaveDataSensorEeprom, s);
+//         sendMessage(OUT_SAVE_DATA_SENSOR_EEPROM, s);
 
 
 //         s = '';
@@ -55,7 +55,7 @@ function handleBtnSave() {
 //         });
 //         console.log(s);
 
-//         sendMessage(outSaveNameSensorEeprom, s);
+//         sendMessage(OUT_SAVE_NAME_SENSOR_EEPROM, s);
 //     });
 // } else {
 //     console.log('NOT CLASSES address-eeprom__save');
