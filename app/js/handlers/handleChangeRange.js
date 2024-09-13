@@ -18,10 +18,10 @@ function handleChangeRange() {
 
                     // Формуємо повідомлення
                     const message = `${sensorIndex}x${sensorObject.number}k`;
-                    console.log('Sending message: setReleEpromUprOneOrTwoRangeTemp - ' + message);
+                    console.log('Sending message: setRelayEepromUprOneOrTwoRangeTemp - ' + message);
 
                     // Відправляємо повідомлення
-                    sendMessage(setReleEpromUprOneOrTwoRangeTemp, message);
+                    sendMessage(setRelayEepromUprOneOrTwoRangeTemp, message);
                 } catch (error) {
                     console.error('Error in handleChangeRange: ', error);
                 }
@@ -46,8 +46,8 @@ function handleChangeRange() {
 //           sensorEepromControl.obj[ii].number |= 1 << 4;
 //         }
 //         s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
-//         console.log('setReleEpromUprOneOrTwoRangeTemp----' + s);
-//         sendMessage(setReleEpromUprOneOrTwoRangeTemp, s);
+//         console.log('setRelayEepromUprOneOrTwoRangeTemp----' + s);
+//         sendMessage(setRelayEepromUprOneOrTwoRangeTemp, s);
 
 //       });
 //     });

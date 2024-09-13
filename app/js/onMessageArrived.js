@@ -72,7 +72,7 @@ function onMessageArrived11(message) {
         // біт 4 один або два діапазона контроля температрур
         // біт 5 вкл або викл реле при зміні температур або таймера
         // біт 6 стан реле при помилці термодатчмка
-        if (message.destinationName === getReleEpromUpr) {
+        if (message.destinationName === getRelayEepromUpr) {
             //получаємо дані з памяті про датчики 
             sensorEepromControl = JSON.parse(message.payloadString);
             // console.log('sensorEepromControl  *****');
@@ -81,7 +81,7 @@ function onMessageArrived11(message) {
         }
         //************************************************************************************************************** */
 
-        if (message.destinationName === getSensorVklOtklTemp) {
+        if (message.destinationName === getSensorTempOnOff) {
             //получаємо дані з памяті про температури включення і відкючення
             sensorOpenCloseTemperature = JSON.parse(message.payloadString);
             // console.log('sensorOpenCloseTemperature  *****');
@@ -91,7 +91,7 @@ function onMessageArrived11(message) {
 
         //************************************************************************************************************** */
 
-        if (message.destinationName === stanRele) {
+        if (message.destinationName === relayStatus) {
             //получаємо дані про стан кожного реле включене або відключене 
             const stanReleTemp = parseInt(message.payloadString);
             const releOnOff = document.querySelectorAll('.rele__control-manually-on-off');
@@ -132,9 +132,9 @@ function onMessageArrived11(message) {
 
         //************************************************************************************************************** */
 
-        if (message.destinationName === getReleName) {
+        if (message.destinationName === getRelayName) {
             try {
-                // console.log('getReleName');
+                // console.log('getRelayName');
                 // console.log(message.payloadString);
                 relayNames = JSON.parse(message.payloadString);
                 const releItemTitleName = document.querySelectorAll('.rele__item-title-name');
@@ -158,11 +158,11 @@ function onMessageArrived11(message) {
         //" "
         //************************************************************************************************************** */
 
-        if (message.destinationName === getReleEpromUprManual) {
+        if (message.destinationName === getRelayEepromControlManual) {
 
 
             let relaySettings = JSON.parse(message.payloadString);
-            console.log('message.payloadString   ////// getReleEpromUprManual');
+            console.log('message.payloadString   ////// getRelayEepromControlManual');
             console.log(message.payloadString);
             document.querySelectorAll('.input-control-manually-svg').forEach(function (e, i) {
                 const parent = e.closest('.rele__item');

@@ -13,14 +13,14 @@ let isDeviceDataDownloaded = false;
 let showEepromData = true;
 let domElement = null;
 let dateTimeArray = [];
-
 let userName;
+
 
 if (localStorage.getItem('Device') != null) {
     console.log(localStorage.getItem('nameDevice'));
-    const arr = JSON.parse(localStorage.getItem('Device'));
-    document.querySelector('.info__local-storage').innerText = arr.NameDevice + '  ---   ' + arr.Name;
-    userName = arr.NameDevice;
+    const nameDevices = JSON.parse(localStorage.getItem('Device'));
+    document.querySelector('.info__local-storage').innerText = nameDevices.NameDevice + '  ---   ' + nameDevices.Name;
+    userName = nameDevices.NameDevice;
 } else {
     console.log('none');
     document.querySelector('.popap-local-storage').classList.add('popap-local-storage__show');
@@ -117,31 +117,31 @@ const startSelector = () => {
 const CONNECT_SSID = userName + '_ssid';
 const LOCAL_IP = userName + '_ip';
 const getAnalogInputA0 = userName + 'analogInputA0';
-const stanRele = userName + '_stanRele';
+const relayStatus = userName + '_stanRele';
 const getEepromSensorData = userName + '_eepromSensorData';
 const getDeviceSensorData = userName + '_deviceSensorData';
-const outstartDataSensor = userName + '_start-data-sensor-eepromAndDevice';
+const outStartDataSensor = userName + '_start-data-sensor-eepromAndDevice';
 const outSaveDataSensorEeprom = userName + '_save-data-sensor-eeprom';
 const outSaveNameSensorEeprom = userName + '_save-name-sensor-eeprom';
-const outCleareEPROM = userName + '_cleareEPROM';
+//const outClearEEPROM = userName + '_cleareEPROM';
 
 const outSaveDataSensorTemp = userName + '_save-data-sensor-temp';
-const outSaveReleName = userName + '_save-rele-name';
+const outSaveRelayName = userName + '_save-rele-name';
 
-const getReleEpromUpr = userName + '_rele_eprom_upr';
-const setReleEpromUpr = userName + '_rele_eprom_upr-set_number_sensor';
-const setReleEpromUprErorrReleVklVukl = userName + '_rele_eprom_upr-set_erorr_rele_vkl_vukl';
-const setReleEpromUprOneOrTwoRangeTemp = userName + '_rele_eprom_upr-set_one_or_two_range_temp';
-const setReleEpromUprChangeOnOrOff = userName + '_rele_eprom_upr-set_change_on_or_off';
-const setReleEpromUprManual = userName + '_rele-get-eprom_upr-manual';
-const setReleVklOtkl = userName + '_set-rele-vkl-otkl';
-const setReleDATATIME = userName + '_set-rele-data-time';
+const getRelayEepromUpr = userName + '_rele_eprom_upr';
+const setRelayEepromUpr = userName + '_rele_eprom_upr-set_number_sensor';
+const setRelayEepromUprErrorRelayOnOff = userName + '_rele_eprom_upr-set_erorr_rele_vkl_vukl';
+const setRelayEepromUprOneOrTwoRangeTemp = userName + '_rele_eprom_upr-set_one_or_two_range_temp';
+const setRelayEepromUprChangeOnOrOff = userName + '_rele_eprom_upr-set_change_on_or_off';
+const setRelayEepromControlManual = userName + '_rele-get-eprom_upr-manual';
+const setRelayOnOff = userName + '_set-rele-vkl-otkl';
+const setRelayDataTime = userName + '_set-rele-data-time';
 const setDefineDevice = userName + '_define_device';
 const setResetFunction = userName + '_resetFunction';
 
 
 const getRelayDataTime = userName + '_out-web-rele-data-time';
 const getSensorName = userName + '_sensor-name';
-const getReleName = userName + '_rele-name';
-const getReleEpromUprManual = userName + '_rele-out-eprom_upr-manual';
-const getSensorVklOtklTemp = userName + '_sensor-vkl-otkl';
+const getRelayName = userName + '_rele-name';
+const getRelayEepromControlManual = userName + '_rele-out-eprom_upr-manual';
+const getSensorTempOnOff = userName + '_sensor-vkl-otkl';

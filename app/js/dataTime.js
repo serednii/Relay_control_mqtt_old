@@ -578,6 +578,6 @@ function messageDate(inter) {
   1-1-1-1-1-1-1-';
     console.log(s);
 
-    sendMessage(setReleDATATIME, s);
+    sendMessage(setRelayDataTime, s);
 
 }

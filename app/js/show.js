@@ -47,7 +47,7 @@ function showSectionTimeAndSeting(event, parent, classLink, classShowSection, nu
             parent.querySelector('.rele__seting-sensor-timer').classList.remove('block__hidden'); //Добавляємо клас відкриваємо Select
             const s = num + 'x0k';
             console.log('s----' + s);
-            sendMessage(setReleEpromUprManual, s);
+            sendMessage(setRelayEepromControlManual, s);
         }
         event.target.classList.remove('on');
     } else {
@@ -57,7 +57,7 @@ function showSectionTimeAndSeting(event, parent, classLink, classShowSection, nu
             parent.querySelector('.rele__seting-sensor-timer').classList.add('block__hidden'); //Добавляємо клас відкриваємо Select
             const s = num + 'x1k';
             console.log('s----' + s);
-            sendMessage(setReleEpromUprManual, s);
+            sendMessage(setRelayEepromControlManual, s);
         }
         event.target.classList.add('on');
     }

@@ -17,17 +17,17 @@ function onConnect() {
     console.log("onConnect");
     client.subscribe(getEepromSensorData);
     client.subscribe(getDeviceSensorData);
-    client.subscribe(getReleEpromUpr);
-    client.subscribe(getSensorVklOtklTemp);
-    client.subscribe(stanRele);
+    client.subscribe(getRelayEepromUpr);
+    client.subscribe(getSensorTempOnOff);
+    client.subscribe(relayStatus);
     client.subscribe(getSensorName);
-    client.subscribe(getReleName);
-    client.subscribe(getReleEpromUprManual);
+    client.subscribe(getRelayName);
+    client.subscribe(getRelayEepromControlManual);
     client.subscribe(getRelayDataTime);
     client.subscribe(CONNECT_SSID);
     client.subscribe(LOCAL_IP);
     client.subscribe(getAnalogInputA0);
-    sendMessage(outstartDataSensor, 'ALL');
+    sendMessage(outStartDataSensor, 'ALL');
 }
 
 function doFail(e) { }
@@ -165,7 +165,7 @@ function checkAndUpdateData() {
 
 function handleReleEpromUpr(message) {
     try {
-        if (message.destinationName === getReleEpromUpr) {
+        if (message.destinationName === getRelayEepromUpr) {
             sensorEepromControl = JSON.parse(message.payloadString);
             updateRelaySettings();
         }
@@ -180,7 +180,7 @@ function updateRelaySettings() {
 
 function handleSensorVklOtklTemp(message) {
     try {
-        if (message.destinationName === getSensorVklOtklTemp) {
+        if (message.destinationName === getSensorTempOnOff) {
             sensorOpenCloseTemperature = JSON.parse(message.payloadString);
             updateRelayTemperatureSettings();
         }
@@ -192,7 +192,7 @@ function handleSensorVklOtklTemp(message) {
 
 function handleReleState(message) {
     try {
-        if (message.destinationName === stanRele) {
+        if (message.destinationName === relayStatus) {
             const stanReleTemp = parseInt(message.payloadString);
             updateReleState(stanReleTemp);
         }
@@ -236,7 +236,7 @@ function updateSensorNames() {
 
 function handleReleNames(message) {
     try {
-        if (message.destinationName === getReleName) {
+        if (message.destinationName === getRelayName) {
             relayNames = JSON.parse(message.payloadString);
             updateReleNames();
         }
@@ -261,7 +261,7 @@ function updateReleNames() {
 
 function handleReleEpromUprManual(message) {
     try {
-        if (message.destinationName === getReleEpromUprManual) {
+        if (message.destinationName === getRelayEepromControlManual) {
             let relaySettings = JSON.parse(message.payloadString);
             updateRelayManualSettings(relaySettings);
         }

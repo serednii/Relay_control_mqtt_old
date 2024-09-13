@@ -6,7 +6,7 @@ function startIntervals() {
     function checkEmptyData() {
         if (isEmpty(eepromData) || isEmpty(deviceData) || isEmpty(sensorEepromControl) || isEmpty(sensorOpenCloseTemperature)) {
             console.log('Є пусті об’єкти');
-            sendMessage(outstartDataSensor, 'ALL');
+            sendMessage(outStartDataSensor, 'ALL');
         } else {
             console.log('Немає пустих об’єктів');
         }
@@ -14,7 +14,7 @@ function startIntervals() {
 
     function refreshEepromData() {
         showEepromData = false;
-        sendMessage(outstartDataSensor, 'readAddressSensor');
+        sendMessage(outStartDataSensor, 'readAddressSensor');
     }
 
     function updateDateTime() {

@@ -19,7 +19,7 @@ function handleInputControlError() {
 
                     // Формуємо та відправляємо повідомлення
                     const message = `${sensorIndex}x${sensorObject.number}k`;
-                    sendMessage(setReleEpromUprErorrReleVklVukl, message);
+                    sendMessage(setRelayEepromUprErrorRelayOnOff, message);
 
                     console.log('Message sent: ', message);
                 } catch (error) {
@@ -49,7 +49,7 @@ function handleInputControlError() {
 //           sensorEepromControl.obj[ii].number |= 1 << 6;
 //         }
 //         s = ii + 'x' + sensorEepromControl.obj[ii].number + 'k';
-//         sendMessage(setReleEpromUprErorrReleVklVukl, s);
+//         sendMessage(setRelayEepromUprErrorRelayOnOff, s);
 //       } catch (e) {
 //         console.log('ERROR  ' + e);
 //       }
