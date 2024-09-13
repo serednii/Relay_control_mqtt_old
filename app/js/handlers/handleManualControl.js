@@ -5,8 +5,9 @@ function handleManualControl() {
     const manualControls = document.querySelectorAll('.rele__control-manually-on-off');
     if (manualControls.length > 0) {
         manualControls.forEach((control, index) => {
-            control.addEventListener('change', () => {
+            control.addEventListener('click', () => {
                 const status = control.checked ? `${index}x1k` : `${index}x0k`;
+                control.checked = !control.checked;
                 console.log(`s---- ${status}`);
                 try {
                     sendMessage(setReleVklOtkl, status);
