@@ -2,15 +2,15 @@
 
 
 function handleManualControl() {
-    const manualControls = document.querySelectorAll('.rele__control-manually-on-off');
-    if (manualControls.length > 0) {
-        manualControls.forEach((control, index) => {
+    const MANUAL_CONTROL = document.querySelectorAll('.rele__control-manually-on-off');
+    if (MANUAL_CONTROL.length > 0) {
+        MANUAL_CONTROL.forEach((control, index) => {
             control.addEventListener('click', () => {
-                const status = control.checked ? `${index}x1k` : `${index}x0k`;
+                const STATUS_RELAY = control.checked ? `${index}x1k` : `${index}x0k`;
                 control.checked = !control.checked;
-                console.log(`s---- ${status}`);
+                console.log(`s---- ${STATUS_RELAY}`);
                 try {
-                    sendMessage(SET_RELAY_ON_OFF, status);
+                    sendMessage(SET_RELAY_ON_OFF, STATUS_RELAY);
                 } catch (error) {
                     console.error('Error sending message:', error);
                 }

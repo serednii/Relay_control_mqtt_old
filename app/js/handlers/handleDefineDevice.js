@@ -3,9 +3,9 @@ function handleDefineDevice() {
         console.log('YES CLASSES popap-menu__btn-define-device');
 
         btnDefineDevice.addEventListener('click', () => {
-            const confirmation = prompt("Підтвердіть введіть (ok)");
+            const CONFIRMATION = prompt("Підтвердіть введіть (ok)");
 
-            if (confirmation === 'ok') {
+            if (CONFIRMATION === 'ok') {
                 // popapClearDevice.classList.remove('disable__global'); // Розкоментувати, якщо потрібно
                 sendMessage(SET_DEFINE_DEVICE, 'SET_DEFINE_DEVICE');
                 console.log('DEFAULT_DEVICE');

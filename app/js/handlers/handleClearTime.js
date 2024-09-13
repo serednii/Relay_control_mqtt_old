@@ -6,8 +6,8 @@ function handleClearTime() {
             btn.addEventListener('click', () => {
                 messageDate(index);
 
-                const dateTimeAndTimeElements = relayItem[index].querySelectorAll('.datetime, .time');
-                dateTimeAndTimeElements.forEach(element => element.value = '');
+                const DATA_TIME_AND_TIME_ELEMENTS = relayItem[index].querySelectorAll('.datetime, .time');
+                DATA_TIME_AND_TIME_ELEMENTS.forEach(element => element.value = '');
             });
         });
     } else {

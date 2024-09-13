@@ -1,25 +1,56 @@
+// function handleClearDataSensor() {
+//     // Отримуємо всі кнопки з класом '.address-eeprom__btn.clear'
+//     const clearButtons = document.querySelectorAll('.address-eeprom__btn.clear');
+
+//     if (clearButtons.length > 0) {
+//         console.log('Found .address-eeprom__btn.clear elements: ' + clearButtons.length);
+
+//         clearButtons.forEach(function (button) {
+//             button.addEventListener('click', function () {
+//                 // Знаходимо найближчий контейнер '.address-eeprom__data' для кожної кнопки
+//                 const dataContainer = button.closest('.address-eeprom__data');
+
+//                 if (dataContainer) {
+//                     // Очищуємо текст всередині елементів
+//                     dataContainer.querySelector('.address-eeprom__address').innerText = '0000000000000000';
+//                     dataContainer.querySelector('.address-eeprom__temp').innerText = '';
+
+//                     // Виділяємо несумісні адреси сенсорів
+//                     highlightMismatchedSensorAddresses();
+
+//                     // Можна також оновити стан клікабельності пристроїв, якщо потрібно
+//                     // updateClickableDevices();
+//                 } else {
+//                     console.error('No parent .address-eeprom__data found');
+//                 }
+//             });
+//         });
+//     } else {
+//         console.log('No .address-eeprom__btn.clear elements found');
+//     }
+// }
 function handleClearDataSensor() {
     // Отримуємо всі кнопки з класом '.address-eeprom__btn.clear'
-    const clearButtons = document.querySelectorAll('.address-eeprom__btn.clear');
+    const CLEAR_BUTTONS = document.querySelectorAll('.address-eeprom__btn.clear');
 
-    if (clearButtons.length > 0) {
-        console.log('Found .address-eeprom__btn.clear elements: ' + clearButtons.length);
+    if (CLEAR_BUTTONS.length > 0) {
+        console.log('Found .address-eeprom__btn.clear elements: ' + CLEAR_BUTTONS.length);
 
-        clearButtons.forEach(function (button) {
+        CLEAR_BUTTONS.forEach(function (button) {
             button.addEventListener('click', function () {
                 // Знаходимо найближчий контейнер '.address-eeprom__data' для кожної кнопки
-                const dataContainer = button.closest('.address-eeprom__data');
+                const DATA_CONTAINER = button.closest('.address-eeprom__data');
 
-                if (dataContainer) {
+                if (DATA_CONTAINER) {
                     // Очищуємо текст всередині елементів
-                    dataContainer.querySelector('.address-eeprom__address').innerText = '0000000000000000';
-                    dataContainer.querySelector('.address-eeprom__temp').innerText = '';
+                    DATA_CONTAINER.querySelector('.address-eeprom__address').innerText = '0000000000000000';
+                    DATA_CONTAINER.querySelector('.address-eeprom__temp').innerText = '';
 
                     // Виділяємо несумісні адреси сенсорів
                     highlightMismatchedSensorAddresses();
 
                     // Можна також оновити стан клікабельності пристроїв, якщо потрібно
-                    // updateClickableDevices();
+                    updateClickableDevices();
                 } else {
                     console.error('No parent .address-eeprom__data found');
                 }

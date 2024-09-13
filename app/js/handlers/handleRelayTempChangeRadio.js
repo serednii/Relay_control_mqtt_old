@@ -1,8 +1,8 @@
 function handleRelayTempChangeRadio() {
-    const relayTempChangeRadio = document.querySelectorAll('.rele-temp-change-radio');
+    const RELAY_TEMP_CHANGE_RADIO = document.querySelectorAll('.rele-temp-change-radio');
 
-    if (relayTempChangeRadio.length > 0) {
-        relayTempChangeRadio.forEach(function (radioElement, index) {
+    if (RELAY_TEMP_CHANGE_RADIO.length > 0) {
+        RELAY_TEMP_CHANGE_RADIO.forEach(function (radioElement, index) {
             radioElement.addEventListener('change', function () {
                 let sensorIndex = Math.trunc(index / 2);
                 let sensorObject = sensorEepromControl.obj[sensorIndex];
@@ -15,11 +15,11 @@ function handleRelayTempChangeRadio() {
                 }
 
                 // Формуємо повідомлення
-                const message = `${sensorIndex}x${sensorObject.number}k`;
-                console.log('Sending message: SET_RELAY_EEPROM_UPR_CHANGE_ON_OR_OFF - ' + message);
+                const MESSAGE = `${sensorIndex}x${sensorObject.number}k`;
+                console.log('Sending message: SET_RELAY_EEPROM_UPR_CHANGE_ON_OR_OFF - ' + MESSAGE);
 
                 // Відправляємо повідомлення
-                sendMessage(SET_RELAY_EEPROM_UPR_CHANGE_ON_OR_OFF, message);
+                sendMessage(SET_RELAY_EEPROM_UPR_CHANGE_ON_OR_OFF, MESSAGE);
             });
         });
     } else {

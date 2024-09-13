@@ -1,29 +1,29 @@
 function handleChangeDataSensor() {
-    const changeButtons = document.querySelectorAll('.address-eeprom__btn.change');
+    const CHANGE_BUTTONS = document.querySelectorAll('.address-eeprom__btn.change');
 
-    if (changeButtons.length > 0) {
-        console.log('Found .address-eeprom__btn.change elements: ' + changeButtons.length);
+    if (CHANGE_BUTTONS.length > 0) {
+        console.log('Found .address-eeprom__btn.change elements: ' + CHANGE_BUTTONS.length);
 
-        changeButtons.forEach(function (button) {
+        CHANGE_BUTTONS.forEach(function (button) {
             button.addEventListener('click', function (event) {
-                const currentTarget = event.currentTarget.closest('.address-eeprom__data');
+                const CARRENT_TARGET = event.CARRENT_TARGET.closest('.address-eeprom__data');
 
                 // Видаляємо клас 'active' з усіх інших елементів, крім активного
                 parentListEeprom.forEach(function (item) {
-                    if (!currentTarget.classList.contains('active')) {
+                    if (!CARRENT_TARGET.classList.contains('active')) {
                         item.classList.remove('active');
                     }
                 });
 
                 // Тогл класу 'active' для поточного елемента
-                currentTarget.classList.toggle('active');
+                CARRENT_TARGET.classList.toggle('active');
 
                 // Оновлюємо стан клікабельності пристроїв
                 updateClickableDevices();
 
                 // Якщо елемент став активним, зберігаємо посилання на нього
                 if (currentTarget.classList.contains('active')) {
-                    domElement = currentTarget;
+                    domElement = CARRENT_TARGET;
                 }
             });
         });

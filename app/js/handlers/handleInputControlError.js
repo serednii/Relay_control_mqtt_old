@@ -1,10 +1,10 @@
 function handleInputControlError() {
-    const inputControlErrors = document.querySelectorAll('.input-control-error');
+    const INPUT_CONTROL_ERRORS = document.querySelectorAll('.input-control-error');
 
-    if (inputControlErrors.length > 0) {
-        console.log('Found input-control-error elements: ' + inputControlErrors.length);
+    if (INPUT_CONTROL_ERRORS.length > 0) {
+        console.log('Found input-control-error elements: ' + INPUT_CONTROL_ERRORS.length);
 
-        inputControlErrors.forEach(function (inputElement, index) {
+        INPUT_CONTROL_ERRORS.forEach(function (inputElement, index) {
             inputElement.addEventListener('change', function () {
                 try {
                     let sensorIndex = Math.trunc(index / 2);
@@ -18,10 +18,10 @@ function handleInputControlError() {
                     }
 
                     // Формуємо та відправляємо повідомлення
-                    const message = `${sensorIndex}x${sensorObject.number}k`;
-                    sendMessage(SET_RELAY_EEPROM_UPR_ERROR_RELAY_ON_OFF, message);
+                    const MESSAGE = `${sensorIndex}x${sensorObject.number}k`;
+                    sendMessage(SET_RELAY_EEPROM_UPR_ERROR_RELAY_ON_OFF, MESSAGE);
 
-                    console.log('Message sent: ', message);
+                    console.log('Message sent: ', MESSAGE);
                 } catch (error) {
                     console.error('Error handling input change: ', error);
                 }

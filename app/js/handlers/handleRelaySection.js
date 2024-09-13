@@ -6,20 +6,20 @@ function handleRelaySection() {
         relayItem.forEach((parent, num) => {
             parent.addEventListener('change', (event) => {
                 event.stopPropagation(); // Зупинка спливання подій
-                const datetime = parent.querySelectorAll('.datetime');
-                const time = parent.querySelectorAll('.time');
+                const DATA_TIME = parent.querySelectorAll('.datetime');
+                const TIME = parent.querySelectorAll('.time');
 
                 if (event.target.classList.contains('day')) {
                     checkCheckedDay(event);
                 }
                 if (event.target.classList.contains('datetime')) {
-                    checkDate(parent, datetime, time);
+                    checkDate(parent, DATA_TIME, TIME);
                 }
                 if (event.target.classList.contains('time')) {
-                    checkTime(parent, datetime, time);
+                    checkTime(parent, DATA_TIME, TIME);
                 }
 
-                showTimerIcons(parent, datetime, time); // Додає іконки таймера
+                showTimerIcons(parent, DATA_TIME, TIME); // Додає іконки таймера
             });
 
             parent.addEventListener('click', (event) => {

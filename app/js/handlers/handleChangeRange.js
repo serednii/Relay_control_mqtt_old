@@ -1,9 +1,9 @@
 
 function handleChangeRange() {
-    const relayTempChangeSingle = document.querySelectorAll('.rele-temp-change-single');
+    const RELAY_TEMP_SINGLE_CHANGE = document.querySelectorAll('.rele-temp-change-single');
 
-    if (relayTempChangeSingle.length > 0) {
-        relayTempChangeSingle.forEach(function (rangeElement, index) {
+    if (RELAY_TEMP_SINGLE_CHANGE.length > 0) {
+        RELAY_TEMP_SINGLE_CHANGE.forEach(function (rangeElement, index) {
             rangeElement.addEventListener('change', function () {
                 try {
                     let sensorIndex = Math.trunc(index / 2);
@@ -37,7 +37,7 @@ function handleChangeRange() {
 //   function handleChangeRange() {
 
 //     // Один діапазон температур або два
-//     relayTempChangeSingle.forEach(function (e, i) {
+//     RELAY_TEMP_SINGLE_CHANGE.forEach(function (e, i) {
 //       e.addEventListener('change', function () {
 //         let ii = Math.trunc(i / 2);
 //         if (e.value == '1') {

@@ -1,22 +1,23 @@
 
 
 function handleChangeSelect() {
-    const selectElements = document.querySelectorAll('select');
-    const releItems = document.querySelectorAll('.rele__item');
+    const SELECT_ELEMENTS = document.querySelectorAll('select');
+    // const releItems = document.querySelectorAll('.rele__item');
 
-    if (selectElements.length > 0) {
-        console.log('YES CLASSES select  ' + selectElements.length);
+    if (SELECT_ELEMENTS.length > 0) {
+        console.log('YES CLASSES select  ' + SELECT_ELEMENTS.length);
 
-        selectElements.forEach((selectElement) => {
+        SELECT_ELEMENTS.forEach((selectElement) => {
             selectElement.addEventListener('change', () => {
-                const selectedValue = selectElement.value;
-                const parentReleItem = selectElement.closest('.rele__item');
+                const SELECTED_VALUE = selectElement.value;
+                const PARENT_RELAY_ITEM = selectElement.closest('.rele__item');
 
                 // Знаходимо відповідний індекс реле
-                releItems.forEach((relayItem, index) => {
-                    if (relayItem === parentReleItem) {
-                        const s = `${index}x${selectedValue}k`;
-                        sendMessage(SET_RELAY_EEPROM_UPR, s);
+                relayItem.forEach((relayItem, index) => {
+                    if (relayItem === PARENT_RELAY_ITEM) {
+                        const INDEX_SELECTED_VALUE = `${index}x${SELECTED_VALUE}k`;
+
+                        sendMessage(SET_RELAY_EEPROM_UPR, INDEX_SELECTED_VALUE);
                     }
                 });
             });
