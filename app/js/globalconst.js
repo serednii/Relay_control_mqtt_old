@@ -76,7 +76,7 @@ let releNameBtn;
 
 const startSelector = () => {
     //input and label class
-    return promise = new Promise(resolve => {
+    return new Promise(resolve => {
         inputDey = document.querySelectorAll('.day');
         labelDey = document.querySelectorAll('.label-day');
         releTempChangeRadio = document.querySelectorAll('.rele-temp-change-radio');
@@ -112,7 +112,6 @@ const startSelector = () => {
     });
 
 }
-
 
 
 //**************************************************************************************** */

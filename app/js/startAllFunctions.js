@@ -1,5 +1,5 @@
 const startAllFunctions = () => {
-    return promise = new Promise(resolve => {
+    return new Promise(resolve => {
         startIntervals();
         removeShowBlock();
         printPin();
