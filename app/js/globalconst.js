@@ -116,33 +116,34 @@ const startSelector = () => {
 
 
 
-const CONNECT_SSID = userName + '_SSID';
-const LOCAL_IP = userName + '_IP';
-const GET_ANALOG_INPUT_A0 = userName + '_ANALOG_INPUT_A0';
-const RELAY_STATUS = userName + '_STAN_RELE';
-const GET_EEPROM_SENSOR_DATA = userName + '_EEPROM_SENSOR_DATA';
-const GET_DEVICE_SENSOR_DATA = userName + '_DEVICE_SENSOR_DATA';
-const OUT_START_DATA_SENSOR = userName + '_START_DATA_SENSOR_EEPROM_AND_DEVICE';
-const OUT_SAVE_DATA_SENSOR_EEPROM = userName + '_SAVE_DATA_SENSOR_EEPROM';
-const OUT_SAVE_NAME_SENSOR_EEPROM = userName + '_SAVE_NAME_SENSOR_EEPROM';
+const CONNECT_SSID = userName + '_ssid';
+const LOCAL_IP = userName + '_ip';
+const GET_ANALOG_INPUT_A0 = userName + 'analogInputA0';
+const RELAY_STATUS = userName + '_stanRele';
+const GET_EEPROM_SENSOR_DATA = userName + '_eepromSensorData';
+const GET_DEVICE_SENSOR_DATA = userName + '_deviceSensorData';
+const OUT_START_DATA_SENSOR = userName + '_start-data-sensor-eepromAndDevice';
+const OUT_SAVE_DATA_SENSOR_EEPROM = userName + '_save-data-sensor-eeprom';
+const OUT_SAVE_NAME_SENSOR_EEPROM = userName + '_save-name-sensor-eeprom';
 //const OUT_CLEAR_EEPROM = userName + '_CLEARE_EEPROM';
 
-const OUT_SAVE_DATA_SENSOR_TEMP = userName + '_SAVE_DATA_SENSOR_TEMP';
-const OUT_SAVE_RELAY_NAME = userName + '_SAVE_RELE_NAME';
+const OUT_SAVE_DATA_SENSOR_TEMP = userName + '_save-data-sensor-temp';
+const OUT_SAVE_RELAY_NAME = userName + '_save-rele-name';
 
-const GET_RELAY_EEPROM_UPR = userName + '_RELE_EPROM_UPR';
-const SET_RELAY_EEPROM_UPR = userName + '_RELE_EPROM_UPR_SET_NUMBER_SENSOR';
-const SET_RELAY_EEPROM_UPR_ERROR_RELAY_ON_OFF = userName + '_RELE_EPROM_UPR_SET_ERROR_RELE_VKL_VUKL';
-const SET_RELAY_EEPROM_UPR_ONE_OR_TWO_RANGE_TEMP = userName + '_RELE_EPROM_UPR_SET_ONE_OR_TWO_RANGE_TEMP';
-const SET_RELAY_EEPROM_UPR_CHANGE_ON_OR_OFF = userName + '_RELE_EPROM_UPR_SET_CHANGE_ON_OR_OFF';
-const SET_RELAY_EEPROM_CONTROL_MANUAL = userName + '_RELE_GET_EPROM_UPR_MANUAL';
-const SET_RELAY_ON_OFF = userName + '_SET_RELE_VKL_OTKL';
-const SET_RELAY_DATA_TIME = userName + '_SET_RELE_DATA_TIME';
-const SET_DEFINE_DEVICE = userName + '_DEFINE_DEVICE';
-const SET_RESET_FUNCTION = userName + '_RESET_FUNCTION';
+const GET_RELAY_EEPROM_UPR = userName + '_rele_eprom_upr';
+const SET_RELAY_EEPROM_UPR = userName + '_rele_eprom_upr-set_number_sensor';
+const SET_RELAY_EEPROM_UPR_ERROR_RELAY_ON_OFF = userName + '_rele_eprom_upr-set_erorr_rele_vkl_vukl';
+const SET_RELAY_EEPROM_UPR_ONE_OR_TWO_RANGE_TEMP = userName + '_rele_eprom_upr-set_one_or_two_range_temp';
+const SET_RELAY_EEPROM_UPR_CHANGE_ON_OR_OFF = userName + '_rele_eprom_upr-set_change_on_or_off';
+const SET_RELAY_EEPROM_CONTROL_MANUAL = userName + '_rele-get-eprom_upr-manual';
+const SET_RELAY_ON_OFF = userName + '_set-rele-vkl-otkl';
+const SET_RELAY_DATA_TIME = userName + '_set-rele-data-time';
+const SET_DEFINE_DEVICE = userName + '_define_device';
+const SET_RESET_FUNCTION = userName + '_resetFunction';
 
-const GET_RELAY_DATA_TIME = userName + '_OUT_WEB_RELE_DATA_TIME';
-const GET_SENSOR_NAME = userName + '_SENSOR_NAME';
-const GET_RELAY_NAME = userName + '_RELE_NAME';
-const GET_RELAY_EEPROM_CONTROL_MANUAL = userName + '_RELE_OUT_EPROM_UPR_MANUAL';
-const GET_SENSOR_TEMP_ON_OFF = userName + '_SENSOR_VKL_OTKL';
+const GET_RELAY_DATA_TIME = userName + '_out-web-rele-data-time';
+const GET_SENSOR_NAME = userName + '_sensor-name';
+const GET_RELAY_NAME = userName + '_rele-name';
+const GET_RELAY_EEPROM_CONTROL_MANUAL = userName + '_rele-out-eprom_upr-manual';
+const GET_SENSOR_TEMP_ON_OFF = userName + '_sensor-vkl-otkl';
+
