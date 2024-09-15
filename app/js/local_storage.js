@@ -1,15 +1,30 @@
 
 
 const btnPoppaAddNewDeviceOpen = document.querySelector('.popap-menu__btn-local-storage');
+const POPUP_LOCAL_STORAGE = document.querySelector('.popap-local-storage')
 btnPoppaAddNewDeviceOpen.addEventListener('click', () => {
-  document.querySelector('.popap-local-storage').classList.remove('popap-local-storage__show');
+  POPUP_LOCAL_STORAGE.classList.remove('popap-local-storage__show');
 });
 
 document.querySelector('.popap-local-storage__top-list').addEventListener('click', selectItem)
-document.querySelector('.popap-local-storage__btn-add').addEventListener('click', checkForm)
-document.querySelector('.popap-local-storage__btn-remove').addEventListener('click', removeItemList)
+document.querySelector('.popap-local-storage__btn-add').addEventListener('click', addDevice)
+document.querySelector('.popap-local-storage__btn-remove').addEventListener('click', removeDevice)
 document.querySelector('.popap-local-storage__btn-close').addEventListener('click', closeForm)
 
+
+if (localStorage.getItem('DeviceList') != null) {
+  const devicesList = JSON.parse(localStorage.getItem('DeviceList'));
+  if (devicesList) {
+    POPUP_LOCAL_STORAGE.classList.remove('popap-local-storage__show');
+  }
+  removeList();
+  printListDevice(devicesList);
+}
+
+
+
+
+//Select language
 const startLocalStorage = () => {
   return new Promise(resolve => {
     const language = localStorage.getItem('Language');
@@ -31,8 +46,6 @@ function selectItem(event) {
   const dev = event.target.closest('.popap-local-storage__top-item').querySelector('.popap-local-storage__top-device').innerText;
   const nam = event.target.closest('.popap-local-storage__top-item').querySelector('.popap-local-storage__top-name').innerText;
   if (dev != 'Name Device' || nam != 'Name') {
-    console.log(dev);
-    console.log(nam);
     event.target.closest('.popap-local-storage__top-item').classList.toggle('click');
   }
 
@@ -41,106 +54,91 @@ function selectItem(event) {
 
 
 
-{
-  let arr = [];
-  if (localStorage.getItem('DeviceArr') != null) {
-    arr = JSON.parse(localStorage.getItem('DeviceArr'));
-  }
-  removeList();
-  printListDevice(arr);
-}
 
-function removeItemList(event) { //удаляємо видалені пристрої
+
+function removeDevice(event) { //удаляємо видалені пристрої
   event.preventDefault();
-  let arr = [];
-  const itemDevice = document.querySelectorAll('.popap-local-storage__top-item');
-  if (localStorage.getItem('DeviceArr') != null || itemDevice.length > 0) { //якщо в LOCALSTORAGE  є щось записано і є списки на екрані 
-    arr = JSON.parse(localStorage.getItem('DeviceArr'));
+  let deviceList = [];
+  const itemDeviceElement = document.querySelectorAll('.popap-local-storage__top-item');
+  if (localStorage.getItem('DeviceList') != null || itemDevice.length > 0) { //якщо в LOCALSTORAGE  є щось записано і є списки на екрані 
+    deviceList = JSON.parse(localStorage.getItem('DeviceList'));
 
-    let newArr = [];
+    const newDeviceList = [];
     let isClick = false;
-    itemDevice.forEach((e, i) => {
+    itemDeviceElement.forEach((element, i) => {
       if (i > 0) {
-        console.log(arr);
-        if (e.classList.contains('click')) {
-          isClick = true
-          const deleteDevice = e.querySelector('.popap-local-storage__top-device').innerText;
-          arr.forEach((ee) => {
-            if (ee != null && ee.NameDevice != deleteDevice) {
-              newArr.push(ee);
+        if (element.classList.contains('click')) {
+          isClick = true;
+          const deleteDevice = element.querySelector('.popap-local-storage__top-device').innerText;
+          deviceList.forEach((device) => {
+            if (device != null && device.NameDevice != deleteDevice) {
+              newDeviceList.push(device);
             }
           });
         }
       }
     });
-
-    // console.log(newArr);
     if (isClick == true) {
-      localStorage.setItem('DeviceArr', JSON.stringify(newArr));
+      localStorage.setItem('DeviceList', JSON.stringify(newDeviceList));
       removeList();
-      printListDevice(newArr);
+      printListDevice(newDeviceList);
     }
 
   } else return false;
 }
 
-
-
 function closeForm(event) {
   event.preventDefault();
+  POPUP_LOCAL_STORAGE.classList.remove('popap-local-storage__show');
 }
 
-function checkForm(event) {
+function addDevice(event) {
   event.preventDefault();
-  let arr = [];
-  let obj = {
-  }
+  let deviceList = [];
+  const obj = {};
 
   const form = document.querySelector('.popap-local-storage__form');
-  let nameDevice = form.device.value;
-  let name = form.name.value;
-  let fail
-  if (localStorage.getItem('DeviceArr') != null) {
-    arr = JSON.parse(localStorage.getItem('DeviceArr'));
+  const nameDevice = form.device.value;
+  const name = form.name.value;
+  let validateMessage;
+  if (localStorage.getItem('DeviceList') != null) {
+    deviceList = JSON.parse(localStorage.getItem('DeviceList'));
   }
 
-
   if ((nameDevice == '' || name == '') && (nameDevice != 'Name Device' || name == 'Name'))
-    fail = 'Заповніть всі поля';
-  else if (arr != '') {
-    arr.forEach(e => {
+    validateMessage = 'Заповніть всі поля';
+  else if (deviceList != '') {
+    deviceList.forEach(e => {
       if (e.NameDevice === nameDevice) {
-        fail = 'Такий пристрій вже є';
+        validateMessage = 'Такий пристрій вже є';
       }
     })
   }
 
-  if (fail != undefined) {
-    alert(fail);
+  if (validateMessage != undefined) {
+    alert(validateMessage);
     return;
   }
 
-
-
   obj.NameDevice = nameDevice;
   obj.Name = name;
-  arr.push(obj);
-  localStorage.setItem('DeviceArr', JSON.stringify(arr));
+  deviceList.push(obj);
+  localStorage.setItem('DeviceList', JSON.stringify(deviceList));
   removeList();
-  printListDevice(arr);
+  printListDevice(deviceList);
 }
 
 function removeList() {
-  const item = document.querySelectorAll('.popap-local-storage__top-item, .popap-local-storage-menu__item')
-  item.forEach((e, i) => {
-    if (i > 0) e.remove();
+  const items = document.querySelectorAll('.popap-local-storage__top-item, .popap-local-storage-menu__item')
+  items.forEach((item, i) => {
+    if (i > 0) item.remove();
   })
 }
 
-function printListDevice(arr) {
+function printListDevice(deviceList = []) {
   //******************************************** */  
-  arr.forEach((e) => {
-    if (e != null) {
+  deviceList.forEach((device) => {
+    if (device != null) {
       const ul = document.querySelector('.popap-local-storage__top-list');
       const ulMenu = document.querySelector('.popap-local-storage-menu__list');
       let li = document.createElement('li');
@@ -150,10 +148,10 @@ function printListDevice(arr) {
       li.className = 'popap-local-storage__top-item';
 
       p.className = 'popap-local-storage__top-device';
-      p.innerText = e.NameDevice;
+      p.innerText = device.NameDevice;
 
       p1.className = 'popap-local-storage__top-name';
-      p1.innerText = e.Name;
+      p1.innerText = device.Name;
 
       li.append(p);
       li.append(p1);
@@ -167,10 +165,10 @@ function printListDevice(arr) {
       liMenu.className = 'popap-local-storage-menu__item';
 
       pMenu.className = 'popap-local-storage-menu__device';
-      pMenu.innerText = e.NameDevice;
+      pMenu.innerText = device.NameDevice;
 
       p1Menu.className = 'popap-local-storage-menu__name';
-      p1Menu.innerText = e.Name;
+      p1Menu.innerText = device.Name;
 
       liMenu.append(pMenu);
 

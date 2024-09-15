@@ -21,6 +21,7 @@ if (localStorage.getItem('Device') != null) {
     const nameDevices = JSON.parse(localStorage.getItem('Device'));
     document.querySelector('.info__local-storage').innerText = nameDevices.NameDevice + '  ---   ' + nameDevices.Name;
     userName = nameDevices.NameDevice;
+    document.querySelector('.popap-local-storage').classList.remove('popap-local-storage__show');
 } else {
     console.log('none');
     document.querySelector('.popap-local-storage').classList.add('popap-local-storage__show');

@@ -3,7 +3,7 @@ const burgerMenuLine = document.querySelector('.burger-menu span');
 const popapLocalStorage = document.querySelector('.popap-local-storage');
 const btnRestartDevice = document.querySelector('.popap-menu__btn-restart-device');
 
-const btnPopapAddNewDeviceClose = document.querySelector('.popap-local-storage__btn-close');
+
 const POPAP_MENU = document.querySelector('.popap-menu');
 const popapLocalStorageMenu = document.querySelector('.popap-local-storage-menu');
 const popapLocalStoragMmenuList = document.querySelector('.popap-local-storage-menu__device');
