@@ -114,7 +114,7 @@ function updateRelaySettings() {
 
 
 function updateRelayTemperatureSettings() {
-    const tempOnInputs = document.querySelectorAll('.rele-temp-vkl');
+    const tempOnInputs = document.querySelectorAll(CLASS_RELAY_TEMP_ON);
     const tempOffInputs = document.querySelectorAll('.rele-temp-otkl');
     const tempOnSwitches = document.querySelectorAll('.rele__seting-switch__temp-on');
     const tempOffSwitches = document.querySelectorAll('.rele__seting-switch__temp-off');

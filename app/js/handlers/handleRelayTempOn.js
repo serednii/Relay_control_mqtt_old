@@ -1,5 +1,5 @@
 function handleRelayTempOn() {
-  const tempInputs = document.querySelectorAll('.rele-temp-vkl, .rele-temp-otkl');
+  const tempInputs = document.querySelectorAll(`${CLASS_RELAY_TEMP_ON}, .rele-temp-otkl`);
 
   if (tempInputs.length > 0) {
     console.log('YES CLASSES rele-temp-otkl rele-temp-vkl ' + tempInputs.length);
@@ -30,9 +30,9 @@ function handleRelayTempOn() {
 //handleRelayTempOn handleRelayTempOn
 
 
-// if (document.querySelector('.rele-temp-otkl') && document.querySelector('.rele-temp-vkl')) {
-//   console.log('YES CLASSES rele-temp-otkl   rele-temp-vkl  ' + document.querySelectorAll('.rele-temp-vkl, .rele-temp-otkl').length);
-//   document.querySelectorAll('.rele-temp-vkl, .rele-temp-otkl').forEach(function (e) {
+// if (document.querySelector('.rele-temp-otkl') && document.querySelector('CLASS_RELAY_TEMP_ON')) {
+//   console.log('YES CLASSES rele-temp-otkl   rele-temp-vkl  ' + document.querySelectorAll('CLASS_RELAY_TEMP_ON, .rele-temp-otkl').length);
+//   document.querySelectorAll('CLASS_RELAY_TEMP_ON, .rele-temp-otkl').forEach(function (e) {
 //     e.addEventListener('keyup', function () { //при вводі даних перевірка на мінімальне і максимальне значення
 
 //       if (e.value > 120) e.value = 120;

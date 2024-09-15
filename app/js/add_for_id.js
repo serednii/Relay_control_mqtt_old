@@ -29,7 +29,7 @@ let arrayClass = [
   },
   {
     labelData: '.rele-temp-vkl-start-label',
-    inputData: '.rele-temp-vkl',
+    inputData: CLASS_RELAY_TEMP_ON,
     nameData: 'temp_start_'
   },
   {
