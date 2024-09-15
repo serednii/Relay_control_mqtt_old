@@ -4,7 +4,7 @@
 let arrayClass = [
   //   {
   //   labelData: '.rele__seting-switch__label',
-  //   inputData: '.rele__seting-switch__input',
+  //   inputData: `.${CLASS_RELAY_SETTING_SWITCH_INPUT}`,
   //   nameData: 'seting-'
   // },
   {

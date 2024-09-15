@@ -25,7 +25,7 @@ function handleRelaySection() {
             parent.addEventListener('click', (event) => {
                 event.stopPropagation(); // Зупинка спливання подій
 
-                if (event.target.classList.contains('rele__seting-switch__input')) {
+                if (event.target.classList.contains(CLASS_RELAY_SETTING_SWITCH_INPUT)) {
                     showSectionTimeAndSeting(event, parent, '.rele__seting-svg', '.rele__section-seting');
                 }
                 if (event.target.classList.contains('rele__timer-seting-show__input')) {
@@ -60,7 +60,7 @@ function handleRelaySection() {
 //         parent.addEventListener('click', function (event) {
 //             event.stopPropagation ? event.stopPropagation() : (event.cancelBubble = true);
 //             console.log(event.target);
-//             if (event.target.classList.contains('rele__seting-switch__input')) showSectionTimeAndSeting(event, parent, '.rele__seting-svg', '.rele__section-seting');
+//             if (event.target.classList.contains(CLASS_RELAY_SETTING_SWITCH_INPUT)) showSectionTimeAndSeting(event, parent, '.rele__seting-svg', '.rele__section-seting');
 //             if (event.target.classList.contains('rele__timer-seting-show__input')) showSectionTimeAndSeting(event, parent, '.rele__timer-seting-svg', '.rele-control-timer');
 //             if (event.target.classList.contains('rele__control-manually-show')) showSectionTimeAndSeting(event, parent, '.input-control-manually-svg', '.rele__control-manually', num);
 //         });

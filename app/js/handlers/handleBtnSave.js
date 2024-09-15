@@ -1,5 +1,5 @@
 function handleBtnSave() {
-    const BTN_SAVE = document.querySelector('.CLASS_ADDRESS_EEPROM_SAVE');
+    const BTN_SAVE = document.querySelector(CLASS_ADDRESS_EEPROM_SAVE);
     if (BTN_SAVE) {
         console.log('YES CLASSES CLASS_ADDRESS_EEPROM_SAVE');
 
