@@ -59,11 +59,11 @@ const langArr = {
         "en": 'Temperature sensor control',
         "cz": 'Ovládání teplotním čidlem'
     },
-    // "control_timer": { //
-    //     "ua": ' Управління таймером',
-    //     "en": 'Timer control',
-    //     "cz": 'Ovládání časovače'
-    // },
+    "show-sensor-setting": { //
+        "ua": 'Показати настройки термо датчиків',
+        "en": 'Show thermal sensor settings',
+        "cz": 'Zobrazit nastavení teplotních senzorů'
+    },
     "manual_control": { //
         "ua": 'Ручне управління',
         "en": 'Manual control',
@@ -94,13 +94,31 @@ const langArr = {
         "en": 'Temp OFF',
         "cz": 'Tepl VYP',
     },
+    "list-device": { //
+        "ua": 'Список пристроїв',
+        "en": 'List of devices',
+        "cz": 'Seznam zařízení',
+    },
+    "list_eeprom": { //
+        "ua": 'Дані з вихідних датчиків EEPROM',
+        "en": 'Data from EEPROM out sensors',
+        "cz": 'Data z výstupních senzorů EEPROM',
+    },
+    "valid_sensors": { //
+        "ua": 'Номери та адреси діючих датчиків',
+        "en": 'Numbers and addresses of valid sensors',
+        "cz": 'Čísla a adresy platných senzorů',
+    },
+
+
+
+
 }
 
 // languageChange('ua');
 
 function languageChange(language) {
     for (let key in langArr) {
-        // console.log('key  ' + key);
         let elem = document.querySelectorAll('.lan-' + key);
         elem.forEach(e => {
             e.innerHTML = langArr[key][language];
