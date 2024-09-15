@@ -44,7 +44,7 @@ let arrayClass = [
   },
   {
     labelData: '.rele__timer-seting-show__label',
-    inputData: '.rele__timer-seting-show__input',
+    inputData: `.${CLASS_RELAY_TIMER_SETTING_SHOW_INPUT}`,
     nameData: 'show-time_'
   }
   // {

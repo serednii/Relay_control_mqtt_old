@@ -16,3 +16,4 @@ const CLASS_ADDRESS_EEPROM_ADDRESS = '.address-eeprom__address';
 const CLASS_RELAY_TEMP_CHANGE_SINGLE = '.rele-temp-change-single';
 const CLASS_RELAY_CONTROL_MANUAL_ON_OFF = '.rele__control-manually-on-off';
 const CLASS_RELAY_SETTING_SWITCH_INPUT = 'rele__seting-switch__input';
+const CLASS_RELAY_TIMER_SETTING_SHOW_INPUT = 'rele__timer-seting-show__input'
