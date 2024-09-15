@@ -316,7 +316,7 @@ function parseRelayDateTime(payload) {
         relaySettings = Object.assign(obj_1, obj_2, obj_3);
         console.log(relaySettings);
         const namberRele = parseInt(relaySettings.NUM);
-        const dateTimeInput = relayItem[namberRele].querySelectorAll('.datetime');
+        const dateTimeInput = relayItem[namberRele].querySelectorAll(CLASS_DATE_TIME);
         const timeInput = relayItem[namberRele].querySelectorAll('.time');
         const dayWikend = relayItem[namberRele].querySelectorAll('.day');
 
@@ -366,7 +366,7 @@ function parseRelayDateTime(payload) {
         }
 
         relayItem.forEach((parent) => {
-            const datetime = parent.querySelectorAll('.datetime');
+            const datetime = parent.querySelectorAll('CLASS_DATE_TIME');
             const time = parent.querySelectorAll('.time');
             checkDate(parent, datetime, time);
             checkTime(parent, datetime, time);

@@ -6,7 +6,7 @@ function handleRelaySection() {
         relayItem.forEach((parent, num) => {
             parent.addEventListener('change', (event) => {
                 event.stopPropagation(); // Зупинка спливання подій
-                const DATA_TIME = parent.querySelectorAll('.datetime');
+                const DATA_TIME = parent.querySelectorAll(CLASS_DATE_TIME);
                 const TIME = parent.querySelectorAll('.time');
 
                 if (event.target.classList.contains('day')) {
@@ -49,7 +49,7 @@ function handleRelaySection() {
 
 //         parent.addEventListener('change', function (event) {
 //             event.stopPropagation ? event.stopPropagation() : (event.cancelBubble = true);
-//             const datetime = parent.querySelectorAll('.datetime');
+//             const datetime = parent.querySelectorAll(CLASS_DATE_TIME);
 //             const time = parent.querySelectorAll('.time');
 //             if (event.target.classList.contains('day')) checkCheckedDay(event);
 //             if (event.target.classList.contains('datetime')) checkDate(parent, datetime, time);
