@@ -274,12 +274,12 @@ function updateRelayManualSettings(relaySettings) {
         const parent = e.closest(CLASS_RELAY_ITEM);
         if (relaySettings.obj[i].namberRele == 1) {
             parent.querySelector('.input-control-manually-svg').classList.add('on');
-            parent.querySelector('.rele__control-manually-show').classList.add('on');
+            parent.querySelector(`.${CLASS_RELAY_CONTROL_MANUAL_SHOW}`).classList.add('on');
             parent.querySelector('.rele__control-manually').classList.add('show-block');
             parent.querySelector('.rele__seting-sensor-timer').classList.add('block__hidden');
         } else if (relaySettings.obj[i].namberRele == 0) {
             parent.querySelector('.input-control-manually-svg').classList.remove('on');
-            parent.querySelector('.rele__control-manually-show').classList.remove('on');
+            parent.querySelector(`.${CLASS_RELAY_CONTROL_MANUAL_SHOW}`).classList.remove('on');
             parent.querySelector('.rele__control-manually').classList.remove('show-block');
             parent.querySelector('.rele__seting-sensor-timer').classList.remove('block__hidden');
         }

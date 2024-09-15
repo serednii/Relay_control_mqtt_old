@@ -31,7 +31,7 @@ function handleRelaySection() {
                 if (event.target.classList.contains(CLASS_RELAY_TIMER_SETTING_SHOW_INPUT)) {
                     showSectionTimeAndSeting(event, parent, '.rele__timer-seting-svg', '.rele-control-timer');
                 }
-                if (event.target.classList.contains('rele__control-manually-show')) {
+                if (event.target.classList.contains(CLASS_RELAY_CONTROL_MANUAL_SHOW)) {
                     showSectionTimeAndSeting(event, parent, '.input-control-manually-svg', '.rele__control-manually', num);
                 }
             });
@@ -62,7 +62,7 @@ function handleRelaySection() {
 //             console.log(event.target);
 //             if (event.target.classList.contains(CLASS_RELAY_SETTING_SWITCH_INPUT)) showSectionTimeAndSeting(event, parent, '.rele__seting-svg', '.rele__section-seting');
 //             if (event.target.classList.contains(CLASS_RELAY_TIMER_SETTING_SHOW_INPUT)) showSectionTimeAndSeting(event, parent, '.rele__timer-seting-svg', '.rele-control-timer');
-//             if (event.target.classList.contains('rele__control-manually-show')) showSectionTimeAndSeting(event, parent, '.input-control-manually-svg', '.rele__control-manually', num);
+//             if (event.target.classList.contains(CLASS_RELAY_CONTROL_MANUAL_SHOW)) showSectionTimeAndSeting(event, parent, '.input-control-manually-svg', '.rele__control-manually', num);
 //         });
 
 //     });

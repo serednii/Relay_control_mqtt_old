@@ -43,7 +43,7 @@ function showSectionTimeAndSeting(event, parent, classLink, classShowSection, nu
     if (event.target.classList.contains('on')) {
         parent.querySelector(classLink).classList.remove(classLink.substring(1) + '-on');
         parent.querySelector(classShowSection).classList.remove('show-block');
-        if (event.target.classList.contains('rele__control-manually-show')) {
+        if (event.target.classList.contains(CLASS_RELAY_CONTROL_MANUAL_SHOW)) {
             parent.querySelector('.rele__seting-sensor-timer').classList.remove('block__hidden'); //Добавляємо клас відкриваємо Select
             const s = num + 'x0k';
             console.log('s----' + s);
@@ -53,7 +53,7 @@ function showSectionTimeAndSeting(event, parent, classLink, classShowSection, nu
     } else {
         parent.querySelector(classLink).classList.add(classLink.substring(1) + '-on');
         parent.querySelector(classShowSection).classList.add('show-block');
-        if (event.target.classList.contains('rele__control-manually-show')) {
+        if (event.target.classList.contains(CLASS_RELAY_CONTROL_MANUAL_SHOW)) {
             parent.querySelector('.rele__seting-sensor-timer').classList.add('block__hidden'); //Добавляємо клас відкриваємо Select
             const s = num + 'x1k';
             console.log('s----' + s);
