@@ -164,17 +164,17 @@ function onMessageArrived11(message) {
             let relaySettings = JSON.parse(message.payloadString);
             console.log('message.payloadString   ////// GET_RELAY_EEPROM_CONTROL_MANUAL');
             console.log(message.payloadString);
-            document.querySelectorAll('.input-control-manually-svg').forEach(function (e, i) {
+            document.querySelectorAll(CLASS_INPUT_CONTROL_MANUAL_SVG).forEach(function (e, i) {
                 const parent = e.closest(CLASS_RELAY_ITEM);
                 if (relaySettings.obj[i].namberRele == 1) {
-                    parent.querySelector('.input-control-manually-svg').classList.add('on');
+                    parent.querySelector(CLASS_INPUT_CONTROL_MANUAL_SVG).classList.add('on');
                     parent.querySelector('.CLASS_RELAY_CONTROL_MANUAL_SHOW').classList.add('on');
-                    parent.querySelector('.rele__control-manually').classList.add('show-block'); //Добавляємо клас відкриваємо Select
+                    parent.querySelector(CLASS_RELAY_CONTROL_MANUAL).classList.add('show-block'); //Добавляємо клас відкриваємо Select
                     parent.querySelector('.rele__seting-sensor-timer').classList.add('block__hidden'); //Добавляємо клас відкриваємо Select
                 } else if (relaySettings.obj[i].namberRele == 0) {
-                    parent.querySelector('.input-control-manually-svg').classList.remove('on');
+                    parent.querySelector(CLASS_INPUT_CONTROL_MANUAL_SVG).classList.remove('on');
                     parent.querySelector('.CLASS_RELAY_CONTROL_MANUAL_SHOW').classList.remove('on');
-                    parent.querySelector('.rele__control-manually').classList.remove('show-block');
+                    parent.querySelector(CLASS_RELAY_CONTROL_MANUAL).classList.remove('show-block');
                     parent.querySelector('.rele__seting-sensor-timer').classList.remove('block__hidden'); //Добавляємо клас відкриваємо Select
                 }
             });

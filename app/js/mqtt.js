@@ -270,17 +270,17 @@ function handleReleEpromUprManual(message) {
 }
 
 function updateRelayManualSettings(relaySettings) {
-    document.querySelectorAll('.input-control-manually-svg').forEach(function (e, i) {
+    document.querySelectorAll(CLASS_INPUT_CONTROL_MANUAL_SVG).forEach(function (e, i) {
         const parent = e.closest(CLASS_RELAY_ITEM);
         if (relaySettings.obj[i].namberRele == 1) {
-            parent.querySelector('.input-control-manually-svg').classList.add('on');
+            parent.querySelector(CLASS_INPUT_CONTROL_MANUAL_SVG).classList.add('on');
             parent.querySelector(`.${CLASS_RELAY_CONTROL_MANUAL_SHOW}`).classList.add('on');
-            parent.querySelector('.rele__control-manually').classList.add('show-block');
+            parent.querySelector(CLASS_RELAY_CONTROL_MANUAL).classList.add('show-block');
             parent.querySelector('.rele__seting-sensor-timer').classList.add('block__hidden');
         } else if (relaySettings.obj[i].namberRele == 0) {
-            parent.querySelector('.input-control-manually-svg').classList.remove('on');
+            parent.querySelector(CLASS_INPUT_CONTROL_MANUAL_SVG).classList.remove('on');
             parent.querySelector(`.${CLASS_RELAY_CONTROL_MANUAL_SHOW}`).classList.remove('on');
-            parent.querySelector('.rele__control-manually').classList.remove('show-block');
+            parent.querySelector(CLASS_RELAY_CONTROL_MANUAL).classList.remove('show-block');
             parent.querySelector('.rele__seting-sensor-timer').classList.remove('block__hidden');
         }
     });
