@@ -47,19 +47,7 @@ let arrayClass = [
     inputData: `.${CLASS_RELAY_TIMER_SETTING_SHOW_INPUT}`,
     nameData: 'show-time_'
   }
-  // {
-  //   labelData: '.input-control-manually__label',
-  //   inputData: '.input-control-manually__input',
-  //   nameData: 'manual-'
-  // }
 ];
-//Призначаємо for and id for label and input
-// setIdAndFor(relaySettingSwitchLabel, relaySettingSwitchInput,'seting-switch-');
-// setIdAndFor(labelDey, inputDey,'time-id-' );
-
-// setIdAndFor(relayTempChangeLabel, relayTempChangeRadio,'on_' );
-// setIdAndFor(relaySettingSensorSelectLabel, relaySettingSensorSelect,'cars' );
-
 
 const addIdAndFor = () => {
   return new Promise(resolve => {
@@ -71,7 +59,6 @@ const addIdAndFor = () => {
     console.log('start function addIdAndFor()')
     resolve();
   })
-
 }
 
 function setIdAndFor(classLabel, classInput, nameId) {
