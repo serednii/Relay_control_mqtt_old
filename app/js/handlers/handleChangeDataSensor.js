@@ -1,5 +1,5 @@
 function handleChangeDataSensor() {
-    const CHANGE_BUTTONS = document.querySelectorAll(`${CALSS_ADDRESS_EEPROM_BTN}.change`);
+    const CHANGE_BUTTONS = document.querySelectorAll(`${CALSS_ADDRESS_EEPROM_BTN}${CLASS_CHANGE}`);
 
     if (CHANGE_BUTTONS.length > 0) {
         CHANGE_BUTTONS.forEach(function (button) {
@@ -27,15 +27,15 @@ function handleChangeDataSensor() {
             });
         });
     } else {
-        console.log('No CALSS_ADDRESS_EEPROM_BTN.change elements found');
+        console.log('No CALSS_ADDRESS_EEPROM_BTN${CLASS_CHANGE} elements found');
     }
 }
 
 
 // function handleChangeDataSensor() {
 
-//     if (document.querySelector(`${CALSS_ADDRESS_EEPROM_BTN}.change`)) {
-//       console.log('YES CLASSES address-eeprom__btn.change  ' + btnChange.length);
+//     if (document.querySelector(`${CALSS_ADDRESS_EEPROM_BTN}${CLASS_CHANGE}`)) {
+//       console.log('YES CLASSES address-eeprom__btn${CLASS_CHANGE}  ' + btnChange.length);
 //       btnChange.forEach(function (e) {
 //         e.addEventListener('click', function (k) {
 //           parentListEeprom.forEach(function (m) {
@@ -53,6 +53,6 @@ function handleChangeDataSensor() {
 //         });
 //       });
 //     } else {
-//       console.log('NOT CLASSES address-eeprom__btn.change');
+//       console.log('NOT CLASSES address-eeprom__btn${CLASS_CHANGE}');
 //     }
 //   }
