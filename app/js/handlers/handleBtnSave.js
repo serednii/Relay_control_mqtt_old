@@ -1,9 +1,9 @@
 function handleBtnSave() {
+    const BTN_SAVE = document.querySelector('.CLASS_ADDRESS_EEPROM_SAVE');
+    if (BTN_SAVE) {
+        console.log('YES CLASSES CLASS_ADDRESS_EEPROM_SAVE');
 
-    if (btnSave) {
-        console.log('YES CLASSES address-eeprom__save');
-
-        btnSave.addEventListener('click', function () {
+        BTN_SAVE.addEventListener('click', function () {
             // Збираємо дані адрес сенсорів
             let sensorAddresses = '';
             tableEepromAddress.forEach(function (e, i) {
@@ -26,15 +26,15 @@ function handleBtnSave() {
             sendMessage(OUT_SAVE_NAME_SENSOR_EEPROM, sensorNames);
         });
     } else {
-        console.log('NOT CLASSES address-eeprom__save');
+        console.log('NOT CLASSES CLASS_ADDRESS_EEPROM_SAVE');
     }
 }
 
 
-// if (btnSave) {
-//     console.log('YES CLASSES address-eeprom__save');
+// if (BTN_SAVE) {
+//     console.log('YES CLASSES CLASS_ADDRESS_EEPROM_SAVE');
 
-//     btnSave.addEventListener('click', function () {
+//     BTN_SAVE.addEventListener('click', function () {
 
 //         let s = '';
 //         tableEepromAddress.forEach(function (e, i) {
@@ -58,5 +58,5 @@ function handleBtnSave() {
 //         sendMessage(OUT_SAVE_NAME_SENSOR_EEPROM, s);
 //     });
 // } else {
-//     console.log('NOT CLASSES address-eeprom__save');
+//     console.log('NOT CLASSES CLASS_ADDRESS_EEPROM_SAVE');
 // }
