@@ -294,7 +294,7 @@ function innerHtmlText() {
 
     <div class="rele__section-seting">
       <div class="rele__name-wrapper">
-        <input class="rele__name-input" type="text" placeholder="name rele" maxlength="40">
+        <input class="rele__name-input form-control" type="text" placeholder="name rele" maxlength="40">
           <input class="rele__name-btn btn btn-primary" type="submit" value="Save">
           </div>
           <div class="input-control-error__box" data-toggle="buttons">

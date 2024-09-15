@@ -79,6 +79,8 @@
 //**************************************NAME RELE**************************************************
 .rele__name-wrapper {
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .rele__name-input {
@@ -86,6 +88,7 @@
     font-size: 1.2rem;
     line-height: 1.7;
     width: 65%;
+    display: inline-block;
 }
 
 .rele__name-btn {
@@ -128,7 +131,7 @@
 
 .rele__seting-switch__box {
     // padding-top: 0.6rem;
-    // margin-bottom: 35px;
+    margin-bottom: 10px;
     // background-color: #50b9C0;
     height: 2.7rem;
     display: flex;
