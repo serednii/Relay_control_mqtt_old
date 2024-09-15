@@ -11,9 +11,9 @@ function handleSelectSensor() {
                 if (deviceElement.classList.contains('red') && deviceElement.classList.contains('click')) {
                     const addressDevice = deviceElement.querySelector('.address-device__address').textContent;
 
-                    if (domElement) {
+                    if (selectEepromDataSensor) {
                         // Оновлюємо адресу в елементі '.address-eeprom__address'
-                        domElement.querySelector('.address-eeprom__address').innerText = addressDevice;
+                        selectEepromDataSensor.querySelector('.address-eeprom__address').innerText = addressDevice;
 
                         // Виділяємо несумісні адреси сенсорів
                         highlightMismatchedSensorAddresses();
@@ -21,7 +21,7 @@ function handleSelectSensor() {
                         // Оновлюємо стан клікабельності пристроїв, якщо потрібно
                         // updateClickableDevices();
                     } else {
-                        console.error('No active domElement found');
+                        console.error('No active selectEepromDataSensor found');
                     }
                 }
             });
@@ -41,7 +41,7 @@ function handleSelectSensor() {
 //         //добавляємо датчики яких немає в списку EEPROM
 //         e.addEventListener('click', function () {
 //           if (e.classList.contains('red') && e.classList.contains('click')) {
-//             domElement.querySelector('.address-eeprom__address').innerText = e.querySelector('.address-device__address').textContent;
+//             selectEepromDataSensor.querySelector('.address-eeprom__address').innerText = e.querySelector('.address-device__address').textContent;
 //             highlightMismatchedSensorAddresses();
 //             // updateClickableDevices();
 //           }

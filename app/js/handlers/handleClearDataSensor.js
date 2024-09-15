@@ -7,8 +7,8 @@
 
 //         clearButtons.forEach(function (button) {
 //             button.addEventListener('click', function () {
-//                 // Знаходимо найближчий контейнер '.address-eeprom__data' для кожної кнопки
-//                 const dataContainer = button.closest('.address-eeprom__data');
+//                 // Знаходимо найближчий контейнер CLASS_ADDRESS_EEPROM_DATA для кожної кнопки
+//                 const dataContainer = button.closest(CLASS_ADDRESS_EEPROM_DATA);
 
 //                 if (dataContainer) {
 //                     // Очищуємо текст всередині елементів
@@ -38,8 +38,8 @@ function handleClearDataSensor() {
 
         CLEAR_BUTTONS.forEach(function (button) {
             button.addEventListener('click', function () {
-                // Знаходимо найближчий контейнер '.address-eeprom__data' для кожної кнопки
-                const DATA_CONTAINER = button.closest('.address-eeprom__data');
+                // Знаходимо найближчий контейнер CLASS_ADDRESS_EEPROM_DATA для кожної кнопки
+                const DATA_CONTAINER = button.closest(CLASS_ADDRESS_EEPROM_DATA);
 
                 if (DATA_CONTAINER) {
                     // Очищуємо текст всередині елементів
@@ -66,7 +66,7 @@ function handleClearDataSensor() {
 //         console.log('YES CLASSES address-eeprom__btn.clear ' + btnClear.length);
 //         btnClear.forEach(function (e) {
 //             e.addEventListener('click', function () {
-//                 const parent = e.closest('.address-eeprom__data');
+//                 const parent = e.closest(CLASS_ADDRESS_EEPROM_DATA);
 //                 console.log(parent);
 //                 parent.querySelector('.address-eeprom__address').innerText = '0000000000000000';
 //                 parent.querySelector('.address-eeprom__temp').innerText = '';
