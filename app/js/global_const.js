@@ -36,7 +36,7 @@ client.onMessageArrived = onMessageArrived;
 const printAnalogInput = document.querySelector('.popap-info__analog-input');
 const parentListEeprom = document.querySelectorAll(CLASS_ADDRESS_EEPROM_DATA);
 const tableEepromNumber = document.querySelectorAll('.address-eeprom__number');
-const tableEepromAddress = document.querySelectorAll('.address-eeprom__address');
+const tableEepromAddress = document.querySelectorAll('CLASS_ADDRESS_EEPROM_ADDRESS');
 const tableEepromNameSensor = document.querySelectorAll('.address-eeprom-name');
 
 let inputDey;
