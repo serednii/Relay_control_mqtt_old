@@ -1,11 +1,11 @@
 function showSectionTime(event, parent) {
     if (event.target.classList.contains('on')) {
         parent.querySelector(CLASS__RELAY_TIMERsETTING_SVG).classList.add('rele__timer-seting-svg-on');
-        parent.querySelector('.rele-control-timer').classList.add('block__show'); //Добавляємо клас
+        parent.querySelector(CLASS_RELAY_CONTROL_TIMER).classList.add('block__show'); //Добавляємо клас
         event.target.classList.remove('on');
     } else {
         parent.querySelector(CLASS__RELAY_TIMERsETTING_SVG).classList.remove('rele__timer-seting-svg-on');
-        parent.querySelector('.rele-control-timer').classList.remove('block__show');
+        parent.querySelector(CLASS_RELAY_CONTROL_TIMER).classList.remove('block__show');
         event.target.classList.add('on');
     }
 }
