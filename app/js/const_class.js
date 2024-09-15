@@ -20,3 +20,4 @@ const CLASS_RELAY_TIMER_SETTING_SHOW_INPUT = 'rele__timer-seting-show__input';
 const CLASS_RELAY_CONTROL_MANUAL_SHOW = 'rele__control-manually-show';
 
 const CLASS_RELAY_SETTING_SVG = '.rele__seting-svg';
+const CLASS_RELAY_SECTION_SETTING = '.rele__section-seting';

@@ -68,11 +68,11 @@ function switchSeting(event, parent) { //Покузує або скриває б
     console.log('testtest')
     if (event.target.classList.contains('on')) {
         parent.querySelector(CLASS_RELAY_SETTING_SVG).classList.add('rele__seting-svg-on');
-        parent.querySelector('.rele__section-seting').classList.add('show-block');
+        parent.querySelector(CLASS_RELAY_SECTION_SETTING).classList.add('show-block');
         event.target.classList.remove('on');
     } else {
         parent.querySelector(CLASS_RELAY_SETTING_SVG).classList.remove('rele__seting-svg-on');
-        parent.querySelector('.rele__section-seting').classList.remove('show-block');
+        parent.querySelector(CLASS_RELAY_SECTION_SETTING).classList.remove('show-block');
         event.target.classList.add('on');
     }
 }
