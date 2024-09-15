@@ -366,7 +366,7 @@ function parseRelayDateTime(payload) {
         }
 
         relayItem.forEach((parent) => {
-            const datetime = parent.querySelectorAll('CLASS_DATE_TIME');
+            const datetime = parent.querySelectorAll(CLASS_DATE_TIME);
             const time = parent.querySelectorAll('.time');
             checkDate(parent, datetime, time);
             checkTime(parent, datetime, time);

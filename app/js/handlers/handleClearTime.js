@@ -22,7 +22,7 @@ function handleClearTime() {
 //     timeBtnClear.forEach(function (e, i) {
 //       e.addEventListener('click', function () {
 //         messageDate(i);
-//         relayItem[i].querySelectorAll('CLASS_DATE_TIME, .time').forEach(function (e) {
+//         relayItem[i].querySelectorAll(`${CLASS_DATE_TIME}, .time}).forEach(function (e) {
 //           e.value = '';
 //         });
 //       });
