@@ -14,3 +14,4 @@ const CLASS_ADDRESS_EEPROM_DATA = '.address-eeprom__data';
 const CLASS_ADDRESS_EEPROM_TEMP = '.address-eeprom__temp';
 const CLASS_ADDRESS_EEPROM_ADDRESS = '.address-eeprom__address';
 const CLASS_RELAY_TEMP_CHANGE_SINGLE = '.rele-temp-change-single';
+const CLASS_RELAY_CONTROL_MANUAL_ON_OFF = '.rele__control-manually-on-off';

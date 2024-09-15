@@ -94,7 +94,7 @@ function onMessageArrived11(message) {
         if (message.destinationName === RELAY_STATUS) {
             //получаємо дані про стан кожного реле включене або відключене 
             const stanReleTemp = parseInt(message.payloadString);
-            const releOnOff = document.querySelectorAll('.rele__control-manually-on-off');
+            const releOnOff = document.querySelectorAll(CLASS_RELAY_CONTROL_MANUAL_ON_OFF);
             for (n = 0; n < 8; n++) {
                 //Засвічуємо або гасимо лампочки
                 if (stanReleTemp & 1 << n) {

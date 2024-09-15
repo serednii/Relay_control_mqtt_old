@@ -201,7 +201,7 @@ function handleReleState(message) {
 }
 
 function updateReleState(stanReleTemp) {
-    const relayOnOff = document.querySelectorAll('.rele__control-manually-on-off');
+    const relayOnOff = document.querySelectorAll(CLASS_RELAY_CONTROL_MANUAL_ON_OFF);
     for (let n = 0; n < 8; n++) {
         if (stanReleTemp & (1 << n)) {
             relayOnOff[n].checked = false;

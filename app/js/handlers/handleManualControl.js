@@ -2,7 +2,7 @@
 
 
 function handleManualControl() {
-    const MANUAL_CONTROL = document.querySelectorAll('.rele__control-manually-on-off');
+    const MANUAL_CONTROL = document.querySelectorAll(CLASS_RELAY_CONTROL_MANUAL_ON_OFF);
     if (MANUAL_CONTROL.length > 0) {
         MANUAL_CONTROL.forEach((control, index) => {
             control.addEventListener('click', () => {
@@ -21,8 +21,8 @@ function handleManualControl() {
     }
 }
 
-  // if (document.querySelector('.rele__control-manually-on-off')) {
-  //   document.querySelectorAll('.rele__control-manually-on-off').forEach(function (e, i) {
+  // if (document.querySelector(CLASS_RELAY_CONTROL_MANUAL_ON_OFF)) {
+  //   document.querySelectorAll(CLASS_RELAY_CONTROL_MANUAL_ON_OFF).forEach(function (e, i) {
   //     e.addEventListener('change', function () {
   //       if (e.checked) s = i + 'x1k';
   //       else s = i + 'x0k';
