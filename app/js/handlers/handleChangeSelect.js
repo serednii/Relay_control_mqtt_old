@@ -16,7 +16,6 @@ function handleChangeSelect() {
                 relayItem.forEach((relayItem, index) => {
                     if (relayItem === PARENT_RELAY_ITEM) {
                         const INDEX_SELECTED_VALUE = `${index}x${SELECTED_VALUE}k`;
-
                         sendMessage(SET_RELAY_EEPROM_UPR, INDEX_SELECTED_VALUE);
                     }
                 });
