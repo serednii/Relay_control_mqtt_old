@@ -26,6 +26,6 @@ const CLASS_RELAY_CONTROL_TIMER = '.rele-control-timer';
 const CLASS_INPUT_CONTROL_MANUAL_SVG = '.input-control-manually-svg';
 const CLASS_RELAY_CONTROL_MANUAL = '.rele__control-manually';
 const CLASS_RELAY_CONTROL_CHANGE_RADIO = '.rele-temp-change-radio';
-
+const CLASS_RELAY_NAME_BTN = '.rele__name-btn';
 
 

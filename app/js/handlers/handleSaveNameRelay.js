@@ -1,8 +1,8 @@
 function handleSaveNameRelay() {
-    const releNameButtons = document.querySelectorAll('.rele__name-btn');
+    const releNameButtons = document.querySelectorAll(CLASS_RELAY_NAME_BTN);
 
     if (releNameButtons.length > 0) {
-        console.log('Found rele__name-btn: ' + releNameButtons.length);
+        console.log('Found CLASS_RELAY_NAME_BTN: ' + releNameButtons.length);
 
         releNameButtons.forEach(function (button, index) {
             button.addEventListener('click', function () {
@@ -20,7 +20,7 @@ function handleSaveNameRelay() {
             });
         });
     } else {
-        console.log('No rele__name-btn classes found');
+        console.log('No CLASS_RELAY_NAME_BTN classes found');
     }
 }
 
@@ -28,7 +28,7 @@ function handleSaveNameRelay() {
 
 
 //     if (relayNameBtn > 0) {
-//       console.log('NOT CLASSES rele__name-btn ' + relayNameBtn.length);
+//       console.log('NOT CLASSES CLASS_RELAY_NAME_BTN ' + relayNameBtn.length);
 //       relayNameBtn.forEach(function (e, i) {
 //         e.addEventListener('click', function () {
 //           s = i + '*#*' + e.closest(CLASS_RELAY_ITEM).querySelector('.rele__name-input').value + '*&*';
@@ -38,5 +38,5 @@ function handleSaveNameRelay() {
 //         });
 //       });
 //     } else {
-//       console.log('NOT CLASSES rele__name-btn');
+//       console.log('NOT CLASSES CLASS_RELAY_NAME_BTN');
 //     }

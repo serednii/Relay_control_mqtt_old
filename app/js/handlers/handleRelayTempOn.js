@@ -1,5 +1,5 @@
 function handleRelayTempOn() {
-  const tempInputs = document.querySelectorAll(`${CLASS_RELAY_TEMP_ON}, CLASS_RELAY_TEMP_OFF`);
+  const tempInputs = document.querySelectorAll(`${CLASS_RELAY_TEMP_ON}, ${CLASS_RELAY_TEMP_OFF}`);
 
   if (tempInputs.length > 0) {
     console.log('YES CLASSES rele-temp-otkl rele-temp-vkl ' + tempInputs.length);
