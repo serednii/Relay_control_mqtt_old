@@ -18,3 +18,5 @@ const CLASS_RELAY_CONTROL_MANUAL_ON_OFF = '.rele__control-manually-on-off';
 const CLASS_RELAY_SETTING_SWITCH_INPUT = 'rele__seting-switch__input';
 const CLASS_RELAY_TIMER_SETTING_SHOW_INPUT = 'rele__timer-seting-show__input';
 const CLASS_RELAY_CONTROL_MANUAL_SHOW = 'rele__control-manually-show';
+
+const CLASS_RELAY_SETTING_SVG = '.rele__seting-svg';

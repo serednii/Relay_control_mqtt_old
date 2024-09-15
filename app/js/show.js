@@ -67,11 +67,11 @@ function showSectionTimeAndSeting(event, parent, classLink, classShowSection, nu
 function switchSeting(event, parent) { //Покузує або скриває блок з настройками
     console.log('testtest')
     if (event.target.classList.contains('on')) {
-        parent.querySelector('.rele__seting-svg').classList.add('rele__seting-svg-on');
+        parent.querySelector(CLASS_RELAY_SETTING_SVG).classList.add('rele__seting-svg-on');
         parent.querySelector('.rele__section-seting').classList.add('show-block');
         event.target.classList.remove('on');
     } else {
-        parent.querySelector('.rele__seting-svg').classList.remove('rele__seting-svg-on');
+        parent.querySelector(CLASS_RELAY_SETTING_SVG).classList.remove('rele__seting-svg-on');
         parent.querySelector('.rele__section-seting').classList.remove('show-block');
         event.target.classList.add('on');
     }
