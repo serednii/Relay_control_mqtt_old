@@ -170,12 +170,12 @@ function onMessageArrived11(message) {
                     parent.querySelector(CLASS_INPUT_CONTROL_MANUAL_SVG).classList.add('on');
                     parent.querySelector('.CLASS_RELAY_CONTROL_MANUAL_SHOW').classList.add('on');
                     parent.querySelector(CLASS_RELAY_CONTROL_MANUAL).classList.add('show-block'); //Добавляємо клас відкриваємо Select
-                    parent.querySelector('.rele__seting-sensor-timer').classList.add('block__hidden'); //Добавляємо клас відкриваємо Select
+                    parent.querySelector(CLASS_RELAY_SETTING_SENSOR_TIMER).classList.add('block__hidden'); //Добавляємо клас відкриваємо Select
                 } else if (relaySettings.obj[i].namberRele == 0) {
                     parent.querySelector(CLASS_INPUT_CONTROL_MANUAL_SVG).classList.remove('on');
                     parent.querySelector('.CLASS_RELAY_CONTROL_MANUAL_SHOW').classList.remove('on');
                     parent.querySelector(CLASS_RELAY_CONTROL_MANUAL).classList.remove('show-block');
-                    parent.querySelector('.rele__seting-sensor-timer').classList.remove('block__hidden'); //Добавляємо клас відкриваємо Select
+                    parent.querySelector(CLASS_RELAY_SETTING_SENSOR_TIMER).classList.remove('block__hidden'); //Добавляємо клас відкриваємо Select
                 }
             });
 

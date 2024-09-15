@@ -36,5 +36,6 @@ const CLASS_TIME_RED_BACKGROUND = '.time-red__backround';
 
 const CLASS_ADDRESS_DEVICE_ADDRESS = ".address-device__address";
 const CLASS_POPUP_INFO_WRAPPER = '.popUp-info__wrapper';
+const CLASS_RELAY_SETTING_SENSOR_TIMER = '.rele__seting-sensor-timer';
 
 
