@@ -52,24 +52,22 @@ function sendMessage(topic, message) {
 let obj_1, obj_2, obj_3;
 
 function onMessageArrived(message) {
-    setTimeout(() => {
-        try {
-            handleAnalogInput(message);
-            handleSSID(message);
-            handleLocalIP(message);
-            handleReleEpromUprManual(message);
-            handleReleState(message);
-            handleSensorVklOtklTemp(message);
-            handleReleEpromUpr(message);
-            handleEepromSensorData(message);
-            handleDeviceSensorData(message);
-            handleSensorNames(message);
-            handleReleNames(message);
-            handleReleDateTime(message);
-        } catch (e) {
-            console.error('Error in onMessageArrived: ', e);
-        }
-    }, 1000);
+    try {
+        handleAnalogInput(message);
+        handleSSID(message);
+        handleLocalIP(message);
+        handleReleEpromUprManual(message);
+        handleReleState(message);
+        handleSensorVklOtklTemp(message);
+        handleReleEpromUpr(message);
+        handleEepromSensorData(message);
+        handleDeviceSensorData(message);
+        handleSensorNames(message);
+        handleReleNames(message);
+        handleReleDateTime(message);
+    } catch (e) {
+        console.error('Error in onMessageArrived: ', e);
+    }
 }
 
 function handleAnalogInput(message) {
@@ -194,6 +192,7 @@ function handleReleState(message) {
     try {
         if (message.destinationName === RELAY_STATUS) {
             const stanReleTemp = parseInt(message.payloadString);
+            console.log("message ", message)
             updateReleState(stanReleTemp);
         }
     } catch (e) {
@@ -202,13 +201,13 @@ function handleReleState(message) {
 }
 
 function updateReleState(stanReleTemp) {
-    const releOnOff = document.querySelectorAll('.rele__control-manually-on-off');
+    const relayOnOff = document.querySelectorAll('.rele__control-manually-on-off');
     for (let n = 0; n < 8; n++) {
         if (stanReleTemp & (1 << n)) {
-            releOnOff[n].checked = false;
+            relayOnOff[n].checked = false;
             popupInfoTempItem[n].classList.remove('on');
         } else {
-            releOnOff[n].checked = true;
+            relayOnOff[n].checked = true;
             popupInfoTempItem[n].classList.add('on');
         }
     }
