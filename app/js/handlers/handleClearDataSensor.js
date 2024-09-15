@@ -13,7 +13,7 @@
 //                 if (dataContainer) {
 //                     // Очищуємо текст всередині елементів
 //                     dataContainer.querySelector(CLASS_ADDRESS_EEPROM_ADDRESS).innerText = '0000000000000000';
-//                     dataContainer.querySelector('.address-eeprom__temp').innerText = '';
+//                     dataContainer.querySelector(CLASS_ADDRESS_EEPROM_TEMP).innerText = '';
 
 //                     // Виділяємо несумісні адреси сенсорів
 //                     highlightMismatchedSensorAddresses();
@@ -44,7 +44,7 @@ function handleClearDataSensor() {
                 if (DATA_CONTAINER) {
                     // Очищуємо текст всередині елементів
                     DATA_CONTAINER.querySelector(CLASS_ADDRESS_EEPROM_ADDRESS).innerText = '0000000000000000';
-                    DATA_CONTAINER.querySelector('.address-eeprom__temp').innerText = '';
+                    DATA_CONTAINER.querySelector(CLASS_ADDRESS_EEPROM_TEMP).innerText = '';
 
                     // Виділяємо несумісні адреси сенсорів
                     highlightMismatchedSensorAddresses();
@@ -69,7 +69,7 @@ function handleClearDataSensor() {
 //                 const parent = e.closest(CLASS_ADDRESS_EEPROM_DATA);
 //                 console.log(parent);
 //                 parent.querySelector(CLASS_ADDRESS_EEPROM_ADDRESS).innerText = '0000000000000000';
-//                 parent.querySelector('.address-eeprom__temp').innerText = '';
+//                 parent.querySelector(CLASS_ADDRESS_EEPROM_TEMP).innerText = '';
 //                 highlightMismatchedSensorAddresses();
 //                 //updateClickableDevices();
 //             });

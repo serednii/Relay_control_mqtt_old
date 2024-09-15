@@ -36,7 +36,7 @@ client.onMessageArrived = onMessageArrived;
 const printAnalogInput = document.querySelector('.popap-info__analog-input');
 const parentListEeprom = document.querySelectorAll(CLASS_ADDRESS_EEPROM_DATA);
 const tableEepromNumber = document.querySelectorAll('.address-eeprom__number');
-const tableEepromAddress = document.querySelectorAll('CLASS_ADDRESS_EEPROM_ADDRESS');
+const tableEepromAddress = document.querySelectorAll(CLASS_ADDRESS_EEPROM_ADDRESS);
 const tableEepromNameSensor = document.querySelectorAll('.address-eeprom-name');
 
 let inputDey;
@@ -64,7 +64,7 @@ const startSelector = () => {
         inputDey = document.querySelectorAll('.day');
         labelDey = document.querySelectorAll('.label-day');
         relayTempChangeRadio = document.querySelectorAll('.rele-temp-change-radio');
-        tableEepromTemp = document.querySelectorAll('.address-eeprom__temp');
+        tableEepromTemp = document.querySelectorAll(CLASS_ADDRESS_EEPROM_TEMP);
         tableDeviceNumber = document.querySelectorAll('.address-device__number');
         tableDeviceAddress = document.querySelectorAll('.address-device__address');
         tableDeviceTemp = document.querySelectorAll('.address-device__temp');
