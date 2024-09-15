@@ -67,7 +67,7 @@ const startSelector = () => {
         relayTempChangeRadio = document.querySelectorAll(CLASS_RELAY_CONTROL_CHANGE_RADIO);
         tableEepromTemp = document.querySelectorAll(CLASS_ADDRESS_EEPROM_TEMP);
         tableDeviceNumber = document.querySelectorAll('.address-device__number');
-        tableDeviceAddress = document.querySelectorAll('.address-device__address');
+        tableDeviceAddress = document.querySelectorAll(CLASS_ADDRESS_DEVICE_ADDRESS);
         tableDeviceTemp = document.querySelectorAll('.address-device__temp');
         relayItem = document.querySelectorAll(CLASS_RELAY_ITEM);
         relayNameInput = document.querySelectorAll('.rele__name-input');

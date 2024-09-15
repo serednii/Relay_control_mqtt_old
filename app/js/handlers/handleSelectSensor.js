@@ -9,7 +9,7 @@ function handleSelectSensor() {
             deviceElement.addEventListener('click', function () {
                 // Перевіряємо, чи елемент має класи 'red' та 'click'
                 if (deviceElement.classList.contains('red') && deviceElement.classList.contains('click')) {
-                    const addressDevice = deviceElement.querySelector('.address-device__address').textContent;
+                    const addressDevice = deviceElement.querySelector(CLASS_ADDRESS_DEVICE_ADDRESS).textContent;
 
                     if (selectEepromDataSensor) {
                         // Оновлюємо адресу в елементі CLASS_ADDRESS_EEPROM_ADDRESS
@@ -41,7 +41,7 @@ function handleSelectSensor() {
 //         //добавляємо датчики яких немає в списку EEPROM
 //         e.addEventListener('click', function () {
 //           if (e.classList.contains('red') && e.classList.contains('click')) {
-//             selectEepromDataSensor.querySelector(CLASS_ADDRESS_EEPROM_ADDRESS).innerText = e.querySelector('.address-device__address').textContent;
+//             selectEepromDataSensor.querySelector(CLASS_ADDRESS_EEPROM_ADDRESS).innerText = e.querySelector(CLASS_ADDRESS_DEVICE_ADDRESS).textContent;
 //             highlightMismatchedSensorAddresses();
 //             // updateClickableDevices();
 //           }

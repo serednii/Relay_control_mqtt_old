@@ -28,4 +28,12 @@ const CLASS_RELAY_CONTROL_MANUAL = '.rele__control-manually';
 const CLASS_RELAY_CONTROL_CHANGE_RADIO = '.rele-temp-change-radio';
 const CLASS_RELAY_NAME_BTN = '.rele__name-btn';
 
+const CLASS_DATE_RED_COLOR = '.date-red__color';
+const CLASS_TIME_RED_COLOR = ' .time-red__color';
+const CLASS_DATE_BLUE_BACKGROUND = '.date-blue__backround';
+const CLASS_TIME_BLUE_BACKGROUND = '.time-blue__backround';
+const CLASS_TIME_RED_BACKGROUND = '.time-red__backround';
+
+const CLASS_ADDRESS_DEVICE_ADDRESS = ".address-device__address";
+
 

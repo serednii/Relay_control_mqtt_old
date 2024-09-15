@@ -6,7 +6,7 @@ function handleSaveTime() {
         timeBtn.forEach((e, i) => {
             e.addEventListener('click', () => {
                 const parent = e.closest(CLASS_RELAY_ITEM);
-                const errorClasses = parent.querySelectorAll('.date-red__color, .time-red__color, .date-blue__backround, .time-blue__backround, .time-red__backround');
+                const errorClasses = parent.querySelectorAll(`${CLASS_DATE_RED_COLOR}, ${CLASS_TIME_RED_COLOR}, ${CLASS_DATE_BLUE_BACKGROUND}, ${CLASS_TIME_BLUE_BACKGROUND}, ${CLASS_TIME_RED_BACKGROUND}`);
 
                 if (errorClasses.length > 0) {
                     // Якщо є помилки
@@ -69,7 +69,7 @@ function handleSaveTime() {
 //         const parent = e.closest(CLASS_RELAY_ITEM);
 //         // let numberReleClick = parent.getAttribute('data-rele');
 //         // console.log(i);
-//         const error_class = parent.querySelectorAll('.date-red__color, .time-red__color, .date-blue__backround, .time-blue__backround,  .time-red__backround');
+//         const error_class = parent.querySelectorAll('.date-red__color, CLASS_TIME_RED_COLOR, .date-blue__backround, .time-blue__backround,  .time-red__backround');
 
 //         // console.log('length error  ' + error_class.length);
 
