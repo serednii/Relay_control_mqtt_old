@@ -19,10 +19,10 @@ function updateRelaySettings() {
                 if (relaySensorData & (1 << 4)) {
                     // Два діапазони температур: включення і відключення
                     tempSingleRangeRadios[1].checked = true;
-                    relayElement.closest(CLASS_RELAY_ITEM).querySelector('.rele-temp-otkl').disabled = false;
+                    relayElement.closest(CLASS_RELAY_ITEM).querySelector(CLASS_RELAY_TEMP_OFF).disabled = false;
                 } else {
                     // Один діапазон температур
-                    relayElement.closest(CLASS_RELAY_ITEM).querySelector('.rele-temp-otkl').disabled = true;
+                    relayElement.closest(CLASS_RELAY_ITEM).querySelector(CLASS_RELAY_TEMP_OFF).disabled = true;
                     tempSingleRangeRadios[0].checked = true;
                 }
             }
@@ -115,7 +115,7 @@ function updateRelaySettings() {
 
 function updateRelayTemperatureSettings() {
     const tempOnInputs = document.querySelectorAll(CLASS_RELAY_TEMP_ON);
-    const tempOffInputs = document.querySelectorAll('.rele-temp-otkl');
+    const tempOffInputs = document.querySelectorAll(CLASS_RELAY_TEMP_OFF);
     const tempOnSwitches = document.querySelectorAll('.rele__seting-switch__temp-on');
     const tempOffSwitches = document.querySelectorAll('.rele__seting-switch__temp-off');
 

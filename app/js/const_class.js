@@ -8,3 +8,4 @@ const CLASS_ADDRESS_EEPROM_SAVE = '.address-eeprom__save';
 const CLASS_ADDRESS_EEPROM_DATA = '.address-eeprom__data';
 const CLASS_RELAY_TEMP_CHANGE_SINGLE = '.rele-temp-change-single';
 const CLASS_RELAY_TEMP_CHANGE = '.rele-temp-change';
+const CLASS_RELAY_TEMP_OFF = '.rele-temp-otkl';

@@ -34,7 +34,7 @@ let arrayClass = [
   },
   {
     labelData: '.rele-temp-vkl-end-label',
-    inputData: '.rele-temp-otkl',
+    inputData: CLASS_RELAY_TEMP_OFF,
     nameData: 'temp_end_'
   },
   {
