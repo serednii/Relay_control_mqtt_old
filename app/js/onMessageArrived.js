@@ -40,7 +40,7 @@ function onMessageArrived11(message) {
                         popupTemp[_k].innerText = eepromData.obj[_k].temp.toFixed(1);
                     }
                 } else {
-                    popupTemp[_k].closest('.popap-info__lamp-item').classList.add('shiden');
+                    popupTemp[_k].closest('.popup-info__lamp-item').classList.add('shiden');
                 }
             }
 

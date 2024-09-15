@@ -21,10 +21,10 @@ if (localStorage.getItem('Device') != null) {
     const nameDevices = JSON.parse(localStorage.getItem('Device'));
     document.querySelector('.info__local-storage').innerText = nameDevices.NameDevice + '  ---   ' + nameDevices.Name;
     userName = nameDevices.NameDevice;
-    document.querySelector('.popap-local-storage').classList.remove('popap-local-storage__show');
+    document.querySelector('.popup-local-storage').classList.remove('popup-local-storage__show');
 } else {
     console.log('none');
-    document.querySelector('.popap-local-storage').classList.add('popap-local-storage__show');
+    document.querySelector('.popup-local-storage').classList.add('popup-local-storage__show');
 }
 
 
@@ -34,7 +34,7 @@ client.onConnectionLost = onConnectionLost;
 client.onMessageArrived = onMessageArrived;
 
 
-const printAnalogInput = document.querySelector('.popap-info__analog-input');
+const printAnalogInput = document.querySelector('.popup-info__analog-input');
 const parentListEeprom = document.querySelectorAll(CLASS_ADDRESS_EEPROM_DATA);
 const tableEepromNumber = document.querySelectorAll('.address-eeprom__number');
 const tableEepromAddress = document.querySelectorAll(CLASS_ADDRESS_EEPROM_ADDRESS);
@@ -73,10 +73,10 @@ const startSelector = () => {
         relayNameInput = document.querySelectorAll('.rele__name-input');
         delayWhenTurned = document.querySelectorAll('.delay-when-turned');
         relayControlTimer = document.querySelectorAll('.delay-when-turned');
-        popupTemp = document.querySelectorAll('.popap-info__temp-item');
-        popupInfoTempItem = document.querySelectorAll('.popap-info__lamp-link');
+        popupTemp = document.querySelectorAll('.popup-info__temp-item');
+        popupInfoTempItem = document.querySelectorAll('.popup-info__lamp-link');
         parentListDevice = document.querySelectorAll('.address-device__data');
-        btnDefineDevice = document.querySelector('.popap-menu__btn-define-device');
+        btnDefineDevice = document.querySelector('.popup-menu__btn-define-device');
         timeBtn = document.querySelectorAll('.time__btn ');
         timeBtnClear = document.querySelectorAll('.time__btn-clear');
         relayItemTitlePin = document.querySelectorAll('.rele__item-title-pin');

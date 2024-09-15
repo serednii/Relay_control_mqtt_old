@@ -25,6 +25,6 @@ function startIntervals() {
             addBeforeNullNUmber(date.getHours()) + ':' +
             addBeforeNullNUmber(date.getMinutes()) + ':' +
             addBeforeNullNUmber(date.getSeconds());
-        document.querySelector('.popap-info__date-time').innerText = newDateFormat;
+        document.querySelector('.popup-info__date-time').innerText = newDateFormat;
     }
 }

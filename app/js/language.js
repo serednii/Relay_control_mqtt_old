@@ -110,21 +110,21 @@ function languageChange(language) {
 }
 
 
-document.querySelector('.popap-menu__btn-ua ').addEventListener('click', () => {
+document.querySelector('.popup-menu__btn-ua ').addEventListener('click', () => {
     // console.log('UAUAUA');
     localStorage.setItem('Language', 'ua');
     languageChange('ua');
 
 });
 
-document.querySelector('.popap-menu__btn-en').addEventListener('click', () => {
+document.querySelector('.popup-menu__btn-en').addEventListener('click', () => {
     // console.log('ENENENE');
     languageChange('en');
     localStorage.setItem('Language', 'en');
 
 });
 
-document.querySelector('.popap-menu__btn-cz').addEventListener('click', () => {
+document.querySelector('.popup-menu__btn-cz').addEventListener('click', () => {
     // console.log('CZCZCZS');
     localStorage.setItem('Language', 'cz');
     languageChange('cz');

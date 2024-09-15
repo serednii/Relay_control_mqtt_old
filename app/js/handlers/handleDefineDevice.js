@@ -1,6 +1,6 @@
 function handleDefineDevice() {
     if (btnDefineDevice) {
-        console.log('YES CLASSES popap-menu__btn-define-device');
+        console.log('YES CLASSES popup-menu__btn-define-device');
 
         btnDefineDevice.addEventListener('click', () => {
             const CONFIRMATION = prompt("Підтвердіть введіть (ok)");
@@ -14,14 +14,14 @@ function handleDefineDevice() {
             }
         });
     } else {
-        console.log('NOT CLASSES popap-menu__btn-define-device');
+        console.log('NOT CLASSES popup-menu__btn-define-device');
     }
 
 }
 
 
 // if (btnDefineDevice) {
-//     console.log('YES CLASSES popap-menu__btn-define-device');
+//     console.log('YES CLASSES popup-menu__btn-define-device');
 //     btnDefineDevice.onclick = () => {
 //         let rezult = prompt("Підтвердіть введіть (ok)");
 //         if (rezult === 'ok') {
@@ -31,5 +31,5 @@ function handleDefineDevice() {
 //         }
 //     };
 // } else {
-//     console.log('NOT CLASSES popap-menu__btn-define-device');
+//     console.log('NOT CLASSES popup-menu__btn-define-device');
 // }

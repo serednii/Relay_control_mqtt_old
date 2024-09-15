@@ -129,7 +129,7 @@ function updateEepromTable(index) {
             popupTemp[index].innerText = eepromData.obj[index].temp.toFixed(1);
         }
     } else {
-        popupTemp[index].closest('.popap-info__lamp-item').classList.add('shiden');
+        popupTemp[index].closest('.popup-info__lamp-item').classList.add('shiden');
     }
 }
 

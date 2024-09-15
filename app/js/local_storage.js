@@ -1,21 +1,21 @@
 
 
-const btnPoppaAddNewDeviceOpen = document.querySelector('.popap-menu__btn-local-storage');
-const POPUP_LOCAL_STORAGE = document.querySelector('.popap-local-storage')
+const btnPoppaAddNewDeviceOpen = document.querySelector('.popup-menu__btn-local-storage');
+const POPUP_LOCAL_STORAGE = document.querySelector('.popup-local-storage')
 btnPoppaAddNewDeviceOpen.addEventListener('click', () => {
-  POPUP_LOCAL_STORAGE.classList.remove('popap-local-storage__show');
+  POPUP_LOCAL_STORAGE.classList.remove('popup-local-storage__show');
 });
 
-document.querySelector('.popap-local-storage__top-list').addEventListener('click', selectItem)
-document.querySelector('.popap-local-storage__btn-add').addEventListener('click', addDevice)
-document.querySelector('.popap-local-storage__btn-remove').addEventListener('click', removeDevice)
-document.querySelector('.popap-local-storage__btn-close').addEventListener('click', closeForm)
+document.querySelector('.popup-local-storage__top-list').addEventListener('click', selectItem)
+document.querySelector('.popup-local-storage__btn-add').addEventListener('click', addDevice)
+document.querySelector('.popup-local-storage__btn-remove').addEventListener('click', removeDevice)
+document.querySelector('.popup-local-storage__btn-close').addEventListener('click', closeForm)
 
 
 if (localStorage.getItem('DeviceList') != null) {
   const devicesList = JSON.parse(localStorage.getItem('DeviceList'));
   if (devicesList) {
-    POPUP_LOCAL_STORAGE.classList.remove('popap-local-storage__show');
+    POPUP_LOCAL_STORAGE.classList.remove('popup-local-storage__show');
   }
   removeList();
   printListDevice(devicesList);
@@ -43,10 +43,10 @@ const startLocalStorage = () => {
 
 function selectItem(event) {
   event.preventDefault();
-  const dev = event.target.closest('.popap-local-storage__top-item').querySelector('.popap-local-storage__top-device').innerText;
-  const nam = event.target.closest('.popap-local-storage__top-item').querySelector('.popap-local-storage__top-name').innerText;
+  const dev = event.target.closest('.popup-local-storage__top-item').querySelector('.popup-local-storage__top-device').innerText;
+  const nam = event.target.closest('.popup-local-storage__top-item').querySelector('.popup-local-storage__top-name').innerText;
   if (dev != 'Name Device' || nam != 'Name') {
-    event.target.closest('.popap-local-storage__top-item').classList.toggle('click');
+    event.target.closest('.popup-local-storage__top-item').classList.toggle('click');
   }
 
 }
@@ -59,7 +59,7 @@ function selectItem(event) {
 function removeDevice(event) { //удаляємо видалені пристрої
   event.preventDefault();
   let deviceList = [];
-  const itemDeviceElement = document.querySelectorAll('.popap-local-storage__top-item');
+  const itemDeviceElement = document.querySelectorAll('.popup-local-storage__top-item');
   if (localStorage.getItem('DeviceList') != null || itemDevice.length > 0) { //якщо в LOCALSTORAGE  є щось записано і є списки на екрані 
     deviceList = JSON.parse(localStorage.getItem('DeviceList'));
 
@@ -69,7 +69,7 @@ function removeDevice(event) { //удаляємо видалені пристр�
       if (i > 0) {
         if (element.classList.contains('click')) {
           isClick = true;
-          const deleteDevice = element.querySelector('.popap-local-storage__top-device').innerText;
+          const deleteDevice = element.querySelector('.popup-local-storage__top-device').innerText;
           deviceList.forEach((device) => {
             if (device != null && device.NameDevice != deleteDevice) {
               newDeviceList.push(device);
@@ -89,7 +89,7 @@ function removeDevice(event) { //удаляємо видалені пристр�
 
 function closeForm(event) {
   event.preventDefault();
-  POPUP_LOCAL_STORAGE.classList.remove('popap-local-storage__show');
+  POPUP_LOCAL_STORAGE.classList.remove('popup-local-storage__show');
 }
 
 function addDevice(event) {
@@ -97,7 +97,7 @@ function addDevice(event) {
   let deviceList = [];
   const obj = {};
 
-  const form = document.querySelector('.popap-local-storage__form');
+  const form = document.querySelector('.popup-local-storage__form');
   const nameDevice = form.device.value;
   const name = form.name.value;
   let validateMessage;
@@ -129,7 +129,7 @@ function addDevice(event) {
 }
 
 function removeList() {
-  const items = document.querySelectorAll('.popap-local-storage__top-item, .popap-local-storage-menu__item')
+  const items = document.querySelectorAll('.popup-local-storage__top-item, .popup-local-storage-menu__item')
   items.forEach((item, i) => {
     if (i > 0) item.remove();
   })
@@ -139,18 +139,18 @@ function printListDevice(deviceList = []) {
   //******************************************** */  
   deviceList.forEach((device) => {
     if (device != null) {
-      const ul = document.querySelector('.popap-local-storage__top-list');
-      const ulMenu = document.querySelector('.popap-local-storage-menu__list');
+      const ul = document.querySelector('.popup-local-storage__top-list');
+      const ulMenu = document.querySelector('.popup-local-storage-menu__list');
       let li = document.createElement('li');
       let p = document.createElement('p');
       let p1 = document.createElement('p');
 
-      li.className = 'popap-local-storage__top-item';
+      li.className = 'popup-local-storage__top-item';
 
-      p.className = 'popap-local-storage__top-device';
+      p.className = 'popup-local-storage__top-device';
       p.innerText = device.NameDevice;
 
-      p1.className = 'popap-local-storage__top-name';
+      p1.className = 'popup-local-storage__top-name';
       p1.innerText = device.Name;
 
       li.append(p);
@@ -162,12 +162,12 @@ function printListDevice(deviceList = []) {
       let pMenu = document.createElement('p');
       let p1Menu = document.createElement('p');
 
-      liMenu.className = 'popap-local-storage-menu__item';
+      liMenu.className = 'popup-local-storage-menu__item';
 
-      pMenu.className = 'popap-local-storage-menu__device';
+      pMenu.className = 'popup-local-storage-menu__device';
       pMenu.innerText = device.NameDevice;
 
-      p1Menu.className = 'popap-local-storage-menu__name';
+      p1Menu.className = 'popup-local-storage-menu__name';
       p1Menu.innerText = device.Name;
 
       liMenu.append(pMenu);

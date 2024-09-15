@@ -1,24 +1,24 @@
 const burgerMenu = document.querySelector('.burger-menu');
 const burgerMenuLine = document.querySelector('.burger-menu span');
-const popapLocalStorage = document.querySelector('.popap-local-storage');
-const btnRestartDevice = document.querySelector('.popap-menu__btn-restart-device');
+const popapLocalStorage = document.querySelector('.popup-local-storage');
+const btnRestartDevice = document.querySelector('.popup-menu__btn-restart-device');
 
 
-const POPAP_MENU = document.querySelector('.popap-menu');
-const popapLocalStorageMenu = document.querySelector('.popap-local-storage-menu');
-const popapLocalStoragMmenuList = document.querySelector('.popap-local-storage-menu__device');
-const popapLocalStoragMmenuName = document.querySelector('.popap-local-storage-menu__name');
+const POPAP_MENU = document.querySelector('.popup-menu');
+const popapLocalStorageMenu = document.querySelector('.popup-local-storage-menu');
+const popapLocalStoragMmenuList = document.querySelector('.popup-local-storage-menu__device');
+const popapLocalStoragMmenuName = document.querySelector('.popup-local-storage-menu__name');
 // console.log(popapLocalStoragMmenuList)
 
 
-document.querySelector('.popap-local-storage-menu__list').addEventListener('click', selectItemMenu)
+document.querySelector('.popup-local-storage-menu__list').addEventListener('click', selectItemMenu)
 
 
 // function selectItemMenu(event) { //при виборі нового пристрою добавляємо або міняємо в localStorage і в шапці на горі
 //     // event.preventDefault();
 //     console.log(event)
-//     const dev = event.closest('.popap-local-storage-menu__item').querySelector('.popap-local-storage-menu__device').innerText;
-//     const nam = event.closest('.popap-local-storage-menu__item').querySelector('.popap-local-storage-menu__name').innerText;
+//     const dev = event.closest('.popup-local-storage-menu__item').querySelector('.popup-local-storage-menu__device').innerText;
+//     const nam = event.closest('.popup-local-storage-menu__item').querySelector('.popup-local-storage-menu__name').innerText;
 //     if (dev != 'Name Device' || nam != 'Name') {
 //         console.log(dev);
 //         console.log(nam);
@@ -34,8 +34,8 @@ document.querySelector('.popap-local-storage-menu__list').addEventListener('clic
 
 function selectItemMenu(event) {
     event.preventDefault();
-    const dev = event.target.closest('.popap-local-storage-menu__item').querySelector('.popap-local-storage-menu__device').innerText;
-    const nam = event.target.closest('.popap-local-storage-menu__item').querySelector('.popap-local-storage-menu__name').innerText;
+    const dev = event.target.closest('.popup-local-storage-menu__item').querySelector('.popup-local-storage-menu__device').innerText;
+    const nam = event.target.closest('.popup-local-storage-menu__item').querySelector('.popup-local-storage-menu__name').innerText;
     if (dev != 'Name Device' || nam != 'Name') {
         console.log(dev);
         console.log(nam);
@@ -63,8 +63,8 @@ window.onclick = (e) => {
     //     selectItemMenu(e.target);
     // }
     if (e.target === btnPoppaAddNewDeviceOpen) { //Відкриваємо меню для добавлення або зміни нових пристроїв
-        POPAP_MENU.classList.toggle('popap-menu__show');
-        popapLocalStorage.classList.add('popap-local-storage__show');
+        POPAP_MENU.classList.toggle('popup-menu__show');
+        popapLocalStorage.classList.add('popup-local-storage__show');
     }
 
 
@@ -73,10 +73,10 @@ window.onclick = (e) => {
 
     if (e.target != POPAP_MENU) //Відкриває закриває бургер меню
         if (e.target != burgerMenu && e.target != burgerMenuLine && e.target != POPAP_MENU) {
-            POPAP_MENU.classList.remove('popap-menu__show');
+            POPAP_MENU.classList.remove('popup-menu__show');
             burgerMenu.classList.remove('showw');
         } else {
-            POPAP_MENU.classList.toggle('popap-menu__show');
+            POPAP_MENU.classList.toggle('popup-menu__show');
             burgerMenu.classList.toggle('showw');
         }
 };

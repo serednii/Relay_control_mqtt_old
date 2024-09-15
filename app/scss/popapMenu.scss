@@ -1,5 +1,5 @@
 // ***********************************
-.popap-menu {
+.popup-menu {
     z-index: 10;
     position: fixed;
     top: 50px;
@@ -10,7 +10,8 @@
     background-color: #D0C9C0;
     display: flex;
     flex-direction: column;
-overflow-y: auto;
+    overflow-y: auto;
+
     .btn {
         margin-bottom: 10px;
         transition: background-color 0.3s;
@@ -31,12 +32,13 @@ overflow-y: auto;
     -o-transition: left 0.3s;
 }
 
-.popap-menu .popap-menu__btn {
-    background-color:aquamarine;
+.popup-menu .popup-menu__btn {
+    background-color: aquamarine;
     line-height: 1;
     margin-bottom: 5px;
 }
-.popap-menu__show {
+
+.popup-menu__show {
     left: 20px;
 }
 
@@ -57,4 +59,3 @@ overflow-y: auto;
         color: red;
     }
 }
-
