@@ -138,7 +138,7 @@ function updateClickableDevices() {
 
     // Перевіряємо, чи є клас "active" серед елементів EEPROM
     parentListEeprom.forEach(function (eepromElement) {
-        if (eepromElement.classList.contains('active')) {
+        if (eepromElement.classList.contains(CLASS_ACTIVE)) {
             isEepromActive = true;
         }
     });

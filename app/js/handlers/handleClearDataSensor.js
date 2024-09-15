@@ -1,9 +1,9 @@
 // function handleClearDataSensor() {
-//     // Отримуємо всі кнопки з класом 'CALSS_ADDRESS_EEPROM_BTN.clear'
-//     const clearButtons = document.querySelectorAll(`${CALSS_ADDRESS_EEPROM_BTN}.clear`);
+//     // Отримуємо всі кнопки з класом 'CLASS_ADDRESS_EEPROM_BTN.clear'
+//     const clearButtons = document.querySelectorAll(`${CLASS_ADDRESS_EEPROM_BTN}.clear`);
 
 //     if (clearButtons.length > 0) {
-//         console.log('Found CALSS_ADDRESS_EEPROM_BTN.clear elements: ' + clearButtons.length);
+//         console.log('Found CLASS_ADDRESS_EEPROM_BTN.clear elements: ' + clearButtons.length);
 
 //         clearButtons.forEach(function (button) {
 //             button.addEventListener('click', function () {
@@ -26,15 +26,15 @@
 //             });
 //         });
 //     } else {
-//         console.log('No CALSS_ADDRESS_EEPROM_BTN.clear elements found');
+//         console.log('No CLASS_ADDRESS_EEPROM_BTN.clear elements found');
 //     }
 // }
 function handleClearDataSensor() {
-    // Отримуємо всі кнопки з класом 'CALSS_ADDRESS_EEPROM_BTN.clear'
-    const CLEAR_BUTTONS = document.querySelectorAll(`${CALSS_ADDRESS_EEPROM_BTN}.clear`);
+    // Отримуємо всі кнопки з класом 'CLASS_ADDRESS_EEPROM_BTN.clear'
+    const CLEAR_BUTTONS = document.querySelectorAll(`${CLASS_ADDRESS_EEPROM_BTN}.clear`);
 
     if (CLEAR_BUTTONS.length > 0) {
-        console.log('Found CALSS_ADDRESS_EEPROM_BTN.clear elements: ' + CLEAR_BUTTONS.length);
+        console.log('Found CLASS_ADDRESS_EEPROM_BTN.clear elements: ' + CLEAR_BUTTONS.length);
 
         CLEAR_BUTTONS.forEach(function (button) {
             button.addEventListener('click', function () {
@@ -57,12 +57,12 @@ function handleClearDataSensor() {
             });
         });
     } else {
-        console.log('No CALSS_ADDRESS_EEPROM_BTN.clear elements found');
+        console.log('No CLASS_ADDRESS_EEPROM_BTN.clear elements found');
     }
 }
 
 // function handleClearDataSensor() {
-//     if (document.querySelector(`${CALSS_ADDRESS_EEPROM_BTN}.clear`)) {
+//     if (document.querySelector(`${CLASS_ADDRESS_EEPROM_BTN}.clear`)) {
 //         console.log('YES CLASSES address-eeprom__btn.clear ' + btnClear.length);
 //         btnClear.forEach(function (e) {
 //             e.addEventListener('click', function () {
