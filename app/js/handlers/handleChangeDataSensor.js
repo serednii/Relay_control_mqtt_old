@@ -1,5 +1,5 @@
 function handleChangeDataSensor() {
-    const CHANGE_BUTTONS = document.querySelectorAll('.address-eeprom__btn.change');
+    const CHANGE_BUTTONS = document.querySelectorAll(`${CALSS_ADDRESS_EEPROM_BTN}.change`);
 
     if (CHANGE_BUTTONS.length > 0) {
         CHANGE_BUTTONS.forEach(function (button) {
@@ -27,14 +27,14 @@ function handleChangeDataSensor() {
             });
         });
     } else {
-        console.log('No .address-eeprom__btn.change elements found');
+        console.log('No CALSS_ADDRESS_EEPROM_BTN.change elements found');
     }
 }
 
 
 // function handleChangeDataSensor() {
 
-//     if (document.querySelector('.address-eeprom__btn.change')) {
+//     if (document.querySelector(`${CALSS_ADDRESS_EEPROM_BTN}.change`)) {
 //       console.log('YES CLASSES address-eeprom__btn.change  ' + btnChange.length);
 //       btnChange.forEach(function (e) {
 //         e.addEventListener('click', function (k) {
