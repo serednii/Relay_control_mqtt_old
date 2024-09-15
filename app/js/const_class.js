@@ -21,3 +21,4 @@ const CLASS_RELAY_CONTROL_MANUAL_SHOW = 'rele__control-manually-show';
 
 const CLASS_RELAY_SETTING_SVG = '.rele__seting-svg';
 const CLASS_RELAY_SECTION_SETTING = '.rele__section-seting';
+const CLASS__RELAY_TIMERsETTING_SVG = '.rele__timer-seting-svg';
