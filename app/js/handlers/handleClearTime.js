@@ -6,7 +6,7 @@ function handleClearTime() {
             btn.addEventListener('click', () => {
                 messageDate(index);
 
-                const DATA_TIME_AND_TIME_ELEMENTS = relayItem[index].querySelectorAll(`${CLASS_DATE_TIME}, .time`);
+                const DATA_TIME_AND_TIME_ELEMENTS = relayItem[index].querySelectorAll(`${CLASS_DATE_TIME}, ${CLASS_TIME}`);
                 DATA_TIME_AND_TIME_ELEMENTS.forEach(element => element.value = '');
             });
         });
@@ -22,7 +22,7 @@ function handleClearTime() {
 //     timeBtnClear.forEach(function (e, i) {
 //       e.addEventListener('click', function () {
 //         messageDate(i);
-//         relayItem[i].querySelectorAll(`${CLASS_DATE_TIME}, .time}).forEach(function (e) {
+//         relayItem[i].querySelectorAll(`${CLASS_DATE_TIME}, ${CLASS_TIME}).forEach(function (e) {
 //           e.value = '';
 //         });
 //       });

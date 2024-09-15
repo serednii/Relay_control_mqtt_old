@@ -210,7 +210,7 @@ function onMessageArrived11(message) {
                 // console.log(relaySettings);
                 const namberRele = parseInt(relaySettings.NUM);
                 const dateTimeInput = relayItem[namberRele].querySelectorAll(CLASS_DATE_TIME);
-                const timeInput = relayItem[namberRele].querySelectorAll('.time');
+                const timeInput = relayItem[namberRele].querySelectorAll(CLASS_TIME);
                 const dayWikend = relayItem[namberRele].querySelectorAll('.day');
 
                 dateTimeInput.forEach(function (e) {
@@ -268,7 +268,7 @@ function onMessageArrived11(message) {
 
                 relayItem.forEach((parent) => {
                     const datetime = parent.querySelectorAll(CLASS_DATE_TIME);
-                    const time = parent.querySelectorAll('.time');
+                    const time = parent.querySelectorAll(CLASS_TIME);
                     checkDate(parent, datetime, time);
                     checkTime(parent, datetime, time);
                     showTimerIcons(parent, datetime, time); //Добавляє іконки таймера

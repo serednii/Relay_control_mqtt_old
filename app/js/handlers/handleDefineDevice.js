@@ -6,7 +6,7 @@ function handleDefineDevice() {
             const CONFIRMATION = prompt("Підтвердіть введіть (ok)");
 
             if (CONFIRMATION === 'ok') {
-                // popapClearDevice.classList.remove('disable__global'); // Розкоментувати, якщо потрібно
+                // popupClearDevice.classList.remove('disable__global'); // Розкоментувати, якщо потрібно
                 sendMessage(SET_DEFINE_DEVICE, 'SET_DEFINE_DEVICE');
                 console.log('DEFAULT_DEVICE');
             } else {

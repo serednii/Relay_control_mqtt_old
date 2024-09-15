@@ -7,7 +7,7 @@ function handleRelaySection() {
             parent.addEventListener('change', (event) => {
                 event.stopPropagation(); // Зупинка спливання подій
                 const DATA_TIME = parent.querySelectorAll(CLASS_DATE_TIME);
-                const TIME = parent.querySelectorAll('.time');
+                const TIME = parent.querySelectorAll(CLASS_TIME);
 
                 if (event.target.classList.contains('day')) {
                     checkCheckedDay(event);
@@ -50,7 +50,7 @@ function handleRelaySection() {
 //         parent.addEventListener('change', function (event) {
 //             event.stopPropagation ? event.stopPropagation() : (event.cancelBubble = true);
 //             const datetime = parent.querySelectorAll(CLASS_DATE_TIME);
-//             const time = parent.querySelectorAll('.time');
+//             const time = parent.querySelectorAll(CLASS_TIME);
 //             if (event.target.classList.contains('day')) checkCheckedDay(event);
 //             if (event.target.classList.contains('datetime')) checkDate(parent, datetime, time);
 //             if (event.target.classList.contains('time')) checkTime(parent, datetime, time);
