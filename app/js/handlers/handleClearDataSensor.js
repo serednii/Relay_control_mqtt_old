@@ -1,9 +1,9 @@
 // function handleClearDataSensor() {
-//     // Отримуємо всі кнопки з класом 'CLASS_ADDRESS_EEPROM_BTN.clear'
-//     const clearButtons = document.querySelectorAll(`${CLASS_ADDRESS_EEPROM_BTN}.clear`);
+//     // Отримуємо всі кнопки з класом 'CLASS_ADDRESS_EEPROM_BTN${CLASS_DATE_TIME}'
+//     const clearButtons = document.querySelectorAll(`${CLASS_ADDRESS_EEPROM_BTN}${CLASS_DATE_TIME}`);
 
 //     if (clearButtons.length > 0) {
-//         console.log('Found CLASS_ADDRESS_EEPROM_BTN.clear elements: ' + clearButtons.length);
+//         console.log('Found CLASS_ADDRESS_EEPROM_BTN${CLASS_DATE_TIME} elements: ' + clearButtons.length);
 
 //         clearButtons.forEach(function (button) {
 //             button.addEventListener('click', function () {
@@ -26,15 +26,15 @@
 //             });
 //         });
 //     } else {
-//         console.log('No CLASS_ADDRESS_EEPROM_BTN.clear elements found');
+//         console.log('No CLASS_ADDRESS_EEPROM_BTN${CLASS_DATE_TIME} elements found');
 //     }
 // }
 function handleClearDataSensor() {
-    // Отримуємо всі кнопки з класом 'CLASS_ADDRESS_EEPROM_BTN.clear'
-    const CLEAR_BUTTONS = document.querySelectorAll(`${CLASS_ADDRESS_EEPROM_BTN}.clear`);
+    // Отримуємо всі кнопки з класом 'CLASS_ADDRESS_EEPROM_BTN${CLASS_DATE_TIME}'
+    const CLEAR_BUTTONS = document.querySelectorAll(`${CLASS_ADDRESS_EEPROM_BTN}${CLASS_DATE_TIME}`);
 
     if (CLEAR_BUTTONS.length > 0) {
-        console.log('Found CLASS_ADDRESS_EEPROM_BTN.clear elements: ' + CLEAR_BUTTONS.length);
+        console.log('Found CLASS_ADDRESS_EEPROM_BTN${CLASS_DATE_TIME} elements: ' + CLEAR_BUTTONS.length);
 
         CLEAR_BUTTONS.forEach(function (button) {
             button.addEventListener('click', function () {
@@ -57,13 +57,13 @@ function handleClearDataSensor() {
             });
         });
     } else {
-        console.log('No CLASS_ADDRESS_EEPROM_BTN.clear elements found');
+        console.log('No CLASS_ADDRESS_EEPROM_BTN${CLASS_DATE_TIME} elements found');
     }
 }
 
 // function handleClearDataSensor() {
-//     if (document.querySelector(`${CLASS_ADDRESS_EEPROM_BTN}.clear`)) {
-//         console.log('YES CLASSES address-eeprom__btn.clear ' + btnClear.length);
+//     if (document.querySelector(`${CLASS_ADDRESS_EEPROM_BTN}${CLASS_DATE_TIME}`)) {
+//         console.log('YES CLASSES address-eeprom__btn${CLASS_DATE_TIME} ' + btnClear.length);
 //         btnClear.forEach(function (e) {
 //             e.addEventListener('click', function () {
 //                 const parent = e.closest(CLASS_ADDRESS_EEPROM_DATA);
@@ -75,6 +75,6 @@ function handleClearDataSensor() {
 //             });
 //         });
 //     } else {
-//         console.log('NOT CLASSES address-eeprom__btn.clear');
+//         console.log('NOT CLASSES address-eeprom__btn${CLASS_DATE_TIME}');
 //     }
 // }

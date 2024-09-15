@@ -1,5 +1,6 @@
 const CLASS_ACTIVE = 'active';
 const CLASS_CHANGE = '.change';
+const CLASS_CLEAR = '.clear';
 const CLASS_DATE_TIME = '.datetime';
 const CLASS_RELAY_ITEM = '.rele__item';
 const CLASS_RELAY_TEMP_ON = '.rele-temp-vkl';
