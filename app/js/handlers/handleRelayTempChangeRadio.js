@@ -1,5 +1,5 @@
 function handleRelayTempChangeRadio() {
-    const RELAY_TEMP_CHANGE_RADIO = document.querySelectorAll('.rele-temp-change-radio');
+    const RELAY_TEMP_CHANGE_RADIO = document.querySelectorAll(CLASS_RELAY_CONTROL_CHANGE_RADIO);
 
     if (RELAY_TEMP_CHANGE_RADIO.length > 0) {
         RELAY_TEMP_CHANGE_RADIO.forEach(function (radioElement, index) {

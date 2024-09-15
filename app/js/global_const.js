@@ -64,7 +64,7 @@ const startSelector = () => {
     return new Promise(resolve => {
         inputDey = document.querySelectorAll('.day');
         labelDey = document.querySelectorAll('.label-day');
-        relayTempChangeRadio = document.querySelectorAll('.rele-temp-change-radio');
+        relayTempChangeRadio = document.querySelectorAll(CLASS_RELAY_CONTROL_CHANGE_RADIO);
         tableEepromTemp = document.querySelectorAll(CLASS_ADDRESS_EEPROM_TEMP);
         tableDeviceNumber = document.querySelectorAll('.address-device__number');
         tableDeviceAddress = document.querySelectorAll('.address-device__address');

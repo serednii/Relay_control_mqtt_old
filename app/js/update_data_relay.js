@@ -7,7 +7,7 @@ function updateRelaySettings() {
         relayItem.forEach(function (relayElement, relayIndex) {
 
             const sensorSelect = relayElement.querySelector('select');
-            const tempRangeRadios = relayElement.querySelectorAll('.rele-temp-change-radio');
+            const tempRangeRadios = relayElement.querySelectorAll(CLASS_RELAY_CONTROL_CHANGE_RADIO);
             const tempSingleRangeRadios = relayElement.querySelectorAll(CLASS_RELAY_TEMP_CHANGE_SINGLE);
             const relayErrorIndicators = relayElement.querySelectorAll('.input-control-error');
 

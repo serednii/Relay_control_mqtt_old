@@ -19,7 +19,7 @@ let arrayClass = [
   },
   {
     labelData: '.rele-temp-change__label',
-    inputData: '.rele-temp-change-radio',
+    inputData: CLASS_RELAY_CONTROL_CHANGE_RADIO,
     nameData: 'on_'
   },
   {
