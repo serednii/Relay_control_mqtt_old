@@ -226,7 +226,7 @@ function handleSensorNames(message) {
 }
 
 function updateSensorNames() {
-    tableEepromNameSensor.forEach(function (e, i) {
+    tableEepromNameSensor.forEach((e, i) => {
         if (i > 0) {
             e.value = sensorNames.obj[i - 1].nameSensor;
         }
@@ -269,19 +269,26 @@ function handleReleEpromUprManual(message) {
     }
 }
 
+
+
 function updateRelayManualSettings(relaySettings) {
-    document.querySelectorAll(CLASS_INPUT_CONTROL_MANUAL_SVG).forEach(function (e, i) {
+    document.querySelectorAll(CLASS_INPUT_CONTROL_MANUAL_SVG).forEach((e, i) => {
         const parent = e.closest(CLASS_RELAY_ITEM);
+        const inputSvg = parent.querySelector(CLASS_INPUT_CONTROL_MANUAL_SVG);
+        const manualShow = parent.querySelector(`.${CLASS_RELAY_CONTROL_MANUAL_SHOW}`);
+        const manual = parent.querySelector(CLASS_RELAY_CONTROL_MANUAL);
+        const settingTimer = parent.querySelector(CLASS_RELAY_SETTING_SENSOR_TIMER);
+
         if (relaySettings.obj[i].namberRele == 1) {
-            parent.querySelector(CLASS_INPUT_CONTROL_MANUAL_SVG).classList.add('on');
-            parent.querySelector(`.${CLASS_RELAY_CONTROL_MANUAL_SHOW}`).classList.add('on');
-            parent.querySelector(CLASS_RELAY_CONTROL_MANUAL).classList.add('show-block');
-            parent.querySelector(CLASS_RELAY_SETTING_SENSOR_TIMER).classList.add('block__hidden');
+            inputSvg.classList.add('on');
+            manualShow.classList.add('on');
+            manual.classList.add('show-block');
+            settingTimer.classList.add('block__hidden');
         } else if (relaySettings.obj[i].namberRele == 0) {
-            parent.querySelector(CLASS_INPUT_CONTROL_MANUAL_SVG).classList.remove('on');
-            parent.querySelector(`.${CLASS_RELAY_CONTROL_MANUAL_SHOW}`).classList.remove('on');
-            parent.querySelector(CLASS_RELAY_CONTROL_MANUAL).classList.remove('show-block');
-            parent.querySelector(CLASS_RELAY_SETTING_SENSOR_TIMER).classList.remove('block__hidden');
+            inputSvg.classList.remove('on');
+            manualShow.classList.remove('on');
+            manual.classList.remove('show-block');
+            settingTimer.classList.remove('block__hidden');
         }
     });
 }
