@@ -39,7 +39,7 @@ let arrayClass = [
   },
   {
     labelData: '.rele-temp-change-single__label',
-    inputData: '.rele-temp-change-single',
+    inputData: CLASS_RELAY_TEMP_CHANGE_SINGLE,
     nameData: 'one_range_'
   },
   {

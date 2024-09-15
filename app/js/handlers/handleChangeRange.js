@@ -1,6 +1,6 @@
 
 function handleChangeRange() {
-    const RELAY_TEMP_SINGLE_CHANGE = document.querySelectorAll('.rele-temp-change-single');
+    const RELAY_TEMP_SINGLE_CHANGE = document.querySelectorAll(CLASS_RELAY_TEMP_CHANGE_SINGLE);
 
     if (RELAY_TEMP_SINGLE_CHANGE.length > 0) {
         RELAY_TEMP_SINGLE_CHANGE.forEach(function (rangeElement, index) {
