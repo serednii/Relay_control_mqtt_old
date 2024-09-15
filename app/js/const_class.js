@@ -1,0 +1,1 @@
+const CLASS_ADDRESS_EEPROM_DATA = '.address-eeprom__data'

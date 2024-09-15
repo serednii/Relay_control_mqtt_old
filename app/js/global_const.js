@@ -11,7 +11,7 @@ let relaySettings = {};
 let isEepromDataDownloaded = false;
 let isDeviceDataDownloaded = false;
 let showEepromData = true;
-let domElement = null;
+let selectEepromDataSensor = null;
 let dateTimeArray = [];
 let userName;
 
@@ -34,7 +34,7 @@ client.onMessageArrived = onMessageArrived;
 
 
 const printAnalogInput = document.querySelector('.popap-info__analog-input');
-const parentListEeprom = document.querySelectorAll('.address-eeprom__data');
+const parentListEeprom = document.querySelectorAll(CLASS_ADDRESS_EEPROM_DATA);
 const tableEepromNumber = document.querySelectorAll('.address-eeprom__number');
 const tableEepromAddress = document.querySelectorAll('.address-eeprom__address');
 const tableEepromNameSensor = document.querySelectorAll('.address-eeprom-name');
@@ -113,8 +113,6 @@ const startSelector = () => {
 
 
 //**************************************************************************************** */
-
-
 
 const CONNECT_SSID = userName + '_ssid';
 const LOCAL_IP = userName + '_ip';
