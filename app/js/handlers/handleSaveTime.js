@@ -5,7 +5,7 @@ function handleSaveTime() {
 
         timeBtn.forEach((e, i) => {
             e.addEventListener('click', () => {
-                const parent = e.closest('.rele__item');
+                const parent = e.closest(CLASS_RELAY_ITEM);
                 const errorClasses = parent.querySelectorAll('.date-red__color, .time-red__color, .date-blue__backround, .time-blue__backround, .time-red__backround');
 
                 if (errorClasses.length > 0) {
@@ -66,7 +66,7 @@ function handleSaveTime() {
 //     timeBtn.forEach(function (e, i) {
 
 //       e.addEventListener('click', function (ee) {
-//         const parent = e.closest('.rele__item');
+//         const parent = e.closest(CLASS_RELAY_ITEM);
 //         // let numberReleClick = parent.getAttribute('data-rele');
 //         // console.log(i);
 //         const error_class = parent.querySelectorAll('.date-red__color, .time-red__color, .date-blue__backround, .time-blue__backround,  .time-red__backround');

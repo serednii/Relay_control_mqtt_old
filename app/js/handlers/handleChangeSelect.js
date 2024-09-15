@@ -2,7 +2,7 @@
 
 function handleChangeSelect() {
     const SELECT_ELEMENTS = document.querySelectorAll('select');
-    // const releItems = document.querySelectorAll('.rele__item');
+    // const releItems = document.querySelectorAll(CLASS_RELAY_ITEM);
 
     if (SELECT_ELEMENTS.length > 0) {
         console.log('YES CLASSES select  ' + SELECT_ELEMENTS.length);
@@ -10,7 +10,7 @@ function handleChangeSelect() {
         SELECT_ELEMENTS.forEach((selectElement) => {
             selectElement.addEventListener('change', () => {
                 const SELECTED_VALUE = selectElement.value;
-                const PARENT_RELAY_ITEM = selectElement.closest('.rele__item');
+                const PARENT_RELAY_ITEM = selectElement.closest(CLASS_RELAY_ITEM);
 
                 // Знаходимо відповідний індекс реле
                 relayItem.forEach((relayItem, index) => {
@@ -29,13 +29,13 @@ function handleChangeSelect() {
 }
 
 // if (document.querySelector('select')) {
-//     const relayItem = document.querySelectorAll('.rele__item');
+//     const relayItem = document.querySelectorAll(CLASS_RELAY_ITEM);
 //     console.log('YES CLASSES select  ' + document.querySelectorAll('select').length);
 //     document.querySelectorAll('select').forEach(function (e) {
 //         e.addEventListener('change', function (k) {
 //             // console.log(e.selectedIndex);
 //             relayItem.forEach(function (k, i) {
-//                 if (k == e.closest('.rele__item')) {
+//                 if (k == e.closest(CLASS_RELAY_ITEM)) {
 //                     // опреділяєм в якому блоці ми знаходимося тобто номер реле
 //                     s = i + 'x' + e.querySelectorAll('option')[e.selectedIndex].value + 'k';
 //                     sendMessage(SET_RELAY_EEPROM_UPR, s);

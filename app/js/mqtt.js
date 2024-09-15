@@ -271,7 +271,7 @@ function handleReleEpromUprManual(message) {
 
 function updateRelayManualSettings(relaySettings) {
     document.querySelectorAll('.input-control-manually-svg').forEach(function (e, i) {
-        const parent = e.closest('.rele__item');
+        const parent = e.closest(CLASS_RELAY_ITEM);
         if (relaySettings.obj[i].namberRele == 1) {
             parent.querySelector('.input-control-manually-svg').classList.add('on');
             parent.querySelector('.rele__control-manually-show').classList.add('on');

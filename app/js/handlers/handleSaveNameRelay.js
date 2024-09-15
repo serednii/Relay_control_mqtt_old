@@ -6,7 +6,7 @@ function handleSaveNameRelay() {
 
         releNameButtons.forEach(function (button, index) {
             button.addEventListener('click', function () {
-                const parentRelayItem = button.closest('.rele__item');
+                const parentRelayItem = button.closest(CLASS_RELAY_ITEM);
                 const findRelayNameInput = parentRelayItem.querySelector('.rele__name-input');
 
                 // Перевіряємо, чи існує поле вводу для імені
@@ -31,7 +31,7 @@ function handleSaveNameRelay() {
 //       console.log('NOT CLASSES rele__name-btn ' + relayNameBtn.length);
 //       relayNameBtn.forEach(function (e, i) {
 //         e.addEventListener('click', function () {
-//           s = i + '*#*' + e.closest('.rele__item').querySelector('.rele__name-input').value + '*&*';
+//           s = i + '*#*' + e.closest(CLASS_RELAY_ITEM).querySelector('.rele__name-input').value + '*&*';
 
 //           sendMessage(OUT_SAVE_RELAY_NAME, s);
 //           console.log(s);

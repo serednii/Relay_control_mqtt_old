@@ -68,7 +68,7 @@ const startSelector = () => {
         tableDeviceNumber = document.querySelectorAll('.address-device__number');
         tableDeviceAddress = document.querySelectorAll('.address-device__address');
         tableDeviceTemp = document.querySelectorAll('.address-device__temp');
-        relayItem = document.querySelectorAll('.rele__item');
+        relayItem = document.querySelectorAll(CLASS_RELAY_ITEM);
         relayNameInput = document.querySelectorAll('.rele__name-input');
         delayWhenTurned = document.querySelectorAll('.delay-when-turned');
         relayControlTimer = document.querySelectorAll('.delay-when-turned');
