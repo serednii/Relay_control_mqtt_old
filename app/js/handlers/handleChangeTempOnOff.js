@@ -1,8 +1,8 @@
 function handleChangeTempOnOff() {
-    const RELAY_TEMP_BUTTONS = document.querySelectorAll(CLASS_RELAY_ITEM);
+    const RELAY_TEMP_BUTTONS = document.querySelectorAll(CLASS_RELAY_TEMP_BTN);
 
     if (RELAY_TEMP_BUTTONS.length > 0) {
-        console.log('YES CLASSES rele-temp-btn');
+        console.log('YES CLASSES CLASS_RELAY_TEMP_BTN');
 
         RELAY_TEMP_BUTTONS.forEach(function (button, index) {
             button.addEventListener('click', function () {
@@ -13,7 +13,7 @@ function handleChangeTempOnOff() {
                 // Перевірка наявності елементів та їх значень
                 if (RELAY_TEMP_ON && RELAY_TEMP_OFF && RELAY_TEMP_ON.value !== '' && RELAY_TEMP_OFF.value !== '') {
                     const MESSAGE = `${index}v${RELAY_TEMP_ON.value}o${RELAY_TEMP_OFF.value}k`;
-                    sendMessage(OUT_SAVE_DATA_SENSOR_TEMP, MESSAGE);
+                    //sendMessage(OUT_SAVE_DATA_SENSOR_TEMP, MESSAGE);
                     console.log('Message sent: ', MESSAGE);
                 } else {
                     console.log('Invalid temperature values');
